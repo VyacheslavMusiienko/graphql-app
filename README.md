@@ -1,1 +1,1 @@
-# graphiql-app
+# graphql-app
