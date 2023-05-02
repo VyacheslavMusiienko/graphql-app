@@ -17,3 +17,5 @@ export const mainPageSlice = createSlice({
     }
   },
 });
+
+export default mainPageSlice.reducer;

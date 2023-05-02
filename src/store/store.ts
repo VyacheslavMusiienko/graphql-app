@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import mainPageReducer from './reducers/mainPageSlice';
 
 const rootReducer = combineReducers({
-
+  mainPageReducer
 });
 
 export const setupStore = () => {
