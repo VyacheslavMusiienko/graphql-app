@@ -1,7 +1,7 @@
 import styles from './Footer.module.scss';
 import reactLogo from '../../assets/react.svg';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className={styles.row}>
       <div className={styles.link}>
@@ -23,4 +23,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

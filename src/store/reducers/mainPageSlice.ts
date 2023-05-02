@@ -14,7 +14,7 @@ export const mainPageSlice = createSlice({
   reducers: {
     exampleReducer(state, action: PayloadAction<string>) {
       state.example = action.payload;
-    }
+    },
   },
 });
 
