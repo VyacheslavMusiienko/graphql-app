@@ -1,4 +1,8 @@
+import React from 'react';
 import './ErrorPage.module.scss';
-export default function ErrorPage() {
+
+const ErrorPage = () => {
   return <div>ErrorPage</div>;
-}
+};
+
+export default ErrorPage;
