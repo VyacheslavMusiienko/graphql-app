@@ -3,7 +3,8 @@ import './App.scss';
 import Layout from './layout/layout';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import MainPage from './pages/MainPage/MainPage';
-import AboutPage from './pages/AboutPage/AboutPage';
+import FormPage from './pages/FormPage/FormPage';
+import GraphqlPage from './pages/GraphqlPage/GraphqlPage';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/form" element={<FormPage />} />
+          <Route path="/graphql" element={<GraphqlPage />} />
         </Route>
         <Route path="/error" element={<ErrorPage />} />
         <Route path="*" element={<Navigate to="/error" />} />
