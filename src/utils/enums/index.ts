@@ -3,3 +3,7 @@ export enum Paths {
   GraphQL = 'graphql',
   Form = 'form',
 }
+
+export enum Example {
+  s,
+}

@@ -1,22 +1,24 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { Paths } from '../../utils/enums';
-export default function Header() {
+
+const Header = () => {
   return (
     <header>
       <nav>
         <ul className={styles.row}>
           <li className={styles.row_item}>
-            <NavLink to={Paths.Main}>Main</NavLink>
+            <NavLink to="/">Main</NavLink>
           </li>
           <li className={styles.row_item}>
-            <NavLink to={Paths.Form}>Form</NavLink>
+            <NavLink to="/form">Form</NavLink>
           </li>
           <li className={styles.row_item}>
-            <NavLink to={Paths.GraphQL}>GraphQl</NavLink>
+            <NavLink to="/graphql">GraphQl</NavLink>
           </li>
         </ul>
       </nav>
     </header>
   );
 };
+
+export default Header;
