@@ -15,6 +15,18 @@ const Header = () => {
           <li className={styles.row_item}>
             <NavLink to="/graphql">GraphQl</NavLink>
           </li>
+          <li className={styles.row_item}>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li className={styles.row_item}>
+            <NavLink to="/register">Register</NavLink>
+          </li>
+          <li className={styles.row_item}>
+            <NavLink to="/reset">Reset</NavLink>
+          </li>
+          <li className={styles.row_item}>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
         </ul>
       </nav>
     </header>
