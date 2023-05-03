@@ -1,4 +1,3 @@
-import React from 'react';
 import './ErrorPage.module.scss';
 
 const ErrorPage = () => {
