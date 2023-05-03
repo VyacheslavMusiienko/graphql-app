@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import LocationSwitcher from '../LocationSwitcher/LocationSwitcher';
 
 const Header = () => {
   return (
@@ -17,6 +18,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <LocationSwitcher />
     </header>
   );
 };
