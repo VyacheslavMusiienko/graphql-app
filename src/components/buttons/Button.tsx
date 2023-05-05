@@ -2,8 +2,8 @@
 import { HTMLAttributes } from 'react';
 import styles from './button.module.scss';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  children: JSX.Element[] | JSX.Element;
+interface Props extends HTMLAttributes<HTMLButtonElement> {
+  children: JSX.Element[] | JSX.Element | string;
 }
 
 const Button = ({ className, children, ...rest }: Props) => {
