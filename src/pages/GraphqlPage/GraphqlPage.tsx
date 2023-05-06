@@ -1,6 +1,7 @@
 import Editor from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { useRef, useState } from 'react';
+import CharacterSchema from './GraphqlPlayground';
 
 const GraphqlPage = () => {
   const [codeReader] = useState<string>(`query {
@@ -13,7 +14,10 @@ const GraphqlPage = () => {
     }`);
   const [codeRequest, setCodeRequest] = useState();
   const monacoRef = useRef<editor.IStandaloneCodeEditor | null>(null);
-  const url = 'https://rickandmortyapi.com/graphql';
+  //   const url = 'https://rickandmortyapi.com/graphql';
+  const url = 'https://spacex-production.up.railway.app/';
+  //   const url = 'https://swapi-graphql.netlify.app/.netlify/functions/index';
+  //   const url = 'https://countries.trevorblades.com/graphql';
 
   const optionsReader: editor.IStandaloneEditorConstructionOptions = {
     readOnly: false,
@@ -68,6 +72,8 @@ const GraphqlPage = () => {
         options={optionsRequest}
         value={JSON.stringify(codeRequest, null, 2)}
       />
+
+      <CharacterSchema />
     </div>
   );
 };
