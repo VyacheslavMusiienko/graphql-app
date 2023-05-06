@@ -1,7 +1,7 @@
 import Editor from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { useRef, useState } from 'react';
-import CharacterSchema from './GraphqlPlayground';
+import Play from './Play';
 
 const GraphqlPage = () => {
   const [codeReader] = useState<string>(`query {
@@ -76,8 +76,7 @@ const GraphqlPage = () => {
         options={optionsRequest}
         value={JSON.stringify(codeRequest, null, 2)}
       />
-
-      <CharacterSchema />
+      <Play />
     </div>
   );
 };
