@@ -13,6 +13,7 @@
     "@monaco-editor/react": "^4.5.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-redux": "^7.1.25",
+    "graphql": "^16.6.0",
     "monaco-editor": "^0.38.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
