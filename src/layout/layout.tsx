@@ -11,7 +11,7 @@ const Layout = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef: RefObject<HTMLElement> = useRef(null);
 
-  const handleScroll = (elTopOffset, elHeight) => {
+  const handleScroll = (elTopOffset: number, elHeight: number) => {
     if (window.scrollY > elTopOffset + elHeight) {
       setSticky({ isSticky: true, offset: elHeight });
     } else {
@@ -22,7 +22,7 @@ const Layout = () => {
   useEffect(() => {
     const header = headerRef.current?.getBoundingClientRect();
     const handleScrollEvent = () => {
-      handleScroll(header.top, header.height);
+      if (header) handleScroll(header.top, header.height);
     };
 
     window.addEventListener('scroll', handleScrollEvent);
