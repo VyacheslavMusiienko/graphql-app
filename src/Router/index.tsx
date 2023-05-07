@@ -2,9 +2,6 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 
 import { LoginPage, MainPage, ErrorPage, GraphqlPage, FormPage } from '../pages';
 import Layout from '../layout/layout';
-import Dashboard from '../components/Dashboard/Dashboard';
-import Register from '../components/Register/Register';
-import Reset from '../components/Reset/Reset';
 
 import { Paths } from '../utils/enums';
 
@@ -18,9 +15,6 @@ const router = createBrowserRouter(
       <Route path={Paths.GraphQL} element={<GraphqlPage />} />
       <Route path={Paths.Form} element={<FormPage />} />
       <Route path={Paths.Login} element={<LoginPage />} />
-      <Route path={Paths.Dashboard} element={<Dashboard />} />
-      <Route path={Paths.Register} element={<Register />} />
-      <Route path={Paths.Reset} element={<Reset />} />
     </Route>
   )
 );

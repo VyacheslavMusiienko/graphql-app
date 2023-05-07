@@ -3,9 +3,6 @@ export enum Paths {
   GraphQL = 'graphql',
   Form = 'form',
   Login = 'login',
-  Register = 'register',
-  Reset = 'reset',
-  Dashboard = 'dashboard',
 }
 
 export enum Example {
