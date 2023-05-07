@@ -9,13 +9,15 @@ import '../App.scss';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path={Paths.Main} element={<Layout />} errorElement={<ErrorPage />}>
-      <Route errorElement={<ErrorPage />} />
-      <Route index element={<MainPage />} />
-      <Route path={Paths.GraphQL} element={<GraphqlPage />} />
-      <Route path={Paths.Form} element={<FormPage />} />
+    <>
+      <Route path={Paths.Main} element={<Layout />} errorElement={<ErrorPage />}>
+        <Route errorElement={<ErrorPage />} />
+        <Route index element={<MainPage />} />
+        <Route path={Paths.GraphQL} element={<GraphqlPage />} />
+      </Route>
       <Route path={Paths.Login} element={<LoginPage />} />
-    </Route>
+      <Route path={Paths.Form} element={<FormPage />} errorElement={<ErrorPage />} />
+    </>
   )
 );
 
