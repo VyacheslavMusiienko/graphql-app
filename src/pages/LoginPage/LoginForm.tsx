@@ -1,28 +1,30 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState, FormEvent } from 'react';
+import { useAppDispatch } from '../../hooks';
+import { mainPageSlice } from '../../store/reducers/mainPageSlice';
+
 import { auth, signInWithEmailAndPassword } from '../../firebase';
-// import { useAuthState } from 'react-firebase-hooks/auth';
 
 import styles from './LoginPage.module.scss';
 
-interface LoginFormProps {
-  toggleForm: (value: boolean) => void;
-}
+/*
+TODO:
+- [x] Create error handling
+*/
 
-const LoginForm = ({ toggleForm }: LoginFormProps) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useAppDispatch();
+  const { setLogin } = mainPageSlice.actions;
 
   const signIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('sign in', email, password, auth);
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        dispatch(setLogin(userCredential));
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(() => {});
   };
 
   return (
@@ -46,11 +48,7 @@ const LoginForm = ({ toggleForm }: LoginFormProps) => {
           Log In
         </button>
         <div>
-          Don&apos;t have an account?{' '}
-          <span onClick={toggleForm} role="button" tabIndex={0}>
-            Register
-          </span>{' '}
-          now.
+          Don&apos;t have an account? <span>Register</span> now.
         </div>
       </div>
     </form>

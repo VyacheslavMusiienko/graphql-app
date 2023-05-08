@@ -1,9 +1,11 @@
-// import { useState } from 'react';
+import { LoginPage } from '../../pages';
+import Layout from '../../layout';
+import { useAppSelector } from '../../hooks';
 
 const App = () => {
-  // const [state, setState] = useState();
+  const { auth } = useAppSelector((state) => state.mainPageReducer);
 
-  return <div>ss</div>;
+  return auth ? <Layout /> : <LoginPage />;
 };
 
 export default App;

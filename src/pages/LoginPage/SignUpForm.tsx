@@ -1,41 +1,31 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import { auth, registerWithEmailAndPassword } from '../../firebase';
+import { useAppDispatch } from '../../hooks';
+import { mainPageSlice } from '../../store/reducers/mainPageSlice';
+import { auth } from '../../firebase';
 
 import styles from './LoginPage.module.scss';
 
-interface SignUpFormProps {
-  toggleForm: () => void;
-}
+/*
+TODO:
+- [x] Create error handling
+*/
 
-const SignUpForm = ({ toggleForm }: SignUpFormProps) => {
+const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // if (loading) return;
-    // if (user) navigate('/dashboard');
-  }, [user, loading]);
+  const dispatch = useAppDispatch();
+  const { setLogin } = mainPageSlice.actions;
 
   const signUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const userCredential = registerWithEmailAndPassword(name, email, password);
-    if (userCredential) {
-      userCredential
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        dispatch(setLogin(userCredential));
+      })
+      .catch(() => {});
   };
 
   return (
@@ -66,14 +56,11 @@ const SignUpForm = ({ toggleForm }: SignUpFormProps) => {
           Register
         </button>
         <div>
-          Already have an account?{' '}
-          <span onClick={toggleForm} role="button" tabIndex={0}>
-            Login
-          </span>{' '}
-          now.
+          Already have an account? <span>Login</span> now.
         </div>
       </div>
     </form>
   );
 };
+
 export default SignUpForm;

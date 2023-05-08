@@ -1,12 +1,8 @@
+/* eslint-disable no-console */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDsasp82Al1XgLNDxjx7qvxwizm_XeVx4A',
@@ -21,25 +17,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// eslint-disable-next-line max-len
-const registerWithEmailAndPassword = (name: string, email: string, password: string) => {
-  let res;
-  try {
-    res = createUserWithEmailAndPassword(auth, email, password);
-    // const { user } = res;
-    // await addDoc(collection(db, 'users'), {
-    //   uid: user.uid,
-    //   name,
-    //   authProvider: 'local',
-    //   email,
-    // });
-  } catch (err) {
-    console.error(err);
-  }
-
-  return res;
-};
-
 const logInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -48,15 +25,4 @@ const logInWithEmailAndPassword = async (email: string, password: string) => {
   }
 };
 
-const logout = () => {
-  signOut(auth);
-};
-
-export {
-  auth,
-  db,
-  signInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  logInWithEmailAndPassword,
-  logout,
-};
+export { auth, db, signInWithEmailAndPassword, logInWithEmailAndPassword };

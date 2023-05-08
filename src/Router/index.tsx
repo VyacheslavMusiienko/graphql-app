@@ -1,23 +1,23 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, redirect } from 'react-router-dom';
 
-import { LoginPage, MainPage, ErrorPage, GraphqlPage, FormPage } from '../pages';
-import Layout from '../layout/layout';
+import { LoginPage, MainPage, ErrorPage, GraphqlPage } from '../pages';
+import App from '../components/App';
 
 import { Paths } from '../utils/enums';
 
-import '../App.scss';
+/*
+TODO:
+- [x] Create public and private routes
+*/
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path={Paths.Main} element={<Layout />} errorElement={<ErrorPage />}>
-        <Route errorElement={<ErrorPage />} />
-        <Route index element={<MainPage />} />
-        <Route path={Paths.GraphQL} element={<GraphqlPage />} />
-      </Route>
-      <Route path={Paths.Login} element={<LoginPage />} />
-      <Route path={Paths.Form} element={<FormPage />} errorElement={<ErrorPage />} />
-    </>
+    <Route path={Paths.Main} element={<App />} errorElement={<ErrorPage />}>
+      <Route index element={<MainPage />} />
+      <Route errorElement={<ErrorPage />} />
+      <Route path={Paths.GraphQL} element={<GraphqlPage />} />
+      <Route path={Paths.Login} loader={() => redirect('/')} element={<LoginPage />} />
+    </Route>
   )
 );
 

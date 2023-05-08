@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface MainPageStore {
-  isLoggedIn: boolean;
+  auth: null | object;
 }
 
 const initialState: MainPageStore = {
-  isLoggedIn: true,
+  auth: null,
 };
 
 export const mainPageSlice = createSlice({
   name: 'mainPageSlice',
   initialState,
   reducers: {
-    setLoggedIn(state, action: PayloadAction<boolean>) {
-      state.isLoggedIn = action.payload;
+    setLogin(state, action: PayloadAction<object | null>) {
+      state.auth = action.payload;
     },
   },
 });
