@@ -12,8 +12,11 @@ export const mainPageSlice = createSlice({
   name: 'mainPageSlice',
   initialState,
   reducers: {
-    setLogin(state, action: PayloadAction<object | null>) {
+    setLogin(state, action: PayloadAction<object>) {
       state.auth = action.payload;
+    },
+    setLogout(state) {
+      state.auth = null;
     },
   },
 });

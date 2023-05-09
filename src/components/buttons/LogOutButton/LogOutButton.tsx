@@ -10,12 +10,12 @@ import styles from './logOutButton.module.scss';
 
 const LogOutButton = ({ isSticky }: IsSticky) => {
   const dispatch = useAppDispatch();
-  const { setLogin } = mainPageSlice.actions;
+  const { setLogout } = mainPageSlice.actions;
 
   const logOut = () => {
     signOut(auth)
       .then(() => {
-        dispatch(setLogin(null));
+        dispatch(setLogout());
       })
       .catch(() => {});
   };
