@@ -1,7 +1,7 @@
 import Editor from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import { useRef, useState } from 'react';
-import Play from './Play';
+import CharacterSchema from './GraphqlPlayground';
 
 const GraphqlPage = () => {
   const [codeReader] = useState<string>(`query {
@@ -50,30 +50,32 @@ const GraphqlPage = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
-      <Editor
-        height="70vh"
-        width="50vw"
-        theme="vs-dark"
-        defaultLanguage="graphql"
-        value={codeReader}
-        onMount={(editor) => handleEditorDidMount(editor)}
-        options={optionsReader}
-      />
+    <>
+      <div style={{ display: 'flex' }}>
+        <Editor
+          height="70vh"
+          width="50vw"
+          theme="vs-dark"
+          defaultLanguage="graphql"
+          value={codeReader}
+          onMount={(editor) => handleEditorDidMount(editor)}
+          options={optionsReader}
+        />
 
-      <button type="button" onClick={handleQuery}>
-        Query
-      </button>
+        <button type="button" onClick={handleQuery}>
+          Query
+        </button>
 
-      <Editor
-        height="70vh"
-        width="50vw"
-        theme="vs-dark"
-        options={optionsRequest}
-        value={JSON.stringify(codeRequest, null, 2)}
-      />
-      <Play />
-    </div>
+        <Editor
+          height="70vh"
+          width="50vw"
+          theme="vs-dark"
+          options={optionsRequest}
+          value={JSON.stringify(codeRequest, null, 2)}
+        />
+      </div>
+      <CharacterSchema />
+    </>
   );
 };
 
