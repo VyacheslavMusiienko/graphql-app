@@ -1,36 +1,63 @@
-import { GraphQLSchema, buildClientSchema } from 'graphql';
-import { getIntrospectionQuery } from 'graphql/utilities';
-import { useState } from 'react';
+import { buildHTTPExecutor } from '@graphql-tools/executor-http';
+import { schemaFromExecutor } from '@graphql-tools/wrap';
+import { GraphQLObjectType, GraphQLSchema } from 'graphql';
+import { useEffect, useState } from 'react';
 
 const CharacterSchema = () => {
-  const [schema, setSchema] = useState<GraphQLSchema | null>(null);
+  const [schema, setSchema] = useState<{
+    schema: GraphQLSchema | null;
+  }>({ schema: null });
 
-  const getSchema = async () => {
-    const response = await fetch('https://spacex-production.up.railway.app/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: getIntrospectionQuery(),
-      }),
-    });
+  useEffect(() => {
+    async function fetchSchema() {
+      const uri = 'https://spacex-production.up.railway.app/';
+      const remoteExecutor = buildHTTPExecutor({ endpoint: uri });
+      const postsSubschema = {
+        schema: await schemaFromExecutor(remoteExecutor),
+      };
+      setSchema(postsSubschema);
+    }
+    fetchSchema();
+  }, []);
 
-    const { data } = await response.json();
-    const schemaRevest = buildClientSchema(data);
-    setSchema(schemaRevest);
-  };
+  if (!schema || !schema.schema) {
+    return <div>Loading schema...</div>;
+  }
+
+  const queryType = schema.schema.getType('Query') as GraphQLObjectType;
+  const queryFields = queryType.getFields();
+
+  const mutationType = schema.schema.getType('Mutation') as GraphQLObjectType;
+  const mutationFields = mutationType.getFields();
+
+  const subscriptionsType = schema.schema.getType('Subscriptions') as GraphQLObjectType;
+  const subscriptionsFields = subscriptionsType?.getFields();
 
   return (
-    <div>
-      <button type="button" onClick={getSchema}>
-        Get Schema
-      </button>
-      {schema && (
-        <pre>
-          <code>{JSON.stringify(schema.toConfig(), null, 2)}</code>
-        </pre>
-      )}
+    <div style={{ display: 'flex' }}>
+      <div>
+        <h1>GraphQL Schema query</h1>
+        <ul>
+          {queryFields &&
+            Object.keys(queryFields).map((fieldName) => <li key={fieldName}>{fieldName}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h1>GraphQL Schema mutation</h1>
+        <ul>
+          {mutationFields &&
+            Object.keys(mutationFields).map((fieldName) => <li key={fieldName}>{fieldName}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h1>GraphQL Schema Subscriptions</h1>
+        <ul>
+          {subscriptionsFields &&
+            Object.keys(subscriptionsFields).map((fieldName) => (
+              <li key={fieldName}>{fieldName}</li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };
