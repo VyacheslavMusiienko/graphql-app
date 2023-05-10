@@ -1,35 +1,47 @@
-import { useContext } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, Navigate } from 'react-router-dom';
 
-import { AuthContext } from '../context/AuthContext';
-import { MainPage, ErrorPage, GraphqlPage, LoginPage, SignUpPage, AuthLayout } from '../pages';
+import { MainPage, ErrorPage, LoginPage, SignUpPage, WelcomePage } from '../pages';
 import Layout from '../layout';
 
-import { Paths } from '../utils/enums';
+import useAuth from '../hooks/useAuth';
+import Paths from '../utils/enums';
 
 const PrivateRoute = () => {
-  const currentUser = useContext(AuthContext);
+  const { user } = useAuth();
 
-  return currentUser ? <Layout /> : <Navigate to={Paths.Login} />;
+  return user ? <Layout /> : <Navigate to={Paths.Welcome} />;
 };
 
-const PublicRoute = () => {
-  const currentUser = useContext(AuthContext);
+const PublicRoute = ({ children }: { children: React.ReactElement }) => {
+  const { user } = useAuth();
 
-  return currentUser ? <Navigate to={Paths.Main} /> : <AuthLayout />;
+  return user ? <Navigate to={Paths.Main} /> : children;
 };
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route path={Paths.Welcome} element={<WelcomePage />} />
+      <Route
+        path={Paths.Login}
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path={Paths.SignUp}
+        element={
+          <PublicRoute>
+            <SignUpPage />
+          </PublicRoute>
+        }
+      />
       <Route path={Paths.Main} element={<PrivateRoute />} errorElement={<ErrorPage />}>
         <Route index element={<MainPage />} />
+        {/* <Route path={Paths.GraphQL} element={<GraphqlPage />} /> */}
         <Route errorElement={<ErrorPage />} />
-        <Route path={Paths.GraphQL} element={<GraphqlPage />} />
-      </Route>
-      <Route path={Paths.Main} element={<PublicRoute />} errorElement={<ErrorPage />}>
-        <Route path={Paths.Login} element={<LoginPage />} />
-        <Route path={Paths.SignUp} element={<SignUpPage />} />
       </Route>
     </>
   )

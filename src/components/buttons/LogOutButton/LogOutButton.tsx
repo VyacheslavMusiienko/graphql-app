@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 
 import { authSlice } from '../../../store/reducers/authSlice';
-import { useAppDispatch } from '../../../hooks';
+import { useAppDispatch } from '../../../store';
 import { auth } from '../../../firebase';
 import Button from '../Button';
 
@@ -10,12 +10,12 @@ import styles from './logOutButton.module.scss';
 
 const LogOutButton = ({ isSticky }: IsSticky) => {
   const dispatch = useAppDispatch();
-  const { setLogout } = authSlice.actions;
+  const { setUser } = authSlice.actions;
 
   const logOut = () => {
     signOut(auth)
       .then(() => {
-        dispatch(setLogout());
+        dispatch(setUser(null));
       })
       .catch(() => {});
   };

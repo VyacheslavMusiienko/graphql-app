@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 import { authSlice } from '../../store/reducers/authSlice';
+import { useAppDispatch } from '../../store';
 import { auth } from '../../firebase';
 
-import { useAppDispatch } from '../../hooks';
+import Paths from '../../utils/enums';
+
 import styles from './AuthPages.module.scss';
-import { Paths } from '../../utils/enums';
 
 /*
 TODO:
@@ -20,7 +21,7 @@ const SignUpForm = () => {
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState(false);
   const dispatch = useAppDispatch();
-  const { setLogin } = authSlice.actions;
+  const { setUser } = authSlice.actions;
 
   const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,24 +34,13 @@ const SignUpForm = () => {
           displayName,
         })
           .then(() => {
-            dispatch(setLogin(res));
-            // Profile updated!
-            // ...
+            dispatch(setUser(res));
           })
-          .catch(() => {
-            // An error occurred
-            // ...
-          });
+          .catch(() => {});
       }
     } catch (err) {
       setError(true);
     }
-
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     dispatch(setLogin(userCredential));
-    //   })
-    //   .catch(() => {});
   };
 
   return (

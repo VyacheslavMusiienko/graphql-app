@@ -2,13 +2,12 @@ import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import { useAppDispatch } from '../../hooks';
 import { authSlice } from '../../store/reducers/authSlice';
-
+import { useAppDispatch } from '../../store';
 import { auth } from '../../firebase';
 
 import styles from './AuthPages.module.scss';
-import { Paths } from '../../utils/enums';
+import Paths from '../../utils/enums';
 
 /*
 TODO:
@@ -16,17 +15,17 @@ TODO:
 */
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
-  const { setLogin } = authSlice.actions;
 
   const signIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        dispatch(setLogin(userCredential));
+        dispatch(setUser(userCredential));
       })
       .catch(() => {});
   };

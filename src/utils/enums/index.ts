@@ -1,8 +1,10 @@
-// eslint-disable-next-line import/prefer-default-export
-export enum Paths {
-  Main = '/',
+enum Paths {
+  Welcome = '/',
+  Main = '/main',
   GraphQL = '/graphql',
   Form = '/form',
   Login = '/login',
   SignUp = '/signup',
 }
+
+export default Paths;

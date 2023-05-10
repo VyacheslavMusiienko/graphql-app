@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Navigation.module.scss';
-import { Paths } from '../../utils/enums';
+
 import { IsSticky } from '../../utils/interfaces';
+import Paths from '../../utils/enums';
+
+import styles from './Navigation.module.scss';
 
 const Navigation = ({ isSticky }: IsSticky) => (
   <nav className={styles.navigation}>
@@ -18,12 +20,12 @@ const Navigation = ({ isSticky }: IsSticky) => (
       </li>
       <li className={styles.navigation__item}>
         <NavLink
-          to={Paths.GraphQL}
+          to={Paths.Welcome}
           className={({ isActive }) =>
             isActive ? styles.navigation__link_active : styles.navigation__link
           }
         >
-          GraphQl App
+          Welcome page
         </NavLink>
       </li>
     </ul>

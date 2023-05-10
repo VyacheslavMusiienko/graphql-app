@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
 import { forwardRef } from 'react';
-import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
+
 import Navigation from '../Navigation/Navigation';
-import { Paths } from '../../utils/enums';
 import { LogOutButton } from '../buttons';
+
 import { IsSticky } from '../../utils/interfaces';
+import Paths from '../../utils/enums';
+
+import styles from './Header.module.scss';
 
 const Header = forwardRef<HTMLElement, IsSticky>(({ isSticky }, ref) => {
   return (
