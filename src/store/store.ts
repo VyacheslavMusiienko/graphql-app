@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import mainPageReducer from './reducers/mainPageSlice';
+import authReducer from './reducers/authSlice';
 
 const rootReducer = combineReducers({
-  mainPageReducer,
+  authReducer,
 });
 
 export const setupStore = () =>
@@ -12,11 +12,11 @@ export const setupStore = () =>
       getDefaultMiddleware({
         serializableCheck: {
           // Ignore these action types
-          ignoredActions: ['mainPageSlice/setLogin'],
+          ignoredActions: ['authSlice/setLogin'],
           // Ignore these field paths in all actions
           ignoredActionPaths: ['payload.timestamp'],
           // Ignore these paths in the state
-          ignoredPaths: ['mainPageReducer.auth'],
+          ignoredPaths: ['authReducer.auth'],
         },
       }),
   });

@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface MainPageStore {
+interface IAuthStore {
   auth: null | object;
 }
 
-const initialState: MainPageStore = {
+const initialState: IAuthStore = {
   auth: null,
 };
 
-export const mainPageSlice = createSlice({
-  name: 'mainPageSlice',
+export const authSlice = createSlice({
+  name: 'authSlice',
   initialState,
   reducers: {
     setLogin(state, action: PayloadAction<object>) {
@@ -21,4 +21,4 @@ export const mainPageSlice = createSlice({
   },
 });
 
-export default mainPageSlice.reducer;
+export default authSlice.reducer;

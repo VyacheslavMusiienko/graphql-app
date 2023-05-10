@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 
-import { mainPageSlice } from '../../../store/reducers/mainPageSlice';
+import { authSlice } from '../../../store/reducers/authSlice';
 import { useAppDispatch } from '../../../hooks';
 import { auth } from '../../../firebase';
 import Button from '../Button';
@@ -10,7 +10,7 @@ import styles from './logOutButton.module.scss';
 
 const LogOutButton = ({ isSticky }: IsSticky) => {
   const dispatch = useAppDispatch();
-  const { setLogout } = mainPageSlice.actions;
+  const { setLogout } = authSlice.actions;
 
   const logOut = () => {
     signOut(auth)

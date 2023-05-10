@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
-import { mainPageSlice } from '../../store/reducers/mainPageSlice';
+import { authSlice } from '../../store/reducers/authSlice';
 import { auth } from '../../firebase';
 
 import { useAppDispatch } from '../../hooks';
@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState(false);
   const dispatch = useAppDispatch();
-  const { setLogin } = mainPageSlice.actions;
+  const { setLogin } = authSlice.actions;
 
   const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

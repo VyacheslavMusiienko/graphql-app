@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { useAppDispatch } from '../../hooks';
-import { mainPageSlice } from '../../store/reducers/mainPageSlice';
+import { authSlice } from '../../store/reducers/authSlice';
 
 import { auth } from '../../firebase';
 
@@ -19,7 +19,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
-  const { setLogin } = mainPageSlice.actions;
+  const { setLogin } = authSlice.actions;
 
   const signIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
