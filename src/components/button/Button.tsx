@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react';
 import styles from './button.module.scss';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  children: JSX.Element[] | JSX.Element | string;
+  children: React.ReactNode;
 }
 
 const Button = ({ className, children, ...rest }: Props) => {

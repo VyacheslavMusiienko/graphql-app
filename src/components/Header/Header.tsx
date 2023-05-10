@@ -2,15 +2,17 @@ import { RefObject, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation';
-import { LogOutButton } from '../buttons';
+import { LogoutButton, LoginButton, SignUpButton } from '../button';
 
 import Paths from '../../utils/enums';
+import useAuth from '../../hooks/useAuth';
 
 import styles from './Header.module.scss';
 
 const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef: RefObject<HTMLElement> = useRef(null);
+  const { user } = useAuth();
 
   const handleScroll = (elTopOffset: number, elHeight: number) => {
     if (window.scrollY > elTopOffset + elHeight) {
@@ -45,7 +47,15 @@ const Header = () => {
         <h1>GraphQL</h1>
       </Link>
       <Navigation isSticky={!sticky.isSticky} />
-      <LogOutButton isSticky={!sticky.isSticky} />
+      {user ? (
+        <LogoutButton isSticky={!sticky.isSticky} />
+      ) : (
+        <>
+          <LoginButton isSticky={!sticky.isSticky} />
+          /
+          <SignUpButton isSticky={!sticky.isSticky} />
+        </>
+      )}
     </header>
   );
 };

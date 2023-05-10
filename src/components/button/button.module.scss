@@ -1,4 +1,4 @@
-@import "src/assets/style/index";
+@import "src/assets/style";
 
 .button {
   width: 100px;
@@ -13,3 +13,10 @@
     transform: scale(1.05);
   }
 }
+
+.sticky {
+  background-color: $secondColor;
+  &:last-child {
+    margin-right: 15px;
+  }
+ }

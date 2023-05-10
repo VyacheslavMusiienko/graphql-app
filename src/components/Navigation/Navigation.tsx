@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import { IsSticky } from '../../utils/interfaces';
 import Paths from '../../utils/enums';
 
 import styles from './Navigation.module.scss';
 
-const Navigation = ({ isSticky }: IsSticky) => (
+const Navigation = ({ isSticky }: { isSticky: boolean }) => (
   <nav className={styles.navigation}>
     <ul className={isSticky ? styles.navigation__list_sticky : styles.navigation__list}>
       <li className={styles.navigation__item}>
