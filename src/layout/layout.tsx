@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -11,43 +11,22 @@ import Footer from '../components/Footer';
 import styles from './layout.module.scss';
 
 const Layout = () => {
-  const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
-  const headerRef: RefObject<HTMLElement> = useRef(null);
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
 
-  const handleScroll = (elTopOffset: number, elHeight: number) => {
-    if (window.scrollY > elTopOffset + elHeight) {
-      setSticky({ isSticky: true, offset: elHeight });
-    } else {
-      setSticky({ isSticky: false, offset: 0 });
-    }
-  };
-
   useEffect(() => {
-    const header = headerRef.current?.getBoundingClientRect();
-
-    const handleScrollEvent = () => {
-      if (header) {
-        handleScroll(header.top, header.height);
-      }
-    };
-
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       dispatch(setUser(user));
     });
 
-    window.addEventListener('scroll', handleScrollEvent);
-
     return () => {
       unsubscribe();
-      window.removeEventListener('scroll', handleScrollEvent);
     };
   }, []);
 
   return (
     <div className={styles.wrapper}>
-      <Header ref={headerRef} isSticky={sticky.isSticky} />
+      <Header />
       <Outlet />
       <Footer />
     </div>
