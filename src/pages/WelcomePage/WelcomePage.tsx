@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import { useAppDispatch, authSlice } from '../../store';
 import useAuth from '../../hooks/useAuth';
 import { auth } from '../../firebase';
 
 import Paths from '../../utils/enums';
+
+import { styles } from '../../layout';
 
 const WelcomePage = () => {
   const { user: currentUser } = useAuth();
@@ -25,7 +28,7 @@ const WelcomePage = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Header />
       <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
         {currentUser ? (
@@ -37,7 +40,8 @@ const WelcomePage = () => {
           </>
         )}
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

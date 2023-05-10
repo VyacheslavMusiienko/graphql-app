@@ -1,7 +1,7 @@
 import { createBrowserRouter, createRoutesFromElements, Route, Navigate } from 'react-router-dom';
 
 import { MainPage, ErrorPage, LoginPage, SignUpPage, WelcomePage } from '../pages';
-import Layout from '../layout';
+import { Layout } from '../layout';
 
 import useAuth from '../hooks/useAuth';
 import Paths from '../utils/enums';
