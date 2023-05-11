@@ -7,7 +7,7 @@ import { LogoutButton, LoginButton, SignUpButton } from '../button';
 import Paths from '../../utils/enums';
 import useAuth from '../../hooks/useAuth';
 
-import styles from './Header.module.scss';
+import styles from './header.module.scss';
 
 const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });

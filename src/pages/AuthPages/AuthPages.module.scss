@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   &__container {
+    width: 26em;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -23,6 +24,14 @@
     border: none;
     color: white;
     background-color: black;
+    transition-duration: .2s;
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  span {
+    margin: 5px 0 10px 0;
+    color: #9b1c31;
   }
   a {
     cursor: pointer;

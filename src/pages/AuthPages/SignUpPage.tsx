@@ -1,6 +1,6 @@
 import SignUpForm from './SignUpForm';
 
-import styles from './AuthPages.module.scss';
+import styles from './authPages.module.scss';
 
 const SignUpPage = () => {
   return (

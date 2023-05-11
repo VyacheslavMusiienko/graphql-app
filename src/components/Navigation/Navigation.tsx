@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import Paths from '../../utils/enums';
 
-import styles from './Navigation.module.scss';
+import styles from './navigation.module.scss';
 
 const Navigation = ({ isSticky }: { isSticky: boolean }) => (
   <nav className={styles.navigation}>
