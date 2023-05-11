@@ -1,15 +1,27 @@
-import { createBrowserRouter, createRoutesFromElements, Route, Navigate } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Navigate,
+  useLocation,
+} from 'react-router-dom';
 
 import { MainPage, ErrorPage, LoginPage, SignUpPage, WelcomePage } from '../pages';
 import { Layout } from '../layout';
+import App from '../components/app';
 
 import useAuth from '../hooks/useAuth';
 import Paths from '../utils/enums';
 
 const PrivateRoute = () => {
   const { user } = useAuth();
+  const location = useLocation();
 
-  return user ? <Layout /> : <Navigate to={Paths.Welcome} />;
+  if (!user) {
+    return <Navigate to={Paths.Login} state={{ from: location }} replace />;
+  }
+
+  return <Layout />;
 };
 
 const PublicRoute = ({ children }: { children: React.ReactElement }) => {
@@ -20,8 +32,8 @@ const PublicRoute = ({ children }: { children: React.ReactElement }) => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path={Paths.Welcome} element={<WelcomePage />} />
+    <Route path={Paths.Welcome} element={<App />}>
+      <Route index element={<WelcomePage />} />
       <Route
         path={Paths.Login}
         element={
@@ -43,7 +55,7 @@ const router = createBrowserRouter(
         {/* <Route path={Paths.GraphQL} element={<GraphqlPage />} /> */}
         <Route errorElement={<ErrorPage />} />
       </Route>
-    </>
+    </Route>
   )
 );
 

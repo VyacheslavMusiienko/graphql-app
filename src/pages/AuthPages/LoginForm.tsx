@@ -38,7 +38,7 @@ const LoginForm = () => {
           className={styles.wrapper__textBox}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          placeholder="E-mail"
         />
         <input
           type="password"
