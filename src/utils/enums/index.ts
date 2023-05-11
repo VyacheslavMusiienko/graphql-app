@@ -1,7 +1,9 @@
-export enum Paths {
-  Main = '/',
+enum Paths {
+  Welcome = '/',
+  Main = '/main',
   GraphQL = '/graphql',
-  Form = '/form',
+  Login = '/login',
+  SignUp = '/signup',
 }
 
 export enum FooterLinks {
@@ -10,3 +12,5 @@ export enum FooterLinks {
   Musiienko = 'https://github.com/vyacheslavmusiienko',
   Nikanau = 'https://github.com/sbavia',
 }
+
+export default Paths;

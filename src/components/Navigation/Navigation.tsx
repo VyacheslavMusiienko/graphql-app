@@ -1,10 +1,10 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Navigation.module.scss';
-import { Paths } from '../../utils/enums';
-import { IsSticky } from '../../utils/interfaces';
 
-const Navigation = ({ isSticky }: IsSticky) => (
+import Paths from '../../utils/enums';
+
+import styles from './navigation.module.scss';
+
+const Navigation = ({ isSticky }: { isSticky: boolean }) => (
   <nav className={styles.navigation}>
     <ul className={isSticky ? styles.navigation__list_sticky : styles.navigation__list}>
       <li className={styles.navigation__item}>
@@ -19,12 +19,12 @@ const Navigation = ({ isSticky }: IsSticky) => (
       </li>
       <li className={styles.navigation__item}>
         <NavLink
-          to={Paths.GraphQL}
+          to={Paths.Welcome}
           className={({ isActive }) =>
             isActive ? styles.navigation__link_active : styles.navigation__link
           }
         >
-          GraphQl App
+          Welcome page
         </NavLink>
       </li>
     </ul>
