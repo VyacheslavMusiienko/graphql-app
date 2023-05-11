@@ -1,34 +1,11 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  Navigate,
-  useLocation,
-} from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-import { MainPage, ErrorPage, LoginPage, SignUpPage, WelcomePage } from '../pages';
-import { Layout } from '../layout';
 import App from '../components/app';
+import PublicRoute from './PublicRoute';
+import PrivateRoute from './PrivateRoute';
+import { MainPage, ErrorPage, LoginPage, SignUpPage, WelcomePage } from '../pages';
 
-import useAuth from '../hooks/useAuth';
 import Paths from '../utils/enums';
-
-const PrivateRoute = () => {
-  const { user } = useAuth();
-  const location = useLocation();
-
-  if (!user) {
-    return <Navigate to={Paths.Login} state={{ from: location }} replace />;
-  }
-
-  return <Layout />;
-};
-
-const PublicRoute = ({ children }: { children: React.ReactElement }) => {
-  const { user } = useAuth();
-
-  return user ? <Navigate to={Paths.Main} /> : children;
-};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
