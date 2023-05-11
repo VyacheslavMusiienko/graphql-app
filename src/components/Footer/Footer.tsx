@@ -1,28 +1,26 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import reactLogo from '../../assets/react.svg';
+import rsLogo from '../../assets/svg/rsLogo.svg';
+import ghLogo from '../../assets/svg/gitLogo.svg';
+import { FooterLinks } from '../../utils/enums';
+import SvgNText from '../SvgNText/SvgNText';
 
-const Footer = () => {
-  return (
-    <footer className={styles.row}>
-      <div className={styles.link}>
-        <a href="https://github.com/vyacheslavmusiienko" target="_blank" rel="noopener noreferrer">
-          Viacheslav Musiienko
-        </a>
-        <a href="https://github.com/sbavia" target="_blank" rel="noopener noreferrer">
-          Ivan Nikanau
-        </a>
-        <a href="https://github.com/luferov1" target="_blank" rel="noopener noreferrer">
-          Dzmitry Luferau
-        </a>
-      </div>
-      <div className="data">2023</div>
-      <div className="logo">
-        <a href="https://rs.school/react/" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer className={styles.footer}>
+    <Link to={FooterLinks.RsSchool} target="_blank">
+      <img src={rsLogo} alt="ghLogo" />
+    </Link>
+    <Link to={FooterLinks.Luferov} className={styles.link} target="_blank">
+      <SvgNText text="Dmitry Luferov" src={ghLogo} />
+    </Link>
+    <Link to={FooterLinks.Nikanau} className={styles.link} target="_blank">
+      <SvgNText text="Ivan Nikanau" src={ghLogo} />
+    </Link>
+    <Link to={FooterLinks.Musiienko} className={styles.link} target="_blank">
+      <SvgNText text="Viacheslav Musiienko" src={ghLogo} />
+    </Link>
+    <span className={styles.year}>2023</span>
+  </footer>
+);
 
 export default Footer;

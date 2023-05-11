@@ -1,0 +1,11 @@
+@import "src/assets/style";
+
+.wrapper {
+  max-width: 1800px;
+  min-height: calc(100vh - $headerHeight);
+  display: flex;
+  flex-direction: column;
+  margin: $headerHeight auto 0 auto;
+  position: relative;
+  overflow: hidden;
+}

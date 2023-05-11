@@ -1,10 +1,30 @@
 @import"../../assets/style/index.scss";
 
-.row{
+.header {
+  height: $headerHeight;
+  background-color: $secondColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  max-width: 1800px;
+  width: 100%;
+  transition: 1s;
+}
+
+.header_sticky {
+  background-color: $thirdColor;
+}
+
+.title {
   display: flex;
   justify-content: center;
-
-  &_item{
-    margin: 10px 30px;
-  }
+  align-items: center;
+  font-size: $titleFontSize;
+  font-style: italic;
+  width: 120px;
+  height: 100%;
+  background-color: $firstColor;
 }
+
