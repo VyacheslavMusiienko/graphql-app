@@ -1,6 +1,7 @@
 {
   "navigation_home": "Home",
   "navigation_welcome": "Welcome page",
+  "navigation_editor": "Editor GQL",
   "auth_signup": "Signup",
   "auth_login": "Login",
   "placeholder_fullName": "Full Name",
@@ -20,5 +21,6 @@
   "name_nik": "Ivan Nikanau",
   "name_mus": "Viacheslav Musiienko",
   "errorPage_title": "Sorry, this page is not available. You may have used an invalid link or the page has been removed.",
-  "errorPage_button": "Back to welcome page"
+  "errorPage_button": "Back to welcome page",
+  "query": "Query"
 }
