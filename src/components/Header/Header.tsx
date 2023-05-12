@@ -45,7 +45,7 @@ const Header = () => {
       className={sticky ? [styles.header, styles.header_sticky].join(' ') : styles.header}
       ref={headerRef}
     >
-      <Link to={Paths.Main} className={styles.title}>
+      <Link to={Paths.Welcome} className={styles.title}>
         <img src={logo} alt="logo" className={styles.logo} />
         <h1 className={styles.text}>GraphQL</h1>
       </Link>
