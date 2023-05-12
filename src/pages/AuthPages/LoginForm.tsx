@@ -2,6 +2,7 @@ import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
+import { useTranslation } from 'react-i18next';
 import Loader from '../../components/loader';
 
 import { authSlice } from '../../store/reducers/authSlice';
@@ -22,6 +23,7 @@ const LoginForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const signIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,20 +48,22 @@ const LoginForm = () => {
           className={styles.wrapper__textBox}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail"
+          placeholder={t('placeholder', { context: 'email' }) as string | undefined}
         />
         <input
           type="password"
           className={styles.wrapper__textBox}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t('placeholder', { context: 'password' }) as string | undefined}
         />
         <button type="submit" className={styles.wrapper__btn}>
-          Log In
+          {t('login')}
         </button>
         <div>
-          Don&apos;t have an account? <Link to={Paths.SignUp}>Register</Link> now.
+          {t('login', { context: 'account' })}
+          <Link to={Paths.SignUp}>{t('register')}</Link>
+          {t('now')}.
         </div>
       </div>
     </form>

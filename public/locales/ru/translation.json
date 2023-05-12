@@ -1,0 +1,22 @@
+{
+  "navigation_home": "Дом",
+  "navigation_welcome": "Приветствие",
+  "auth_signup": "Регистрация",
+  "auth_login": "Войти",
+  "placeholder_fullName": "Полное имя",
+  "placeholder_email": "Почта",
+  "placeholder_password": "Пароль",
+  "formError_invalidEmail": "Неверная почта",
+  "formError_invalidPassword": "Пароль должен иметь как минимум 8 симвлов и содержать как минимум одну букву, одно число и один \nспециальный символ (@$!%*#?&)",
+  "signup_account": "Уже есть аккаунт? ",
+  "login": "Войти",
+  "login_account": "Нету аккаунта? ",
+  "logout": "Выйти",
+  "now": " сейчас",
+  "register": "Регистрация",
+  "language_ru": "РУС",
+  "language_en": "АНГ",
+  "name_luf": "Дмитрий Луферов",
+  "name_nik": "Иван Никанов",
+  "name_mus": "Вячеслав Мусиенко"
+}

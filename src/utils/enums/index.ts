@@ -13,4 +13,9 @@ export enum FooterLinks {
   Nikanau = 'https://github.com/sbavia',
 }
 
+export enum Languages {
+  RU = 'ru',
+  EN = 'en',
+}
+
 export default Paths;
