@@ -3,41 +3,36 @@ import { schemaFromExecutor } from '@graphql-tools/wrap';
 import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
-import React, { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useAppSelector } from '../../hooks';
+import styles from './CodeEditor.module.scss';
 
-const CodeMirrorEditor = () => {
-  const [operations, setOperation] = useState<string>(`query {
-    characters{results {
-          episode {
-            id
-            name
-          }
-        }}
-        }`);
-
-  const [schema, setSchema] = useState<GraphQLSchema | undefined>(undefined);
+const CodeEditor = () => {
+  const [operations, setOperation] = useState<string>(`query {}`);
   const [codeRequest, setCodeRequest] = useState();
 
-  const url = 'https://rickandmortyapi.com/graphql';
-  //   const url = 'https://spacex-production.up.railway.app/';
-  //   const url = 'https://swapi-graphql.netlify.app/.netlify/functions/index';
-  //   const url = 'https://countries.trevorblades.com/graphql';
+  const [schema, setSchema] = useState<GraphQLSchema | undefined>(undefined);
+
+  const { schemaURI: urI } = useAppSelector((state) => state.EditorReducer);
 
   useEffect(() => {
     async function fetchSchema() {
-      const remoteExecutor = buildHTTPExecutor({ endpoint: url });
+      setSchema(undefined);
+      const remoteExecutor = buildHTTPExecutor({ endpoint: urI });
       const postsSchema = await schemaFromExecutor(remoteExecutor);
       setSchema(postsSchema);
+      setOperation(`query {}`);
+      setCodeRequest(undefined);
     }
     fetchSchema();
-  }, []);
+  }, [urI]);
 
-  const onChange = React.useCallback((value: string) => {
-    setOperation(value);
+  const onChange = useCallback((valueEditor: string) => {
+    setOperation(valueEditor);
   }, []);
 
   const makeRequest = async (query: string) => {
-    return fetch(url, {
+    return fetch(urI, {
       method: 'POST',
       headers: {
         'Content-type': ' application/json',
@@ -57,28 +52,33 @@ const CodeMirrorEditor = () => {
   }
 
   return (
-    <div style={{ display: 'flex' }}>
+    <main className={styles.main}>
       <CodeMirror
         value={operations}
         height="70vh"
-        width="800px"
+        width="40vw"
         theme="dark"
         extensions={[graphql(schema)]}
         onChange={onChange}
+        basicSetup
       />
 
-      <button type="button" onClick={handleQuery}>
-        Query
-      </button>
+      <div>
+        <button className={styles.button} type="button" onClick={handleQuery}>
+          Query
+        </button>
+      </div>
 
       <CodeMirror
         value={JSON.stringify(codeRequest, null, '\t')}
         height="70vh"
-        width="800px"
+        width="40vw"
         theme="dark"
         editable
+        readOnly
+        basicSetup
       />
-    </div>
+    </main>
   );
 };
-export default CodeMirrorEditor;
+export default CodeEditor;

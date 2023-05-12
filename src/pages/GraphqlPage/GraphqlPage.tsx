@@ -1,10 +1,12 @@
-import CodeMirrorEditor from './CodeMirrorEditor';
+import CodeEditor from '../../components/CodeEditor/CodeEditor';
+import SelectorURI from '../../components/SelectorURI/SelectorURI';
 
 const GraphqlPage = () => {
   return (
     <>
-      {/* <SelectorURI /> */}
-      <CodeMirrorEditor />
+      <SelectorURI />
+      <CodeEditor />
+      {/* <CharacterSchema /> */}
       {/* <CharacterSchema /> */}
     </>
   );

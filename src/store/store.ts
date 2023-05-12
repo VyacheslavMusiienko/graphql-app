@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import mainPageReducer from './reducers/mainPageSlice';
+import EditorReducer from './reducers/EditorSlice';
 
 const rootReducer = combineReducers({
   mainPageReducer,
+  EditorReducer,
 });
 
 export const setupStore = () =>
