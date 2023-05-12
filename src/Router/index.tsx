@@ -1,9 +1,9 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
 import App from '../components/app';
-import PublicRoute from './PublicRoute';
+import { ErrorPage, GraphqlPage, LoginPage, MainPage, SignUpPage, WelcomePage } from '../pages';
 import PrivateRoute from './PrivateRoute';
-import { MainPage, ErrorPage, LoginPage, SignUpPage, WelcomePage } from '../pages';
+import PublicRoute from './PublicRoute';
 
 import Paths from '../utils/enums';
 
@@ -29,6 +29,10 @@ const router = createBrowserRouter(
       />
       <Route path={Paths.Main} element={<PrivateRoute />}>
         <Route index element={<MainPage />} />
+        {/* <Route path={Paths.GraphQL} element={<GraphqlPage />} /> */}
+      </Route>
+      <Route path={Paths.GraphQL} element={<PrivateRoute />}>
+        <Route index element={<GraphqlPage />} />
         {/* <Route path={Paths.GraphQL} element={<GraphqlPage />} /> */}
       </Route>
     </Route>

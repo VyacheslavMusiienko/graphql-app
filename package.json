@@ -10,8 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@graphql-tools/executor-http": "^0.1.10",
+    "@graphql-tools/wrap": "^9.4.2",
     "@reduxjs/toolkit": "^1.9.5",
+    "@uiw/react-codemirror": "^4.19.16",
+    "cm6-graphql": "^0.0.7",
     "firebase": "^9.21.0",
+    "graphql": "^16.6.0",
     "i18next": "^22.4.15",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.2.0",
