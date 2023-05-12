@@ -1,22 +1,21 @@
 import { Link } from 'react-router-dom';
 
-import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import useAuth from '../../hooks/useAuth';
 
 import Paths from '../../utils/enums';
 
 import { styles } from '../../layout';
+import st from './welcome.module.scss';
 
 const WelcomePage = () => {
   const { user: currentUser } = useAuth();
 
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
+      <div className={st.row}>
         {currentUser ? (
-          <Link to={Paths.Main}>Welcome</Link>
+          <Link to={Paths.Main}>GraphQL</Link>
         ) : (
           <>
             <Link to={Paths.Login}>Login</Link>
