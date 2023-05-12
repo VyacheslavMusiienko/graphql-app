@@ -20,11 +20,7 @@ const App = () => {
     };
   }, []);
 
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 };
 
 export default App;

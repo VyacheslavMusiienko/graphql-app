@@ -1,6 +1,6 @@
 {
   "navigation_home": "Дом",
-  "navigation_welcome": "Приветствие",
+  "navigation_welcome": "Главная",
   "auth_signup": "Регистрация",
   "auth_login": "Войти",
   "placeholder_fullName": "Полное имя",
@@ -18,5 +18,7 @@
   "language_en": "АНГ",
   "name_luf": "Дмитрий Луферов",
   "name_nik": "Иван Никанов",
-  "name_mus": "Вячеслав Мусиенко"
+  "name_mus": "Вячеслав Мусиенко",
+  "errorPage_title": "К сожалению, эта страница недоступна. Возможно, вы воспользовались недействительной ссылкой или страница была удалена",
+  "errorPage_button": "Назад на главную"
 }

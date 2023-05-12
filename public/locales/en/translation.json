@@ -18,5 +18,7 @@
   "language_en": "EN",
   "name_luf": "Dmitry Luferov",
   "name_nik": "Ivan Nikanau",
-  "name_mus": "Viacheslav Musiienko"
+  "name_mus": "Viacheslav Musiienko",
+  "errorPage_title": "Sorry, this page is not available. You may have used an invalid link or the page has been removed.",
+  "errorPage_button": "Back to welcome page"
 }
