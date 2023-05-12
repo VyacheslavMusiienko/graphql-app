@@ -7,8 +7,9 @@ import { LogoutButton, LoginButton, SignUpButton } from '../button';
 import Paths from '../../utils/enums';
 import useAuth from '../../hooks/useAuth';
 
-import styles from './header.module.scss';
 import LocationSwitcher from '../LocationSwitcher/LocationSwitcher';
+import logo from '../../assets/png/logo.png';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
@@ -45,7 +46,8 @@ const Header = () => {
       ref={headerRef}
     >
       <Link to={Paths.Main} className={styles.title}>
-        <h1>GraphQL</h1>
+        <img src={logo} alt="logo" className={styles.logo} />
+        <h1 className={styles.text}>GraphQL</h1>
       </Link>
       <Navigation isSticky={!sticky.isSticky} />
       <LocationSwitcher isSticky={!sticky.isSticky} />
