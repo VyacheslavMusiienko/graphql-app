@@ -1,21 +1,38 @@
 import { useTranslation } from 'react-i18next';
 import styles from './LocationSwitcher.module.scss';
+import { Button } from '../button';
+import { Languages } from '../../utils/enums';
 
-const LocationSwitcher = () => {
-  const { i18n } = useTranslation();
+const LocationSwitcher = ({ isSticky }: { isSticky: boolean }) => {
+  const { i18n, t } = useTranslation();
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
 
+  const setClassName = (_isSticky: boolean, language: Languages) => {
+    const classNames = [styles.switcher];
+    if (isSticky) classNames.push(styles.switcher_sticky);
+    if (i18n.language === language) classNames.push(styles.switcher_active);
+    return classNames.join(' ');
+  };
+
   return (
     <div className={styles.localization}>
-      <button className={styles.switcher} type="button" onClick={() => changeLanguage('en')}>
-        EN
-      </button>
-      <button className={styles.switcher} type="button" onClick={() => changeLanguage('ru')}>
-        RU
-      </button>
+      <Button
+        className={setClassName(isSticky, Languages.EN)}
+        type="button"
+        onClick={() => changeLanguage('en')}
+      >
+        {t('language', { context: 'en' })}
+      </Button>
+      <Button
+        className={setClassName(isSticky, Languages.RU)}
+        type="button"
+        onClick={() => changeLanguage('ru')}
+      >
+        {t('language', { context: 'ru' })}
+      </Button>
     </div>
   );
 };

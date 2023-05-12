@@ -1,4 +1,22 @@
 {
-  "navigateMain": "Main",
-  "navigateForm": "Form"
+  "navigation_home": "Home",
+  "navigation_welcome": "Welcome page",
+  "auth_signup": "Signup",
+  "auth_login": "Login",
+  "placeholder_fullName": "Full Name",
+  "placeholder_email": "E-mail",
+  "placeholder_password": "Password",
+  "formError_invalidEmail": "Incorrect email",
+  "formError_invalidPassword": "Password must be at least 8 symbols and have at least one letter, one digit and one\nspecial character (@$!%*#?&)",
+  "signup_account": "Already have an account? ",
+  "login": "Login",
+  "login_account": "Don't have an account? ",
+  "logout": "Logout",
+  "now": " now",
+  "register": "Register",
+  "language_ru": "RU",
+  "language_en": "EN",
+  "name_luf": "Dmitry Luferov",
+  "name_nik": "Ivan Nikanau",
+  "name_mus": "Viacheslav Musiienko"
 }

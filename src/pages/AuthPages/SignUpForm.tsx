@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
+import { useTranslation } from 'react-i18next';
 import Loader from '../../components/loader';
 
 import { authSlice } from '../../store/reducers/authSlice';
@@ -30,6 +31,7 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState<null | IErrors>(null);
   const dispatch = useAppDispatch();
   const { setUser } = authSlice.actions;
+  const { t } = useTranslation();
 
   const isValid = () => {
     const rEmail =
@@ -96,34 +98,31 @@ const SignUpForm = () => {
           className={styles.wrapper__textBox}
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
-          placeholder="Full Name"
+          placeholder={t('placeholder', { context: 'fullName' }) as string | undefined}
         />
         <input
           type="text"
           className={styles.wrapper__textBox}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail"
+          placeholder={t('placeholder', { context: 'email' }) as string | undefined}
         />
-        {errors && errors.email && <span>Incorrect email</span>}
+        {errors && errors.email && <span>{t('formError', { context: 'email' })}</span>}
         <input
           type="password"
           className={styles.wrapper__textBox}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t('placeholder', { context: 'password' }) as string | undefined}
         />
-        {errors && errors.password && (
-          <span>
-            Password should be at least 8 symbols and have at least one letter, one digit and one
-            special character (@$!%*#?&)
-          </span>
-        )}
+        {errors && errors.password && <span>{t('formError', { context: 'password' })}</span>}
         <button type="submit" className={styles.wrapper__btn}>
-          Register
+          {t('register')}
         </button>
         <div>
-          Already have an account? <Link to={Paths.Login}>Login</Link> now.
+          {t('signup', { context: 'account' })}
+          <Link to={Paths.Login}> {t('login')}</Link>
+          {t('now')}.
         </div>
       </div>
     </form>

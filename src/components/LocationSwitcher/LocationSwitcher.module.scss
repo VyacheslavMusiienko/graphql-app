@@ -2,10 +2,22 @@
 
 .localization{
   display: flex;
-  justify-content: center;
+  width: 80px;
+  justify-content: space-between;
 
-  .switcher{
-    padding: 7px 10px;
-    margin: 10px 10px
+  .switcher {
+    width: 35px;
+    height: 35px;
+    background-color: $thirdColor;
+
+    &_sticky {
+      background-color: $secondColor;
+    }
+
+    &_active {
+      pointer-events: none;
+      border: 1px solid $colorFont;
+    }
   }
+
 }

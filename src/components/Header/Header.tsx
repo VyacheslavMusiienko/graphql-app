@@ -8,6 +8,7 @@ import Paths from '../../utils/enums';
 import useAuth from '../../hooks/useAuth';
 
 import styles from './header.module.scss';
+import LocationSwitcher from '../LocationSwitcher/LocationSwitcher';
 
 const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
@@ -47,6 +48,7 @@ const Header = () => {
         <h1>GraphQL</h1>
       </Link>
       <Navigation isSticky={!sticky.isSticky} />
+      <LocationSwitcher isSticky={!sticky.isSticky} />
       {user ? (
         <LogoutButton isSticky={!sticky.isSticky} />
       ) : (

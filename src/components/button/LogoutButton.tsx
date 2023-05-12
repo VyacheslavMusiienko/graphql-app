@@ -1,5 +1,6 @@
 import { signOut } from 'firebase/auth';
 
+import { useTranslation } from 'react-i18next';
 import { authSlice } from '../../store/reducers/authSlice';
 import { useAppDispatch } from '../../store';
 import { auth } from '../../firebase';
@@ -19,9 +20,11 @@ const LogoutButton = ({ isSticky }: { isSticky: boolean }) => {
       .catch(() => {});
   };
 
+  const { t } = useTranslation();
+
   return (
     <Button onClick={logout} className={isSticky ? styles.sticky : undefined}>
-      Logout
+      {t('logout')}
     </Button>
   );
 };
