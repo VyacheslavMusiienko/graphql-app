@@ -11,6 +11,7 @@ import styles from './CodeEditor.module.scss';
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
   const [codeRequest, setCodeRequest] = useState();
+  const [errorVal, setError] = useState<string | undefined>(undefined);
   const { t } = useTranslation();
 
   const [schema, setSchema] = useState<GraphQLSchema | undefined>(undefined);
@@ -34,19 +35,41 @@ const CodeEditor = () => {
   }, []);
 
   const makeRequest = async (query: string) => {
-    return fetch(urI, {
-      method: 'POST',
-      headers: {
-        'Content-type': ' application/json',
-      },
-      body: JSON.stringify({ query }),
-    }).then((res) => res.json());
+    try {
+      const response = await fetch(urI, {
+        method: 'POST',
+        headers: {
+          'Content-type': ' application/json',
+        },
+        body: JSON.stringify({ query }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      }
+    }
+    return undefined;
   };
 
   const handleQuery = async () => {
-    if (operations) {
-      await makeRequest(operations).then((data) => setCodeRequest(data));
+    try {
+      if (operations) {
+        const data = await makeRequest(operations);
+        setCodeRequest(data);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(`Error: ${error.message}`);
+      }
     }
+    setTimeout(() => setError(undefined), 2000);
   };
 
   if (!schema) {
@@ -54,32 +77,45 @@ const CodeEditor = () => {
   }
 
   return (
-    <main className={styles.main}>
-      <CodeMirror
-        value={operations}
-        height="70vh"
-        width="40vw"
-        theme="dark"
-        extensions={[graphql(schema)]}
-        onChange={onChange}
-        basicSetup
-      />
+    <main>
+      <div className={styles.main}>
+        <div>
+          <h1 className={styles.section}>{t('var_section')}</h1>
+          <CodeMirror
+            value={operations}
+            height="70vh"
+            width="40vw"
+            theme="dark"
+            extensions={[graphql(schema)]}
+            onChange={onChange}
+            basicSetup
+          />
+        </div>
 
-      <div>
-        <button className={styles.button} type="button" onClick={handleQuery}>
-          {t('query')}
-        </button>
+        <div>
+          <button className={styles.button} type="button" onClick={handleQuery}>
+            {t('query')}
+          </button>
+        </div>
+
+        <div>
+          <h1 className={styles.section}>{t('res_section')}</h1>
+          <CodeMirror
+            value={JSON.stringify(codeRequest, null, '\t')}
+            height="70vh"
+            width="40vw"
+            theme="dark"
+            editable
+            readOnly
+            basicSetup
+          />
+        </div>
       </div>
-
-      <CodeMirror
-        value={JSON.stringify(codeRequest, null, '\t')}
-        height="70vh"
-        width="40vw"
-        theme="dark"
-        editable
-        readOnly
-        basicSetup
-      />
+      {errorVal && (
+        <div className={styles.wrapper}>
+          <div className={styles.error}>{errorVal}</div>
+        </div>
+      )}
     </main>
   );
 };
