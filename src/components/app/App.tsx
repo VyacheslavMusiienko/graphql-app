@@ -6,20 +6,26 @@ import { authSlice, useAppDispatch } from '../../store';
 import useAuth from '../../hooks/useAuth';
 
 import { auth } from '../../firebase';
+import Loader from '../loader';
 
 const AuthStatus = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
-  if (user === null) {
+  if (user === null && !loading) {
     return <p style={{ marginTop: '100px' }}>You are not logged in.</p>;
   }
 
-  return <p style={{ marginTop: '100px' }}>Welcome {(user as User).displayName}!</p>;
+  if (user !== null) {
+    return <p style={{ marginTop: '100px' }}>Welcome {(user as User).displayName}!</p>;
+  }
+
+  return null;
 };
 
 const App = () => {
   const { setUser, setLoading } = authSlice.actions;
   const dispatch = useAppDispatch();
+  const { loading } = useAuth();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -31,6 +37,10 @@ const App = () => {
       unsubscribe();
     };
   }, []);
+
+  if (loading) {
+    return <Loader active />;
+  }
 
   return (
     <div>
