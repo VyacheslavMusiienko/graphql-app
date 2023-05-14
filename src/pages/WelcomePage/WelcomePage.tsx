@@ -6,14 +6,14 @@ import useAuth from '../../hooks/useAuth';
 import Paths from '../../utils/enums';
 
 import { styles } from '../../layout';
-import st from './welcome.module.scss';
+// import st from './welcome.module.scss';
 
 const WelcomePage = () => {
   const { user: currentUser } = useAuth();
 
   return (
     <div className={styles.wrapper}>
-      <div className={st.row}>
+      <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
         {currentUser ? (
           <Link to={Paths.Main}>GraphQL</Link>
         ) : (
