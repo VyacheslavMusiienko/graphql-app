@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 import Loader from '../../components/loader';
@@ -30,6 +30,10 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState<null | IErrors>(null);
   const dispatch = useAppDispatch();
   const { setUser } = authSlice.actions;
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || Paths.Main;
 
   const isValid = () => {
     const rEmail =
@@ -75,6 +79,8 @@ const SignUpForm = () => {
           })
             .then(() => {
               dispatch(setUser(res));
+
+              navigate(from, { replace: true });
             })
             .catch(() => {});
         }

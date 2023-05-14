@@ -9,7 +9,7 @@ const PrivateRoute = () => {
   const { user } = useAuth();
   const location = useLocation();
 
-  if (!user) {
+  if (user === null) {
     return <Navigate to={Paths.Login} state={{ from: location }} replace />;
   }
 

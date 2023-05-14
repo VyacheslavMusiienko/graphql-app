@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import Loader from '../../components/loader';
@@ -22,6 +22,10 @@ const LoginForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || Paths.Main;
 
   const signIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,6 +35,8 @@ const LoginForm = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         dispatch(setUser(userCredential));
+
+        navigate(from, { replace: true });
       })
       .catch(() => {});
 
