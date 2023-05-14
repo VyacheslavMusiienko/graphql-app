@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 
+import { LoginButton, SignUpButton } from '../../components/button';
 import Footer from '../../components/Footer';
-import useAuth from '../../hooks/useAuth';
 
+import useAuth from '../../hooks/useAuth';
 import Paths from '../../utils/enums';
 
 import { styles } from '../../layout';
@@ -18,8 +19,8 @@ const WelcomePage = () => {
           <Link to={Paths.Main}>GraphQL</Link>
         ) : (
           <>
-            <Link to={Paths.Login}>Login</Link>
-            <Link to={Paths.SignUp}>SignUp</Link>
+            <LoginButton />
+            <SignUpButton />
           </>
         )}
       </div>

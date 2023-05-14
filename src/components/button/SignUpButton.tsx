@@ -2,11 +2,10 @@ import { Link } from 'react-router-dom';
 
 import Button from './Button';
 import Paths from '../../utils/enums';
-import styles from './button.module.scss';
 
-const SignUpButton = ({ isSticky }: { isSticky: boolean }) => {
+const SignUpButton = () => {
   return (
-    <Button className={isSticky ? styles.sticky : undefined}>
+    <Button>
       <Link to={Paths.SignUp}>SignUp</Link>
     </Button>
   );

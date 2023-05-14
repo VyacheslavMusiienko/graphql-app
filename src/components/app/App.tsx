@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 
 import { authSlice, useAppDispatch } from '../../store';
 import useAuth from '../../hooks/useAuth';
@@ -16,7 +16,12 @@ const AuthStatus = () => {
   }
 
   if (user !== null) {
-    return <p style={{ marginTop: '100px' }}>Welcome {(user as User).displayName}!</p>;
+    return (
+      <p style={{ marginTop: '100px' }}>
+        Welcome {user.displayName}! Token will expire in{' '}
+        {new Date(user.stsTokenManager.expirationTime).toLocaleString()}
+      </p>
+    );
   }
 
   return null;
