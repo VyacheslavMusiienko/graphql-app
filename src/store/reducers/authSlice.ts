@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User, UserCredential } from 'firebase/auth';
+import { User } from 'firebase/auth';
 
 interface IAuthStore {
-  user: null | UserCredential | User;
+  user: null | User;
   loading: boolean;
 }
 
@@ -15,7 +15,7 @@ export const authSlice = createSlice({
   name: 'authSlice',
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<UserCredential | null | User>) {
+    setUser(state, action: PayloadAction<null | User>) {
       state.user = action.payload;
     },
     setLoading(state, action: PayloadAction<boolean>) {

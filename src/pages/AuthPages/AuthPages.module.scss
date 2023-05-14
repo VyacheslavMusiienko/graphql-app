@@ -1,3 +1,5 @@
+@import "../../assets/style";
+
 .wrapper {
   height: 100vh;
   width: 100vw;
@@ -29,9 +31,24 @@
       transform: scale(0.95);
     }
   }
-  span {
+  .error {
     margin: 5px 0 10px 0;
-    color: #9b1c31;
+    color: $errorColor;
+    &_list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      & span {
+        margin: 0 auto;
+      }
+      & li {
+        list-style-position: inside;
+        list-style-type: disc;
+        &:last-child {
+          text-align: start;
+        }
+      }
+    }
   }
   a {
     cursor: pointer;

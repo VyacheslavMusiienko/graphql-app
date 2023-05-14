@@ -18,8 +18,13 @@ TODO:
 */
 
 interface IErrors {
-  email?: boolean;
-  password?: boolean;
+  email: boolean;
+  password:
+    | {
+        message: string;
+        id: number;
+      }[]
+    | [];
 }
 
 const SignUpForm = () => {
@@ -46,18 +51,30 @@ const SignUpForm = () => {
 
     const errorsObject = {
       email: email === '' || !email.match(rEmail),
-      password:
-        password === '' ||
-        password.length < 8 ||
-        !password.match(oneNumber) ||
-        !password.match(oneLetter) ||
-        !password.match(oneSpecialCharacter),
+      password: [
+        password.trim().length < 8 && {
+          id: 1,
+          message: 'should be at least 8 symbols',
+        },
+        !password.trim().match(oneNumber) && {
+          id: 2,
+          message: 'should have at least one number',
+        },
+        !password.trim().match(oneLetter) && {
+          id: 3,
+          message: 'should have at least one letter',
+        },
+        !password.trim().match(oneSpecialCharacter) && {
+          id: 4,
+          message: 'should have at least one special character - @$!%*#?&',
+        },
+      ].filter((el) => el),
     };
 
-    const isErrorObjectEmpty = !(errorsObject.email || errorsObject.password);
+    const isErrorObjectEmpty = !(errorsObject.email || errorsObject.password.length > 0);
 
     if (!isErrorObjectEmpty) {
-      setErrors(errorsObject);
+      setErrors(errorsObject as IErrors);
     }
 
     return isErrorObjectEmpty;
@@ -111,7 +128,7 @@ const SignUpForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail"
         />
-        {errors && errors.email && <span>Incorrect email</span>}
+        {errors && errors.email && <span className={styles.error}>Incorrect email</span>}
         <input
           type="password"
           className={styles.wrapper__textBox}
@@ -119,11 +136,13 @@ const SignUpForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        {errors && errors.password && (
-          <span>
-            Password should be at least 8 symbols and have at least one letter, one digit and one
-            special character (@$!%*#?&)
-          </span>
+        {errors && errors.password && errors.password.length > 0 && (
+          <ul className={[styles.error, styles.error_list].join(' ')}>
+            <span>Password:</span>
+            {errors.password.map(({ message, id }) => {
+              return <li key={id}>{message}</li>;
+            })}
+          </ul>
         )}
         <button type="submit" className={styles.wrapper__btn}>
           Register

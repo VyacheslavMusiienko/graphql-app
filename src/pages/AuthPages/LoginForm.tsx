@@ -19,6 +19,7 @@ TODO:
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isError, setIsError] = useState<boolean>(false);
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
@@ -33,13 +34,16 @@ const LoginForm = () => {
     setIsLoaderActive(true);
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        dispatch(setUser(userCredential));
+      .then(({ user }) => {
+        dispatch(setUser(user));
 
         navigate(from, { replace: true });
       })
-      .catch(() => {});
+      .catch(() => {
+        setIsError(true);
+      });
 
+    setIsError(false);
     setIsLoaderActive(false);
   };
 
@@ -61,6 +65,7 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
+        {isError && <span className={styles.error}>Incorrect email or password</span>}
         <button type="submit" className={styles.wrapper__btn}>
           Log In
         </button>
