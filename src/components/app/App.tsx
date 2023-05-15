@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, getIdTokenResult } from 'firebase/auth';
 
 import { authSlice, useAppDispatch } from '../../store';
 import useAuth from '../../hooks/useAuth';
@@ -16,12 +16,7 @@ const AuthStatus = () => {
   }
 
   if (user !== null) {
-    return (
-      <p style={{ marginTop: '100px' }}>
-        Welcome {user.displayName}! Token will expire in{' '}
-        {new Date(user.stsTokenManager.expirationTime).toLocaleString()}
-      </p>
-    );
+    return <p style={{ marginTop: '100px' }}>Welcome {user.displayName}!</p>;
   }
 
   return null;
@@ -33,9 +28,19 @@ const App = () => {
   const { loading } = useAuth();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       dispatch(setUser(user));
       dispatch(setLoading(false));
+
+      let idTokenResult;
+      if (auth.currentUser) {
+        idTokenResult = await getIdTokenResult(auth.currentUser);
+      }
+
+      if (idTokenResult && new Date(idTokenResult.expirationTime).getTime() < Date.now()) {
+        dispatch(setUser(null));
+        dispatch(setLoading(false));
+      }
     });
 
     return () => {
