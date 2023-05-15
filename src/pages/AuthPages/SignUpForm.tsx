@@ -88,14 +88,14 @@ const SignUpForm = () => {
     if (isValid()) {
       setErrors(null);
       try {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
         if (auth.currentUser) {
           await updateProfile(auth.currentUser, {
             displayName,
           })
             .then(() => {
-              dispatch(setUser(res));
+              dispatch(setUser(user));
 
               navigate(from, { replace: true });
             })

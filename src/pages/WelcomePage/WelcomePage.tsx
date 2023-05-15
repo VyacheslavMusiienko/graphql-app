@@ -1,10 +1,7 @@
-import { Link } from 'react-router-dom';
-
-import { LoginButton, SignUpButton } from '../../components/button';
+import { LoginButton, SignUpButton, GoToButton } from '../../components/button';
 import Footer from '../../components/Footer';
 
 import useAuth from '../../hooks/useAuth';
-import Paths from '../../utils/enums';
 
 import { styles } from '../../layout';
 // import st from './welcome.module.scss';
@@ -16,7 +13,7 @@ const WelcomePage = () => {
     <div className={styles.wrapper}>
       <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
         {currentUser ? (
-          <Link to={Paths.Main}>GraphQL</Link>
+          <GoToButton where="main page" />
         ) : (
           <>
             <LoginButton />
