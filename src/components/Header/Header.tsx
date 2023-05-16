@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation';
+import AuthStatus from '../authStatus';
 import { LogoutButton } from '../button';
 
 import Paths from '../../utils/enums';
@@ -18,6 +19,7 @@ const Header = forwardRef<HTMLElement, { isSticky: boolean }>(({ isSticky }, ref
         <h1>GraphQL</h1>
       </Link>
       <Navigation isSticky={isSticky} />
+      <AuthStatus />
       <LogoutButton isSticky={isSticky} />
     </header>
   );

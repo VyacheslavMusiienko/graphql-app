@@ -35,6 +35,7 @@ const LoginForm = () => {
     'auth/invalid-email': 'The email address is not valid',
     'auth/user-not-found': 'There is no user with such email',
     'auth/wrong-password': 'The password is invalid for the given email',
+    'auth/missing-password': 'Missing the password',
     'auth/user-disabled': 'The user corresponding to the given email has been disabled',
     'auth/too-many-requests': 'Too many requests. Try again later',
   };

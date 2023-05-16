@@ -1,4 +1,5 @@
 import { LoginButton, SignUpButton, GoToButton } from '../../components/button';
+import AuthStatus from '../../components/authStatus';
 import Footer from '../../components/Footer';
 
 import useAuth from '../../hooks/useAuth';
@@ -13,9 +14,13 @@ const WelcomePage = () => {
     <div className={styles.wrapper}>
       <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
         {currentUser ? (
-          <GoToButton where="main page" />
+          <>
+            <AuthStatus />
+            <GoToButton where="main page" />
+          </>
         ) : (
           <>
+            <AuthStatus />
             <LoginButton />
             <SignUpButton />
           </>
