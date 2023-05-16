@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import styles from './button.module.scss';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Button = ({ className, children, ...rest }: Props) => {

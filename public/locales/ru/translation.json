@@ -24,5 +24,7 @@
   "errorPage_button": "Назад на главную",
   "query": "Запрос",
   "res_section": "Секция ответов",
-  "var_section": "Секция переменных"
+  "var_section": "Секция переменных",
+  "errorBoundary_title": "Что-то пошло не так...",
+  "errorBoundary_text": "Пожалуйста, попробуйте позже"
 }

@@ -1,0 +1,14 @@
+@import "src/assets/style";
+
+.exclamationPoint {
+  font-size: 240%;
+  background-color: $waringColor;
+  color: $whiteColor;
+  padding: 0 $fontSize / 2;
+  border-radius: 50%;
+  width: $fontSize * 3;
+  height: $fontSize * 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
