@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Loader from '../../components/loader';
+// import ErrorMessage from './ErrorMessage';
 
 import { useAppDispatch, authSlice } from '../../store';
 import { createUserWithEmailAndPasswordWithErrorHandling } from '../../firebase';
