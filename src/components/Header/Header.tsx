@@ -1,13 +1,13 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import Navigation from '../Navigation/Navigation';
-import { LogoutButton } from '../button';
+import Navigation from '../Navigation';
 import AuthStatus from '../authStatus';
+import { LogoutButton } from '../button';
+import LocationSwitcher from '../LocationSwitcher';
 
 import Paths from '../../utils/enums';
 
-import LocationSwitcher from '../LocationSwitcher/LocationSwitcher';
 import logo from '../../assets/png/logo.png';
 import styles from './Header.module.scss';
 

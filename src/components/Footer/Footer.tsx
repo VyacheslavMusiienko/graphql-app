@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import SvgNText from '../SvgNText';
+import { FooterLinks } from '../../utils/enums';
+
 import styles from './Footer.module.scss';
 import rsLogo from '../../assets/svg/rsLogo.svg';
 import ghLogo from '../../assets/svg/gitLogo.svg';
-import { FooterLinks } from '../../utils/enums';
-import SvgNText from '../SvgNText/SvgNText';
 
 const Footer = () => {
   const { t } = useTranslation();

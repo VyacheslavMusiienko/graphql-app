@@ -1,7 +1,8 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
 import App from '../components/app';
-import { ErrorPage, GraphqlPage, LoginPage, MainPage, SignUpPage, WelcomePage } from '../pages';
+import { ErrorPage, LoginPage, MainPage, SignUpPage, WelcomePage } from '../pages';
+
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -27,12 +28,8 @@ const router = createBrowserRouter(
           </PublicRoute>
         }
       />
-      <Route path={Paths.Main} element={<PrivateRoute />}>
-        <Route element={<MainPage />} />
-      </Route>
-      <Route path={Paths.GraphQL} element={<PrivateRoute />}>
-        <Route index element={<GraphqlPage />} />
-        {/* <Route path={Paths.GraphQL} element={<GraphqlPage />} /> */}
+      <Route element={<PrivateRoute />}>
+        <Route path={Paths.Main} element={<MainPage />} />
       </Route>
     </Route>
   )

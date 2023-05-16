@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { useTranslation } from 'react-i18next';
 import Loader from '../../components/loader';
 // import ErrorMessage from './ErrorMessage';
 
@@ -83,7 +83,6 @@ const SignUpForm = () => {
         {errors && errors.email && (
           <span className={styles.error}>The email address is not valid</span>
         )}
-        {//{t('formError', { context: 'email' })}}
         <input
           type="password"
           className={styles.wrapper__textBox}
@@ -100,7 +99,6 @@ const SignUpForm = () => {
           </ul>
         )}
         {errors && errors.common && <span className={styles.error}>{errors.common}</span>}
-        {//{t('formError', { context: 'password' })}}
         <button type="submit" className={styles.wrapper__btn}>
           {t('register')}
         </button>

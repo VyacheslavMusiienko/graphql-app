@@ -1,15 +1,14 @@
 import { useState, FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { useTranslation } from 'react-i18next';
 import Loader from '../../components/loader';
 
+import Paths from '../../utils/enums';
+import { useAppDispatch, authSlice } from '../../store';
 import { signInWithEmailAndPasswordWithErrorHandling } from '../../firebase';
-import { authSlice } from '../../store/reducers/authSlice';
-import { useAppDispatch } from '../../store';
 
 import styles from './authPages.module.scss';
-import Paths from '../../utils/enums';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

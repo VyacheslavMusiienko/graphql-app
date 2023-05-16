@@ -1,7 +1,7 @@
 import LoginForm from './LoginForm';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 import styles from './authPages.module.scss';
-import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 const LoginPage = () => {
   return (
