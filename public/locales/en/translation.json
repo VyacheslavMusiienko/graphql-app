@@ -24,5 +24,7 @@
   "errorPage_button": "Back to welcome page",
   "query": "Query",
   "res_section": "Response section",
-  "var_section": "Variables section"
+  "var_section": "Variables section",
+  "errorBoundary_title": "Something went wrong...",
+  "errorBoundary_text": "Please try again later"
 }
