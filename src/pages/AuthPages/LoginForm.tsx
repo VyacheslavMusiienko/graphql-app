@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
 import Loader from '../../components/loader';
 
 import { signInWithEmailAndPasswordWithErrorHandling } from '../../firebase';
@@ -18,6 +19,7 @@ const LoginForm = () => {
 
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -51,21 +53,23 @@ const LoginForm = () => {
           className={styles.wrapper__textBox}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail"
+          placeholder={t('placeholder', { context: 'email' }) as string | undefined}
         />
         <input
           type="password"
           className={styles.wrapper__textBox}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t('placeholder', { context: 'password' }) as string | undefined}
         />
         {errorMessage && <span className={styles.error}>{errorMessage}</span>}
         <button type="submit" className={styles.wrapper__btn}>
-          Log In
+          {t('login')}
         </button>
         <div>
-          Don&apos;t have an account? <Link to={Paths.SignUp}>Register</Link> now.
+          {t('login', { context: 'account' })}
+          <Link to={Paths.SignUp}>{t('register')}</Link>
+          {t('now')}.
         </div>
       </div>
     </form>

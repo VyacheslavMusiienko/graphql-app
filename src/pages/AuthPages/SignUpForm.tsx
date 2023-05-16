@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
 import Loader from '../../components/loader';
 // import ErrorMessage from './ErrorMessage';
 
@@ -21,6 +22,7 @@ const SignUpForm = () => {
 
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -66,7 +68,7 @@ const SignUpForm = () => {
           className={styles.wrapper__textBox}
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
-          placeholder="Full Name"
+          placeholder={t('placeholder', { context: 'fullName' }) as string | undefined}
         />
         {errors && errors.name && (
           <span className={styles.error}>Name should be at least 2 letters</span>
@@ -76,17 +78,18 @@ const SignUpForm = () => {
           className={styles.wrapper__textBox}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail"
+          placeholder={t('placeholder', { context: 'email' }) as string | undefined}
         />
         {errors && errors.email && (
           <span className={styles.error}>The email address is not valid</span>
         )}
+        {//{t('formError', { context: 'email' })}}
         <input
           type="password"
           className={styles.wrapper__textBox}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder={t('placeholder', { context: 'password' }) as string | undefined}
         />
         {errors && errors.password && errors.password.length > 0 && (
           <ul className={[styles.error, styles.error_list].join(' ')}>
@@ -97,11 +100,14 @@ const SignUpForm = () => {
           </ul>
         )}
         {errors && errors.common && <span className={styles.error}>{errors.common}</span>}
+        {//{t('formError', { context: 'password' })}}
         <button type="submit" className={styles.wrapper__btn}>
-          Register
+          {t('register')}
         </button>
         <div>
-          Already have an account? <Link to={Paths.Login}>Login</Link> now.
+          {t('signup', { context: 'account' })}
+          <Link to={Paths.Login}> {t('login')}</Link>
+          {t('now')}.
         </div>
       </div>
     </form>

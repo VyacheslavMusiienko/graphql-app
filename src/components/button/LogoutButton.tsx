@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { signOut } from 'firebase/auth';
 
 import Button from './Button';
@@ -14,6 +15,7 @@ const LogoutButton = ({ isSticky }: { isSticky: boolean }) => {
   const dispatch = useAppDispatch();
   const { setUser } = authSlice.actions;
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const logout = () => {
     signOut(auth)
@@ -28,7 +30,7 @@ const LogoutButton = ({ isSticky }: { isSticky: boolean }) => {
 
   return (
     <Button onClick={logout} className={clazz}>
-      Logout
+      {t('logout')}
     </Button>
   );
 };
