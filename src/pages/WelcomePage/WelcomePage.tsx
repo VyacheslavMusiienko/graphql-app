@@ -16,7 +16,7 @@ const WelcomePage = () => {
         {user !== null ? (
           <>
             <AuthStatus />
-            <GoToButton where="main page" />
+            <GoToButton />
           </>
         ) : (
           <>

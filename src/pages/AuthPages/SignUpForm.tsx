@@ -70,9 +70,7 @@ const SignUpForm = () => {
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder={t('placeholder', { context: 'fullName' }) as string | undefined}
         />
-        {errors && errors.name && (
-          <span className={styles.error}>Name should be at least 2 letters</span>
-        )}
+        {errors && errors.name && <span className={styles.error}>{t('name_signup_error')}</span>}
         <input
           type="text"
           className={styles.wrapper__textBox}
@@ -80,9 +78,7 @@ const SignUpForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t('placeholder', { context: 'email' }) as string | undefined}
         />
-        {errors && errors.email && (
-          <span className={styles.error}>The email address is not valid</span>
-        )}
+        {errors && errors.email && <span className={styles.error}>{t('email_signup_error')}</span>}
         <input
           type="password"
           className={styles.wrapper__textBox}
@@ -92,7 +88,7 @@ const SignUpForm = () => {
         />
         {errors && errors.password && errors.password.length > 0 && (
           <ul className={[styles.error, styles.error_list].join(' ')}>
-            <span>Password:</span>
+            <span>{`${t('placeholder_password')}:`}</span>
             {errors.password.map(({ message, id }) => {
               return <li key={id}>{message}</li>;
             })}

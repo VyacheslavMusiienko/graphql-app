@@ -1,9 +1,12 @@
 import { useTranslation } from 'react-i18next';
+
 import ExclamationPoint from '../../ExclamationPoint/ExclamationPoint';
+
 import styles from './Fallback.module.scss';
 
 const Fallback = () => {
   const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <ExclamationPoint />

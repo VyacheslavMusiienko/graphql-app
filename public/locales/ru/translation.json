@@ -1,7 +1,6 @@
 {
-  "navigation_home": "Дом",
+  "navigation_home": "Домашняя",
   "navigation_welcome": "Главная",
-  "navigation_editor": "Редактор GQL",
   "auth_signup": "Регистрация",
   "auth_login": "Войти",
   "placeholder_fullName": "Полное имя",
@@ -26,5 +25,10 @@
   "res_section": "Секция ответов",
   "var_section": "Секция переменных",
   "errorBoundary_title": "Что-то пошло не так...",
-  "errorBoundary_text": "Пожалуйста, попробуйте позже"
+  "errorBoundary_text": "Пожалуйста, попробуйте позже",
+  "not_logged_in": "Вы не авторизованы",
+  "welcome": "Добро пожаловать",
+  "go_to_main": "Перейти на главную страницу",
+  "name_signup_error": "Display name should be at least 2 letters",
+  "email_signup_error": "The email address is not valid"
 }

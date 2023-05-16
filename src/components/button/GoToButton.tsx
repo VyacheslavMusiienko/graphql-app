@@ -1,18 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import Button from './Button';
 import Paths from '../../utils/enums';
 
-const GoToButton = ({ where }: { where: string }) => {
+const GoToButton = () => {
+  const { t } = useTranslation();
+
   return (
     <Button>
-      <Link to={Paths.Main}>
-        Go to{' '}
-        {where
-          .split(' ')
-          .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
-          .join(' ')}
-      </Link>
+      <Link to={Paths.Main}>{t('go_to_main')}</Link>
     </Button>
   );
 };
