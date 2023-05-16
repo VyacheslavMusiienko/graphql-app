@@ -2,8 +2,8 @@ import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation';
-import AuthStatus from '../authStatus';
 import { LogoutButton } from '../button';
+import AuthStatus from '../authStatus';
 
 import Paths from '../../utils/enums';
 

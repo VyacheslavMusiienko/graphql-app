@@ -8,12 +8,12 @@ import { styles } from '../../layout';
 // import st from './welcome.module.scss';
 
 const WelcomePage = () => {
-  const { user: currentUser } = useAuth();
+  const { user } = useAuth();
 
   return (
     <div className={styles.wrapper}>
       <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
-        {currentUser ? (
+        {user !== null ? (
           <>
             <AuthStatus />
             <GoToButton where="main page" />
