@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 
 import Loader from '../../components/loader';
 
@@ -12,19 +13,16 @@ import Paths from '../../utils/enums';
 
 import styles from './authPages.module.scss';
 
-/*
-TODO:
-- [x] Create error handling
-*/
+interface ErrorObject {
+  message: string;
+  id: number;
+}
 
 interface IErrors {
+  name: boolean;
   email: boolean;
-  password:
-    | {
-        message: string;
-        id: number;
-      }[]
-    | [];
+  password: ErrorObject[] | [];
+  common: string | null;
 }
 
 const SignUpForm = () => {
@@ -33,12 +31,23 @@ const SignUpForm = () => {
   const [displayName, setDisplayName] = useState('');
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const [errors, setErrors] = useState<null | IErrors>(null);
-  const dispatch = useAppDispatch();
+
   const { setUser } = authSlice.actions;
+  const dispatch = useAppDispatch();
+
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || Paths.Main;
+
+  const errorCodes: Record<string, string> = {
+    'auth/invalid-email': 'The email address is not valid',
+    'auth/user-not-found': 'There is no user with such email',
+    'auth/wrong-password': 'The password is invalid for the given email',
+    'auth/missing-password': 'Missing the password',
+    'auth/user-disabled': 'The user corresponding to the given email has been disabled',
+    'auth/too-many-requests': 'Too many requests. Try again later',
+  };
 
   const isValid = () => {
     const rEmail =
@@ -50,6 +59,7 @@ const SignUpForm = () => {
     const oneSpecialCharacter = /[@$!%*#?&]/;
 
     const errorsObject = {
+      name: displayName.trim().length < 2,
       email: email === '' || !email.match(rEmail),
       password: [
         password.trim().length < 8 && {
@@ -80,6 +90,15 @@ const SignUpForm = () => {
     return isErrorObjectEmpty;
   };
 
+  const createUserWithEmailAndPasswordWithErrorHandling = async () => {
+    try {
+      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      return { user, error: null };
+    } catch (error) {
+      return { user: null, error };
+    }
+  };
+
   const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -87,23 +106,43 @@ const SignUpForm = () => {
 
     if (isValid()) {
       setErrors(null);
-      try {
-        const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
-        if (auth.currentUser) {
-          await updateProfile(auth.currentUser, {
-            displayName,
+      const { user, error } = await createUserWithEmailAndPasswordWithErrorHandling();
+
+      if (user !== null && auth.currentUser) {
+        await updateProfile(auth.currentUser, {
+          displayName,
+        })
+          .then(() => {
+            setErrors(null);
+            dispatch(setUser(user));
+            navigate(from, { replace: true });
           })
-            .then(() => {
-              dispatch(setUser(user));
-
-              navigate(from, { replace: true });
-            })
-            .catch(() => {});
+          .catch(() => {
+            setErrors({
+              name: false,
+              email: false,
+              password: [],
+              common: `Something went wrong with updating profile`,
+            });
+          });
+      } else {
+        const firebaseError = error as FirebaseError;
+        if (firebaseError.code === 'auth/invalid-email') {
+          setErrors({
+            name: false,
+            email: true,
+            password: [],
+            common: ``,
+          });
+        } else {
+          setErrors({
+            name: false,
+            email: false,
+            password: [],
+            common: errorCodes[firebaseError.code],
+          });
         }
-      } catch (err) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        () => {};
       }
     }
 
@@ -121,6 +160,9 @@ const SignUpForm = () => {
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder="Full Name"
         />
+        {errors && errors.name && (
+          <span className={styles.error}>Name should be at least 2 letters</span>
+        )}
         <input
           type="text"
           className={styles.wrapper__textBox}
@@ -128,7 +170,9 @@ const SignUpForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail"
         />
-        {errors && errors.email && <span className={styles.error}>Incorrect email</span>}
+        {errors && errors.email && (
+          <span className={styles.error}>The email address is not valid</span>
+        )}
         <input
           type="password"
           className={styles.wrapper__textBox}
@@ -144,6 +188,7 @@ const SignUpForm = () => {
             })}
           </ul>
         )}
+        {errors && errors.common && <span className={styles.error}>{errors.common}</span>}
         <button type="submit" className={styles.wrapper__btn}>
           Register
         </button>

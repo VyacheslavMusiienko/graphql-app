@@ -12,11 +12,6 @@ import { auth } from '../../firebase';
 import styles from './authPages.module.scss';
 import Paths from '../../utils/enums';
 
-/*
-TODO:
-- [x] Create error handling
-*/
-
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,8 +37,8 @@ const LoginForm = () => {
 
   const signInWithEmailAndPasswordWithErrorHandling = async () => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      return { user: userCredential.user, error: null };
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      return { user, error: null };
     } catch (error) {
       return { user: null, error };
     }
