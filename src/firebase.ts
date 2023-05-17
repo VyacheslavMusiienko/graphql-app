@@ -1,14 +1,110 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeApp, FirebaseError } from 'firebase/app';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDsasp82Al1XgLNDxjx7qvxwizm_XeVx4A',
-  authDomain: 'graphql-qpp.firebaseapp.com',
-  projectId: 'graphql-qpp',
-  storageBucket: 'graphql-qpp.appspot.com',
-  messagingSenderId: '969843464291',
-  appId: '1:969843464291:web:a9870e59c0ea5e941ac056',
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const errorCodes: Record<string, string> = {
+  'auth/invalid-email': 'The email address is not valid',
+  'auth/user-not-found': 'There is no user with such email',
+  'auth/wrong-password': 'The password is invalid for the given email',
+  'auth/missing-password': 'Missing the password',
+  'auth/user-disabled': 'The user corresponding to the given email has been disabled',
+  'auth/too-many-requests': 'Too many requests. Try again later',
+  'auth/email-already-in-use': 'This email already exists',
+};
+
+const signInWithEmailAndPasswordWithErrorHandling = async (email: string, password: string) => {
+  try {
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    return { user, error: null };
+  } catch (error) {
+    const firebaseError = error as FirebaseError;
+    return { user: null, error: errorCodes[firebaseError.code] };
+  }
+};
+
+const createUserWithEmailAndPasswordWithErrorHandling = async (
+  email: string,
+  password: string,
+  displayName: string
+) => {
+  try {
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+
+    if (user !== null && auth.currentUser) {
+      return await updateProfile(auth.currentUser, {
+        displayName,
+      })
+        .then(() => {
+          return { user, error: null };
+        })
+        .catch(() => {
+          return {
+            user: null,
+            error: {
+              name: false,
+              email: false,
+              password: [],
+              common: `Something went wrong with updating profile`,
+            },
+          };
+        });
+    }
+  } catch (error) {
+    const firebaseError = error as FirebaseError;
+
+    if (firebaseError.code === 'auth/invalid-email') {
+      return {
+        user: null,
+        error: {
+          name: false,
+          email: true,
+          password: [],
+          common: ``,
+        },
+      };
+    }
+
+    return {
+      user: null,
+      error: {
+        name: false,
+        email: false,
+        password: [],
+        common: errorCodes[firebaseError.code],
+      },
+    };
+  }
+
+  return {
+    user: null,
+    error: {
+      name: false,
+      email: false,
+      password: [],
+      common: '',
+    },
+  };
+};
+
+export {
+  createUserWithEmailAndPasswordWithErrorHandling,
+  signInWithEmailAndPasswordWithErrorHandling,
+  auth,
+  app,
+};

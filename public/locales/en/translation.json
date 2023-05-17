@@ -1,7 +1,6 @@
 {
   "navigation_home": "Home",
   "navigation_welcome": "Welcome page",
-  "navigation_editor": "Editor GQL",
   "auth_signup": "Signup",
   "auth_login": "Login",
   "placeholder_fullName": "Full Name",
@@ -26,5 +25,10 @@
   "res_section": "Response section",
   "var_section": "Variables section",
   "errorBoundary_title": "Something went wrong...",
-  "errorBoundary_text": "Please try again later"
+  "errorBoundary_text": "Please try again later",
+  "not_logged_in": "You are not logged in.",
+  "welcome": "Welcome",
+  "go_to_main": "Go to main page",
+  "name_signup_error": "Отображаемое имя должно содержать минимум 2 буквы",
+  "email_signup_error": "Электронный адрес неверен"
 }

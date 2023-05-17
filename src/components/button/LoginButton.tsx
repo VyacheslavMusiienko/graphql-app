@@ -1,17 +1,14 @@
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
 import Button from './Button';
 import Paths from '../../utils/enums';
-import styles from './button.module.scss';
 
-const LoginButton = ({ isSticky }: { isSticky: boolean }) => {
+const LoginButton = () => {
   const { t } = useTranslation();
-  return (
-    <Button className={isSticky ? styles.sticky : undefined}>
-      <Link to={Paths.Login}>{t('login')}</Link>
-    </Button>
-  );
+  const navigate = useNavigate();
+
+  return <Button onClick={() => navigate(Paths.Login)}>{t('login')}</Button>;
 };
 
 export default LoginButton;

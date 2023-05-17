@@ -1,11 +1,13 @@
-import { buildHTTPExecutor } from '@graphql-tools/executor-http';
-import { schemaFromExecutor } from '@graphql-tools/wrap';
-import CodeMirror from '@uiw/react-codemirror';
+import { useCallback, useEffect, useState } from 'react';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
-import { useCallback, useEffect, useState } from 'react';
+import CodeMirror from '@uiw/react-codemirror';
 import { useTranslation } from 'react-i18next';
+import { schemaFromExecutor } from '@graphql-tools/wrap';
+import { buildHTTPExecutor } from '@graphql-tools/executor-http';
+
 import { useAppSelector } from '../../store';
+
 import styles from './CodeEditor.module.scss';
 
 const CodeEditor = () => {

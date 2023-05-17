@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-
 import { useTranslation } from 'react-i18next';
+
 import Paths from '../../utils/enums';
 
 import styles from './navigation.module.scss';
@@ -28,16 +28,6 @@ const Navigation = ({ isSticky }: { isSticky: boolean }) => {
             }
           >
             {t('navigation', { context: 'welcome' })}
-          </NavLink>
-        </li>
-        <li className={styles.navigation__item}>
-          <NavLink
-            to={Paths.GraphQL}
-            className={({ isActive }) =>
-              isActive ? styles.navigation__link_active : styles.navigation__link
-            }
-          >
-            {t('navigation', { context: 'editor' })}
           </NavLink>
         </li>
       </ul>

@@ -1,40 +1,44 @@
 import { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 import Loader from '../../components/loader';
 
-import { authSlice } from '../../store/reducers/authSlice';
-import { useAppDispatch } from '../../store';
-import { auth } from '../../firebase';
+import Paths from '../../utils/enums';
+import { useAppDispatch, authSlice } from '../../store';
+import { signInWithEmailAndPasswordWithErrorHandling } from '../../firebase';
 
 import styles from './authPages.module.scss';
-import Paths from '../../utils/enums';
-
-/*
-TODO:
-- [x] Create error handling
-*/
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const [isLoaderActive, setIsLoaderActive] = useState(false);
+
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const signIn = (e: FormEvent<HTMLFormElement>) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || Paths.Main;
+
+  const signIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsLoaderActive(true);
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        dispatch(setUser(userCredential));
-      })
-      .catch(() => {});
+    const { user, error } = await signInWithEmailAndPasswordWithErrorHandling(email, password);
+
+    if (user !== null) {
+      dispatch(setUser(user));
+      navigate(from, { replace: true });
+      setErrorMessage(null);
+    } else {
+      setErrorMessage(error);
+    }
 
     setIsLoaderActive(false);
   };
@@ -57,6 +61,7 @@ const LoginForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder={t('placeholder', { context: 'password' }) as string | undefined}
         />
+        {errorMessage && <span className={styles.error}>{errorMessage}</span>}
         <button type="submit" className={styles.wrapper__btn}>
           {t('login')}
         </button>

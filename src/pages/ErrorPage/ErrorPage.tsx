@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../components/button';
-import styles from './ErrorPage.module.scss';
+
 import Paths from '../../utils/enums';
+import { Button } from '../../components/button';
+
+import styles from './ErrorPage.module.scss';
 
 const ErrorPage = () => {
   const { t } = useTranslation();

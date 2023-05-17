@@ -5,3 +5,18 @@
     color: $colorFont;
 }
 
+.MG {
+    margin: $defaultMargin;
+    &-T {
+        margin-top: $defaultMargin;
+    }
+    &-B {
+        margin-bottom: $defaultMargin;
+    }
+    &-R {
+        margin-right: $defaultMargin;
+    }
+    &-L {
+        margin-left: $defaultMargin;
+    }
+}

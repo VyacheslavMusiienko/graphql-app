@@ -1,26 +1,28 @@
-import { Link } from 'react-router-dom';
-
-import Header from '../../components/Header';
+import { LoginButton, SignUpButton, GoToButton } from '../../components/button';
+import AuthStatus from '../../components/authStatus';
 import Footer from '../../components/Footer';
+
 import useAuth from '../../hooks/useAuth';
 
-import Paths from '../../utils/enums';
-
 import { styles } from '../../layout';
+// import st from './welcome.module.scss';
 
 const WelcomePage = () => {
-  const { user: currentUser } = useAuth();
+  const { user } = useAuth();
 
   return (
     <div className={styles.wrapper}>
-      <Header />
       <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
-        {currentUser ? (
-          <Link to={Paths.Main}>Welcome</Link>
+        {user !== null ? (
+          <>
+            <AuthStatus />
+            <GoToButton />
+          </>
         ) : (
           <>
-            <Link to={Paths.Login}>Login</Link>
-            <Link to={Paths.SignUp}>SignUp</Link>
+            <AuthStatus />
+            <LoginButton />
+            <SignUpButton />
           </>
         )}
       </div>
