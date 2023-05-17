@@ -1,25 +1,25 @@
-import styles from './authPages.module.scss';
+// import styles from './authPages.module.scss';
 
-interface IErrorMessageProps<T> {
-  isList?: boolean;
-  field: string;
-  errorObject: T | null;
-  children: React.ReactNode;
-}
+// interface IErrorMessageProps<T> {
+//   isList?: boolean;
+//   field: string;
+//   errorObject: T | null;
+//   children: React.ReactNode;
+// }
 
-function ErrorMessage<T>({ isList, field, errorObject, children }: IErrorMessageProps<T>) {
-  if (isList) {
-    return <ul />;
-  }
-  if (errorObject && errorObject[field]) {
-    return <span className={styles.error}>{children}</span>;
-  }
+// function ErrorMessage<T>({ isList, field, errorObject, children }: IErrorMessageProps<T>) {
+//   if (isList) {
+//     return <ul />;
+//   }
+//   if (errorObject && errorObject[field]) {
+//     return <span className={styles.error}>{children}</span>;
+//   }
 
-  return null;
-}
+//   return null;
+// }
 
-ErrorMessage.defaultProps = {
-  isList: false,
-};
+// ErrorMessage.defaultProps = {
+//   isList: false,
+// };
 
-export default ErrorMessage;
+// export default ErrorMessage;
