@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import router from './Router';
+import Loader from './components/loader';
 
 import './utils/i18';
 import { setupStore } from './store';
@@ -14,7 +15,7 @@ const store = setupStore();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader active />}>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
