@@ -5,6 +5,11 @@
     color: $colorFont;
 }
 
+.container {
+	width: 1140px;
+	margin: 0 auto;
+}
+
 .MG {
     margin: $defaultMargin;
     &-T {

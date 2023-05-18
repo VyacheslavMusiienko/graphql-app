@@ -16,13 +16,13 @@ const Footer = () => {
         <img src={rsLogo} alt="ghLogo" />
       </Link>
       <Link to={FooterLinks.Luferov} className={styles.link} target="_blank">
-        <SvgNText text={t('name', { context: 'luf' }) as string} src={ghLogo} />
+        <SvgNText text={t('dzmitry_full') as string} src={ghLogo} />
       </Link>
       <Link to={FooterLinks.Nikanau} className={styles.link} target="_blank">
-        <SvgNText text={t('name', { context: 'nik' }) as string} src={ghLogo} />
+        <SvgNText text={t('ivan_full') as string} src={ghLogo} />
       </Link>
       <Link to={FooterLinks.Musiienko} className={styles.link} target="_blank">
-        <SvgNText text={t('name', { context: 'mus' }) as string} src={ghLogo} />
+        <SvgNText text={t('vyacheslav_full') as string} src={ghLogo} />
       </Link>
       <span className={styles.year}>2023</span>
     </footer>

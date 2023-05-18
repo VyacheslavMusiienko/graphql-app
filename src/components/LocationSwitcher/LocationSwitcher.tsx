@@ -8,24 +8,28 @@ import styles from './LocationSwitcher.module.scss';
 const LocationSwitcher = ({ isSticky }: { isSticky: boolean }) => {
   const { i18n, t } = useTranslation();
 
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
+  const changeLanguage = () => {
+    const newLanguage = i18n.language === Languages.EN ? Languages.RU : Languages.EN;
+
+    i18n.changeLanguage(newLanguage);
   };
 
-  const setClassName = (_isSticky: boolean, language: Languages) => {
+  const setClassName = () => {
     const classNames = [styles.switcher];
-    if (isSticky) classNames.push(styles.switcher_sticky);
-    if (i18n.language === language) classNames.push(styles.switcher_active);
+
+    if (isSticky) {
+      classNames.push(styles.switcher_sticky);
+    }
+
     return classNames.join(' ');
   };
 
   return (
     <div className={styles.localization}>
-      <Button className={setClassName(isSticky, Languages.EN)} onClick={() => changeLanguage('en')}>
-        {t('language', { context: 'en' })}
-      </Button>
-      <Button className={setClassName(isSticky, Languages.RU)} onClick={() => changeLanguage('ru')}>
-        {t('language', { context: 'ru' })}
+      <Button className={setClassName()} onClick={changeLanguage}>
+        {i18n.language === Languages.EN
+          ? t('language', { context: 'ru' })
+          : t('language', { context: 'en' })}
       </Button>
     </div>
   );

@@ -1,0 +1,8 @@
+@import "src/assets/style";
+
+.status {
+  color: $welcomeTextColor;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

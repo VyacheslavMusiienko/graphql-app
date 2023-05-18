@@ -19,12 +19,14 @@ const Header = forwardRef<HTMLElement, { isSticky: boolean }>(({ isSticky }, ref
     >
       <Link to={Paths.Welcome} className={styles.title}>
         <img src={logo} alt="logo" className={styles.logo} />
-        <h1 className={styles.text}>GraphQL</h1>
+        <div className={styles.text}>GraphQL</div>
       </Link>
       <Navigation isSticky={isSticky} />
-      <LocationSwitcher isSticky={isSticky} />
-      <AuthStatus />
-      <LogoutButton isSticky={isSticky} />
+      <div className={styles.corner}>
+        <LocationSwitcher isSticky={isSticky} />
+        <AuthStatus />
+        <LogoutButton isSticky={isSticky} />
+      </div>
     </header>
   );
 });

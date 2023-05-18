@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import useAuth from '../../hooks/useAuth';
 
+import styles from './authStatus.module.scss';
+
 const AuthStatus = () => {
   const { t } = useTranslation();
   const { user, loading } = useAuth();
@@ -11,11 +13,7 @@ const AuthStatus = () => {
   }
 
   if (user !== null) {
-    return (
-      <p style={{ fontSize: '20px', color: 'rgb(33, 37, 41)' }}>{`${t('welcome')} ${
-        user.displayName
-      }!`}</p>
-    );
+    return <p className={styles.status}>{`${t('welcome')} ${user.displayName}!`}</p>;
   }
 
   return null;

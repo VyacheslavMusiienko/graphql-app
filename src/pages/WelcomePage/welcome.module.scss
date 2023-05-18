@@ -1,20 +1,16 @@
 @import"../../assets/style/index.scss";
 
-.container {
-	width: 1140px;
-	margin: 0 auto;
-}
-
 .preview {
 	position: relative;
 	&__btns {
 		position: absolute;
 		top: 3%;
-		right: 3%;
+		right: 2%;
 		width: 300px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		gap: 15px;
 	}
   min-height: 765px;
   height: 80vh;
@@ -37,44 +33,5 @@
 		color: $welcomeTextColor;
 		width: 700px;
 		margin-top: 10px;
-	}
-}
-
-///////////////////////////////////////
-
-.team {
-  display: flex;
-  justify-content: space-between;
-	
-	.member {
-		text-align: center;
-		margin: 20px;
-	}
-
-	.member_photo {
-		width: 200px;
-		height: 200px;
-		object-fit: cover;
-		border-radius: 50%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-		transition: transform 0.3s ease-in-out;
-		&:hover {
-			transform: translateY(-5px);
-		}
-	}
-
-	.member_info {
-		margin-top: 10px;
-	}
-
-	.member_name {
-		font-size: 20px;
-		font-weight: bold;
-		color: #333;
-	}
-
-	.member_description {
-		margin-top: 5px;
-		color: #666;
 	}
 }
