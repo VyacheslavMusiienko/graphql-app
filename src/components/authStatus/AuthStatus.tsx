@@ -11,7 +11,11 @@ const AuthStatus = () => {
   }
 
   if (user !== null) {
-    return <p>{`${t('welcome')} ${user.displayName}!`}</p>;
+    return (
+      <p style={{ fontSize: '20px', color: 'rgb(33, 37, 41)' }}>{`${t('welcome')} ${
+        user.displayName
+      }!`}</p>
+    );
   }
 
   return null;

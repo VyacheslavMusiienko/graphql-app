@@ -14,8 +14,8 @@
   "logout": "Выйти",
   "now": " сейчас",
   "register": "Регистрация",
-  "language_ru": "РУС",
-  "language_en": "АНГ",
+  "language_ru": "Рус",
+  "language_en": "En",
   "name_luf": "Дмитрий Луферов",
   "name_nik": "Иван Никанов",
   "name_mus": "Вячеслав Мусиенко",
@@ -29,6 +29,6 @@
   "not_logged_in": "Вы не авторизованы",
   "welcome": "Добро пожаловать",
   "go_to_main": "Перейти на главную страницу",
-  "name_signup_error": "Display name should be at least 2 letters",
-  "email_signup_error": "The email address is not valid"
+  "name_signup_error": "Отображаемое имя должно содержать минимум 2 буквы",
+  "email_signup_error": "Электронный адрес неверен"
 }

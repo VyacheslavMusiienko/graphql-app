@@ -1,17 +1,17 @@
 {
   "navigation_home": "Home",
   "navigation_welcome": "Welcome page",
-  "auth_signup": "Signup",
-  "auth_login": "Login",
+  "auth_signup": "Sign Up",
+  "auth_login": "Sign In",
   "placeholder_fullName": "Full Name",
   "placeholder_email": "E-mail",
   "placeholder_password": "Password",
   "formError_invalidEmail": "Incorrect email",
   "formError_invalidPassword": "Password must be at least 8 symbols and have at least one letter, one digit and one\nspecial character (@$!%*#?&)",
   "signup_account": "Already have an account? ",
-  "login": "Login",
+  "login": "Sign In",
   "login_account": "Don't have an account? ",
-  "logout": "Logout",
+  "logout": "Sign Out",
   "now": " now",
   "register": "Register",
   "language_ru": "RU",
@@ -29,6 +29,6 @@
   "not_logged_in": "You are not logged in.",
   "welcome": "Welcome",
   "go_to_main": "Go to main page",
-  "name_signup_error": "Отображаемое имя должно содержать минимум 2 буквы",
-  "email_signup_error": "Электронный адрес неверен"
+  "name_signup_error": "Display name should be at least 2 letters",
+  "email_signup_error": "The email address is not valid"
 }

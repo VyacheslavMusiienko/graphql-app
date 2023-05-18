@@ -1,15 +1,57 @@
 @import"../../assets/style/index.scss";
 
-.teamSection {
+.container {
+	width: 1140px;
+	margin: 0 auto;
+}
+
+.preview {
+	position: relative;
+	&__btns {
+		position: absolute;
+		top: 3%;
+		right: 3%;
+		width: 300px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+  min-height: 765px;
+  height: 80vh;
+  background: url("../../assets/main_bg.avif") center center/cover no-repeat;
+  padding-top: 120px;
+	&__wrapper {
+		width: 890px;
+	}
+	&__header {
+		margin: 0;
+		font-weight: 700;
+		color: $welcomeTextColor;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	&__subheader {
+		margin-top: 35px;
+		font-weight: 700;
+		font-size: 48px;
+		color: $welcomeTextColor;
+		width: 700px;
+		margin-top: 10px;
+	}
+}
+
+///////////////////////////////////////
+
+.team {
   display: flex;
   justify-content: space-between;
 	
-	.teamMember {
+	.member {
 		text-align: center;
 		margin: 20px;
 	}
 
-	.memberPhoto {
+	.member_photo {
 		width: 200px;
 		height: 200px;
 		object-fit: cover;
@@ -21,17 +63,17 @@
 		}
 	}
 
-	.memberInfo {
+	.member_info {
 		margin-top: 10px;
 	}
 
-	.memberName {
+	.member_name {
 		font-size: 20px;
 		font-weight: bold;
 		color: #333;
 	}
 
-	.memberDescription {
+	.member_description {
 		margin-top: 5px;
 		color: #666;
 	}

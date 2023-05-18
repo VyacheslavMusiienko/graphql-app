@@ -6,8 +6,7 @@ import Footer from '../../components/Footer';
 
 import useAuth from '../../hooks/useAuth';
 
-import { styles } from '../../layout';
-import st from './welcome.module.scss';
+import styles from './welcome.module.scss';
 
 import Ivan from '../../assets/ivan.jpg';
 import Dzmitry from '../../assets/dzmitry.jpg';
@@ -18,44 +17,55 @@ const WelcomePage = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.wrapper}>
-      <div style={{ margin: '50px', display: 'flex', flexDirection: 'column' }}>
-        {user !== null ? (
-          <>
-            <AuthStatus />
-            <GoToButton />
-          </>
-        ) : (
-          <>
-            <AuthStatus />
-            <LoginButton />
-            <SignUpButton />
-          </>
-        )}
-        <section className={st.teamSection}>
-          <div className={st.teamMember}>
-            <img src={Vyacheslav} alt="Team Member 1" className={st.memberPhoto} />
-            <div className={st.memberInfo}>
-              <h3 className={st.memberName}>{t('Vyacheslav')}</h3>
-              <p className={st.memberDescription}>ToDo description 1</p>
-            </div>
+    <div>
+      <section className={styles.preview}>
+        <div className={styles.preview__btns}>
+          {user !== null ? (
+            <>
+              <AuthStatus />
+              <GoToButton />
+            </>
+          ) : (
+            <>
+              <LoginButton /> / <SignUpButton />
+            </>
+          )}
+        </div>
+        <div className={styles.container}>
+          <div className={styles.preview__wrapper}>
+            <h1 className={styles.preview__header}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, laborum!
+            </h1>
+            <h2 className={styles.preview__subheader}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem ea id!
+            </h2>
           </div>
-          <div className={st.teamMember}>
-            <img src={Ivan} alt="Team Member 2" className={st.memberPhoto} />
-            <div className={st.memberInfo}>
-              <h3 className={st.memberName}>{t('Ivan')}</h3>
-              <p className={st.memberDescription}>ToDo description 2</p>
-            </div>
+        </div>
+      </section>
+
+      <section className={styles.team}>
+        <div className={styles.member}>
+          <img src={Vyacheslav} alt="Team Member 1" className={styles.member_photo} />
+          <div className={styles.member_info}>
+            <h3 className={styles.member_name}>{t('Vyacheslav')}</h3>
+            <p className={styles.member_description}>ToDo description 1</p>
           </div>
-          <div className={st.teamMember}>
-            <img src={Dzmitry} alt="Team Member 3" className={st.memberPhoto} />
-            <div className={st.memberInfo}>
-              <h3 className={st.memberName}>{t('Dzmitry')}</h3>
-              <p className={st.memberDescription}>ToDo description 3</p>
-            </div>
+        </div>
+        <div className={styles.member}>
+          <img src={Ivan} alt="Team Member 2" className={styles.member_photo} />
+          <div className={styles.member_info}>
+            <h3 className={styles.member_name}>{t('Ivan')}</h3>
+            <p className={styles.member_description}>ToDo description 2</p>
           </div>
-        </section>
-      </div>
+        </div>
+        <div className={styles.member}>
+          <img src={Dzmitry} alt="Team Member 3" className={styles.member_photo} />
+          <div className={styles.member_info}>
+            <h3 className={styles.member_name}>{t('Dzmitry')}</h3>
+            <p className={styles.member_description}>ToDo description 3</p>
+          </div>
+        </div>
+      </section>
       <Footer />
     </div>
   );
