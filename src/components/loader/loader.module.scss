@@ -6,7 +6,7 @@
 	left: 0;
 	background: rgba(#fff, 0.6);
 	display: none;
-  	z-index: z-index(loader);
+  	z-index: 9999;
 	&.active {
 		display: block;
 	}

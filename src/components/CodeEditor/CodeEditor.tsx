@@ -9,6 +9,7 @@ import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { useAppSelector } from '../../store';
 
 import styles from './CodeEditor.module.scss';
+import Loader from '../loader';
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -75,7 +76,7 @@ const CodeEditor = () => {
   };
 
   if (!schema) {
-    return <h1>Loading...</h1>;
+    return <Loader active />;
   }
 
   return (
