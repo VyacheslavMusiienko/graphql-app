@@ -1,1 +1,38 @@
 @import"../../assets/style/index.scss";
+
+.teamSection {
+  display: flex;
+  justify-content: space-between;
+	
+	.teamMember {
+		text-align: center;
+		margin: 20px;
+	}
+
+	.memberPhoto {
+		width: 200px;
+		height: 200px;
+		object-fit: cover;
+		border-radius: 50%;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease-in-out;
+		&:hover {
+			transform: translateY(-5px);
+		}
+	}
+
+	.memberInfo {
+		margin-top: 10px;
+	}
+
+	.memberName {
+		font-size: 20px;
+		font-weight: bold;
+		color: #333;
+	}
+
+	.memberDescription {
+		margin-top: 5px;
+		color: #666;
+	}
+}
