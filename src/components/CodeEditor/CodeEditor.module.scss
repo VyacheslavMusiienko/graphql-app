@@ -1,57 +1,57 @@
 @import"../../assets/style/index.scss";
 
-.main{
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+.main {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 
-    .section{
-        margin-bottom: 5px;
-        font-size: 18px;
-        text-align: center;
-    }
+	.section {
+		margin-bottom: 5px;
+		font-size: 18px;
+		text-align: center;
+	}
 
-    .button{
-        margin: 0 20px;
-        padding:  15px 10px;
-        border: none;
-        display: inline;
-        background-color: $thirdColor;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        font-weight: bold;
-        transition: 1s;
-        -webkit-transition: 1s;
-        -moz-transition: 1s;
-        -ms-transition: 1s;
-        -o-transition: 1s;
+	.button {
+		margin: 0 20px;
+		padding:  15px 10px;
+		border: none;
+		display: inline;
+		background-color: $thirdColor;
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-o-border-radius: 50%;
+		font-weight: bold;
+		transition: 1s;
+		-webkit-transition: 1s;
+		-moz-transition: 1s;
+		-ms-transition: 1s;
+		-o-transition: 1s;
 
-        &:hover{
-            transform: scale(1.05);
-            -webkit-transform: scale(1.05);
-            -moz-transform: scale(1.05);
-            -ms-transform: scale(1.05);
-            -o-transform: scale(1.05);
-
-        }
-    }
+		&:hover {
+			transform: scale(1.05);
+			-webkit-transform: scale(1.05);
+			-moz-transform: scale(1.05);
+			-ms-transform: scale(1.05);
+			-o-transform: scale(1.05);
+		}
+	}
 }
-.wrapper{
-    display: flex;
-    justify-content: center;
 
-    .error {
-        margin: 5px auto;
-        padding: 2px 5px;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-        background-color:  $waringColor;
-        color: $secondColor;
-    }
+.wrapper {
+	display: flex;
+	justify-content: center;
+
+	.error {
+		margin: 5px auto;
+		padding: 2px 5px;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		-ms-border-radius: 5px;
+		-o-border-radius: 5px;
+		background-color:  $waringColor;
+		color: $secondColor;
+	}
 }

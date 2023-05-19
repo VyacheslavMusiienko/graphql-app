@@ -17,9 +17,11 @@ const Header = forwardRef<HTMLElement, { isSticky: boolean }>(({ isSticky }, ref
       className={isSticky ? [styles.header, styles.header_sticky].join(' ') : styles.header}
       ref={ref}
     >
-      <Link to={Paths.Welcome} className={styles.title}>
-        <img src={logo} alt="logo" className={styles.logo} />
-        <div className={styles.text}>GraphQL</div>
+      <Link to={Paths.Welcome} className={styles.link}>
+        <div className={styles.title}>
+          <img src={logo} alt="logo" className={styles.logo} />
+          <div className={styles.text}>GraphiQL</div>
+        </div>
       </Link>
       <Navigation isSticky={isSticky} />
       <div className={styles.corner}>

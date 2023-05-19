@@ -19,11 +19,11 @@
   "dzmitry_full": "Dmitry Luferov",
   "dzmitry_name": "Dmitry",
   "dzmitry_role": "Developer",
-  "dzmitry_description": "Dima took responsibility for aspects of the project, including creating the header and footer, implementing localization, and adding the sticky effect to the header. He closely monitored the overall functionality of the application and ensured compliance with the general requirements, providing a harmonious and cohesive interaction among all components.",
+  "dzmitry_description": "Dima took on aspects of the project, including creating the header, footer, localization, and implementing the sticky effect for the header. He monitored the cohesive interaction of all components and assessed the overall functionality of the application.",
   "ivan_full": "Ivan Nikanau",
   "ivan_name": "Ivan",
   "ivan_role": "Developer",
-  "ivan_description": "Ivan applied his development skills and implemented authentication through Firebase, ensuring the security of user data and creating a pleasant welcome environment.",
+  "ivan_description": "Ivan utilized his development skills and implemented authentication through Firebase, ensuring the security of user data and creating a pleasant welcoming environment.",
   "vyacheslav_full": "Viacheslav Musiienko",
   "vyacheslav_name": "Viacheslav",
   "vyacheslav_role": "Team Lead, developer",
@@ -41,7 +41,7 @@
   "name_signup_error": "Display name should be at least 2 letters",
   "email_signup_error": "The email address is not valid",
   "promo_header": "What this project about?",
-  "promo_subheader": "Project, GraphiQL, is a sandbox for working with GraphQL queries, developed by a team of three members. It offers features such as user authentication and authorization, interactive editing of queries, variables, and headers. It also includes functionality for browsing documentation and receiving instant responses to queries.",
+  "promo_subheader": "The GraphiQL project is a sandbox for working with GraphQL queries, created by a team of three developers. The application allows users to interactively edit queries, variables, and headers, as well as create and save an account for future use. It includes functionality for viewing documentation and receiving instant responses to queries.",
   "course_title": "What is the RSSchool React course about and why should you choose it?",
-  "course_description": "This course offered by RS School is suitable for students who have completed the second stage of the JavaScript course, as well as new students with practical experience and knowledge in JavaScript, TypeScript, and CSS3/HTML5. The course is free, conducted online in English, and emphasizes practical application. Participants will actively apply their knowledge through the development of real projects using modern technologies. The course covers all stages of modern development with React and its ecosystem, including independent task completion, code review of other participants' work, writing tests, mentorship, and team-based final project development. The course provides a Discord chat for communication, and upon completion, students will receive electronic certificates of completion."
+  "course_description": "This educational program from RS School is suitable for students who have completed the second stage of the JavaScript course, as well as individuals with practical experience and knowledge in JavaScript, TypeScript, CSS3, and HTML5. The training is free, conducted online in English, and focused on practical application. During the course, students will learn React, its ecosystem, and go through all stages of modern development, including independent task completion, code reviews of other participants' work, writing tests, collaborating with mentors, and developing a final project in a team. Advice from mentors and fellow students can be obtained through the Discord chat, and participants who successfully complete the course will receive electronic certificates."
 }

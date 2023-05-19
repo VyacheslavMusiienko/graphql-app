@@ -1,12 +1,12 @@
 {
-  "name": "graphql-app",
+  "name": "graphiql-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext .tsx --ext .ts",
+    "lint": "eslint . --ext .tsx,.ts",
     "preview": "vite preview"
   },
   "dependencies": {

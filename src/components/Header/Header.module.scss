@@ -1,7 +1,7 @@
 @import"../../assets/style/index.scss";
 
 .header {
-  height: $headerHeight;
+  min-height: $headerHeight;
   background-color: $secondColor;
   display: grid;
   grid-template-columns: 1fr 400px 1fr;
@@ -17,13 +17,17 @@
     background-color: $thirdColor;
   }
 
+  .link {
+    height: 100%;
+  }
+
   .title {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: $titleFontSize;
     font-style: italic;
-    width: 150px;
+    max-width: 170px;
     height: 100%;
     // background-color: $firstColor;
     background-color: rgb(253, 255, 182);
