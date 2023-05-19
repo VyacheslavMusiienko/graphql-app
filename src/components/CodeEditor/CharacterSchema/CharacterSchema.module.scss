@@ -1,0 +1,31 @@
+@import"../../../assets/style/index.scss";
+
+.character_schema{
+  display: flex;
+  justify-content: space-between;
+
+  .root_name{
+    margin: 10px 20px;
+    font-size: x-large;
+  }
+
+  .name_method{
+    margin: 8px 16px;
+    font-size: large;
+  }
+  .arg_block, .type_block{
+    display: flex;
+  }
+
+  .type_name, .arg_name{
+    font-weight: 700;
+  }
+
+  .type_name, .arg_name, .arg_content, .type_content{
+    margin: 6px 12px;
+  }
+
+  .arg_name_type{
+    margin: 4px 8px;
+  }
+}
