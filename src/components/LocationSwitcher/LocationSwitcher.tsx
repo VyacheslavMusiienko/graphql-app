@@ -27,9 +27,7 @@ const LocationSwitcher = ({ isSticky }: { isSticky: boolean }) => {
   return (
     <div className={styles.localization}>
       <Button className={setClassName()} onClick={changeLanguage}>
-        {i18n.language === Languages.EN
-          ? t('language', { context: 'ru' })
-          : t('language', { context: 'en' })}
+        {t('changeLanguage')}
       </Button>
     </div>
   );

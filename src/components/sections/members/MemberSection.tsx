@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Member from './Member';
 
 import styles from './member.module.scss';
@@ -31,9 +33,12 @@ const members = [
 ];
 
 const MemberSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.team_wrapper}>
       <div className={styles.container}>
+        <h3 className={styles.team_title}>{t('team_title')}</h3>
         <ul className={styles.team}>
           {members.map(({ id, name, description, photo_src, role }) => {
             return (

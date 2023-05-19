@@ -10,6 +10,12 @@
 		display: flex;
 		align-items: center;
 	}
+
+	&_title {
+		text-align: center;
+		font-size: 48px;
+		margin: 25px 0;
+	}
 	
 	.member {
 		text-align: center;
