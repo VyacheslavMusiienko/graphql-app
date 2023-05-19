@@ -11,6 +11,7 @@ import { useAppSelector } from '../../store';
 import Loader from '../loader';
 import CharacterSchema from './CharacterSchema/CharacterSchema';
 import styles from './CodeEditor.module.scss';
+import CharacterSchema from './CharacterSchema/CharacterSchema';
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
