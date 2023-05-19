@@ -1,11 +1,13 @@
-import { MemberSection } from '../../components/membersSection';
-import { PromoSection } from '../../components/promoSection';
+import { MemberSection, PromoSection, CourseInfoSection } from '../../components/sections';
 import Footer from '../../components/Footer';
+
+// import styles from './welcome.module.scss';
 
 const WelcomePage = () => {
   return (
     <>
       <PromoSection />
+      <CourseInfoSection />
       <MemberSection />
       <Footer />
     </>

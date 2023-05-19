@@ -1,15 +1,19 @@
+@import"../../assets/style/index.scss";
+
 .loader {
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(#fff, 0.6);
+	background: rgba($white, 0.6);
 	display: none;
   	z-index: 9999;
+
 	&.active {
 		display: block;
 	}
+	
 	.loader__o {
 		box-sizing: border-box;
 		position: absolute;

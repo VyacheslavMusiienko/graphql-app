@@ -17,10 +17,16 @@
   "language_ru": "Ru",
   "dzmitry_full": "Dmitry Luferov",
   "dzmitry_name": "Dmitry",
+    "dzmitry_role": "Developer",
+  "dzmitry_description": "Dima took responsibility for aspects of the project, including creating the header and footer, implementing localization, and adding the sticky effect to the header. He closely monitored the overall functionality of the application and ensured compliance with the general requirements, providing a harmonious and cohesive interaction among all components.",
   "ivan_full": "Ivan Nikanau",
   "ivan_name": "Ivan",
+  "ivan_role": "Developer",
+  "ivan_description": "Ivan applied his development skills and implemented authentication through Firebase, ensuring the security of user data and creating a pleasant welcome environment.",
   "vyacheslav_full": "Viacheslav Musiienko",
   "vyacheslav_name": "Viacheslav",
+  "vyacheslav_role": "Team Lead, developer",
+  "vyacheslav_description": "Slava focused on developing the GraphQL page, applying his deep knowledge and experience. He created a functional interface for working with queries and ensured efficient GraphQL interaction for our users.",
   "errorPage_title": "Sorry, this page is not available. You may have used an invalid link or the page has been removed.",
   "errorPage_button": "Back to welcome page",
   "query": "Query",
@@ -32,5 +38,9 @@
   "welcome": "Welcome",
   "go_to_main": "Home",
   "name_signup_error": "Display name should be at least 2 letters",
-  "email_signup_error": "The email address is not valid"
+  "email_signup_error": "The email address is not valid",
+  "promo_header": "What this project about?",
+  "promo_subheader": "Project, GraphiQL, is a sandbox for working with GraphQL queries, developed by a team of three members. It offers features such as user authentication and authorization, interactive editing of queries, variables, and headers. It also includes functionality for browsing documentation and receiving instant responses to queries.",
+  "course_title": "What is the RSSchool React course about and why should you choose it?",
+  "course_description": "This course offered by RS School is suitable for students who have completed the second stage of the JavaScript course, as well as new students with practical experience and knowledge in JavaScript, TypeScript, and CSS3/HTML5. The course is free, conducted online in English, and emphasizes practical application. Participants will actively apply their knowledge through the development of real projects using modern technologies. The course covers all stages of modern development with React and its ecosystem, including independent task completion, code review of other participants' work, writing tests, mentorship, and team-based final project development. The course provides a Discord chat for communication, and upon completion, students will receive electronic certificates of completion."
 }

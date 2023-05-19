@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 //FONTS
-$fontFamily: 'Montserrat';
+$fontFamily: 'Rubik', sans-serif;
 $fontSize: 16px;
 $fontWeight: 400;
 $titleFontSize: 26px;
@@ -20,7 +22,8 @@ $secondColor: #c2d4e8;
 $thirdColor: #6bb7ec;
 $forthColor: #a5a5a5;
 $waringColor: #ff0000;
-$whiteColor: #ffffff;
-$buttonBackground: #ffa501;
+$white: #ffffff;
+// $buttonBackground: #ffa501;
+$buttonBackground: rgb(253, 255, 182);
 $welcomeTextColor: rgb(33, 37, 41);
 $waringBackgroundColor: #ffeaea;

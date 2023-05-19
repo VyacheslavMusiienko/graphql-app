@@ -1,8 +1,8 @@
-import { LoginButton, SignUpButton, GoToButton } from '../button';
-import LocationSwitcher from '../LocationSwitcher';
-import AuthStatus from '../authStatus';
+import { LoginButton, SignUpButton, GoToButton } from '../../button';
+import LocationSwitcher from '../../LocationSwitcher';
+import AuthStatus from '../../authStatus';
 
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 import styles from './promoSection.module.scss';
 

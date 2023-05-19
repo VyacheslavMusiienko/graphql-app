@@ -1,10 +1,9 @@
-@import"../../assets/style/index.scss";
+@import"../../../assets/style/index.scss";
 
 .promo {
 	position: relative;
-  min-height: 765px;
-  height: 80vh;
-  background: url("../../assets/img/main_bg.avif") center center/cover no-repeat;
+  height: 70vh;
+  background: url("../../../assets/img/main_bg.avif") center center/cover no-repeat;
   padding-top: 120px;
 
 	&__btns {
@@ -23,19 +22,18 @@
 	}
 
 	&__header {
-		margin: 0;
 		font-weight: 700;
-		color: #FFD180;
+		color: $white;
 		font-size: 22px;
 		line-height: 30px;
 	}
 	
 	&__subheader {
-		margin-top: 35px;
 		font-weight: 700;
-		font-size: 48px;
-		color: #FFF9C4;
-		width: 700px;
+		font-size: 30px;
+		line-height: 36px;
+		color: rgb(253, 255, 182);
+		width: 662px;
 		margin-top: 10px;
 	}
 }

@@ -1,8 +1,15 @@
-@import"../../assets/style/index.scss";
+@import"../../../assets/style/index.scss";
 
 .team {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+	&_wrapper {
+		margin: 20px 0;
+		min-height: 70vh;
+		display: flex;
+		align-items: center;
+	}
 	
 	.member {
 		text-align: center;
@@ -27,12 +34,17 @@
 
 	.member_name {
 		font-size: 20px;
-		font-weight: bold;
 		color: #333;
 	}
 
 	.member_description {
-		margin-top: 5px;
+		margin-top: 8px;
 		color: #666;
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	.member_role {
+		margin-top: 8px;
 	}
 }
