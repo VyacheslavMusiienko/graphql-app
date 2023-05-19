@@ -11,6 +11,7 @@ import Loader from '../loader';
 import { useAppSelector } from '../../store';
 
 import styles from './CodeEditor.module.scss';
+import CharacterSchema from './CharacterSchema/CharacterSchema';
 
 const CharacterSchema = lazy(() => import('./CharacterSchema/CharacterSchema'));
 
