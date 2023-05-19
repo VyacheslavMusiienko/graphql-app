@@ -2,9 +2,9 @@ import Member from './Member';
 
 import styles from './member.module.scss';
 
-import Ivan from '../../assets/ivan.jpg';
-import Dzmitry from '../../assets/dzmitry.jpg';
-import Vyacheslav from '../../assets/vyacheslav.jpg';
+import Ivan from '../../assets/img/ivan.jpg';
+import Dzmitry from '../../assets/img/dzmitry.jpg';
+import Vyacheslav from '../../assets/img/vyacheslav.jpg';
 
 const members = [
   {
@@ -29,14 +29,14 @@ const members = [
 
 const MemberSection = () => {
   return (
-    <section className={styles.team}>
-      {members.map(({ id, name, description, photo_src }) => {
-        return (
-          <div key={id}>
-            <Member name={name} description={description} photo_src={photo_src} />
-          </div>
-        );
-      })}
+    <section>
+      <div className={styles.container}>
+        <ul className={styles.team}>
+          {members.map(({ id, name, description, photo_src }) => {
+            return <Member key={id} name={name} description={description} photo_src={photo_src} />;
+          })}
+        </ul>
+      </div>
     </section>
   );
 };

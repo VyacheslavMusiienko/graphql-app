@@ -1,7 +1,7 @@
 enum Paths {
   Welcome = '/',
   Main = '/main',
-  Login = '/login',
+  SignIn = '/signin',
   SignUp = '/signup',
 }
 

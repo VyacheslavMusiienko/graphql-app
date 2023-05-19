@@ -11,6 +11,7 @@
   max-width: 1800px;
   width: 100%;
   transition: 1s;
+  z-index: 9999;
 
   &_sticky {
     background-color: $thirdColor;

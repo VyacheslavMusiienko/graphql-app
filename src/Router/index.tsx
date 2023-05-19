@@ -13,7 +13,7 @@ const router = createBrowserRouter(
     <Route element={<App />} errorElement={<ErrorPage />}>
       <Route index path={Paths.Welcome} element={<WelcomePage />} />
       <Route
-        path={Paths.Login}
+        path={Paths.SignIn}
         element={
           <PublicRoute>
             <LoginPage />

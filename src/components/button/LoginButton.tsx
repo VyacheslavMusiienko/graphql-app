@@ -8,7 +8,7 @@ const LoginButton = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  return <Button onClick={() => navigate(Paths.Login)}>{t('login')}</Button>;
+  return <Button onClick={() => navigate(Paths.SignIn)}>{t('signin')}</Button>;
 };
 
 export default LoginButton;

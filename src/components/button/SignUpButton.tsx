@@ -8,7 +8,7 @@ const SignUpButton = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  return <Button onClick={() => navigate(Paths.SignUp)}>{t('register')}</Button>;
+  return <Button onClick={() => navigate(Paths.SignUp)}>{t('signup')}</Button>;
 };
 
 export default SignUpButton;

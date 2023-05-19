@@ -83,7 +83,7 @@ const CodeEditor = () => {
     <main>
       <div className={styles.main}>
         <div>
-          <h1 className={styles.section}>{t('var_section')}</h1>
+          <div className={styles.section}>{t('var_section')}</div>
           <CodeMirror
             value={operations}
             height="70vh"
@@ -102,7 +102,7 @@ const CodeEditor = () => {
         </div>
 
         <div>
-          <h1 className={styles.section}>{t('res_section')}</h1>
+          <div className={styles.section}>{t('res_section')}</div>
           <CodeMirror
             value={JSON.stringify(codeRequest, null, '\t')}
             height="70vh"
