@@ -1,7 +1,6 @@
 import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import CodeMirror from '@uiw/react-codemirror';
-/* eslint-disable import/no-duplicates */
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
 import { useCallback, useEffect, useState } from 'react';
