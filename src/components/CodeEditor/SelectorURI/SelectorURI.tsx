@@ -16,7 +16,6 @@ const SelectorURI = () => {
       <div>Select schema</div>
       <select className={styles.select} value={schemaURI} onChange={handleChange}>
         <option>https://rickandmortyapi.com/graphql</option>
-        <option>https://swapi-graphql.netlify.app/.netlify/functions/index</option>
         <option>https://countries.trevorblades.com/graphql</option>
       </select>
     </div>
