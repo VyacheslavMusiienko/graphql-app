@@ -11,7 +11,7 @@ const PromoSection = () => {
     <section className={styles.promo}>
       <PromoHeader />
       <div className={styles.container}>
-        <div className={styles.promo__wrapper}>
+        <div>
           <h1 className={styles.promo__header}>{t('promo_header')}</h1>
           <p className={styles.promo__subheader}>{t('promo_subheader')}</p>
         </div>

@@ -18,15 +18,17 @@ const Footer = () => {
           <Link to={FooterLinks.RsSchool} target="_blank">
             <img src={rsLogo} alt="ghLogo" />
           </Link>
-          <Link to={FooterLinks.Musiienko} className={styles.link} target="_blank">
-            <SvgNText text={t('vyacheslav_full') as string} src={ghLogo} />
-          </Link>
-          <Link to={FooterLinks.Nikanau} className={styles.link} target="_blank">
-            <SvgNText text={t('ivan_full') as string} src={ghLogo} />
-          </Link>
-          <Link to={FooterLinks.Luferov} className={styles.link} target="_blank">
-            <SvgNText text={t('dzmitry_full') as string} src={ghLogo} />
-          </Link>
+          <div className={styles.github_links}>
+            <Link to={FooterLinks.Musiienko} className={styles.link} target="_blank">
+              <SvgNText text={t('vyacheslav_name') as string} src={ghLogo} />
+            </Link>
+            <Link to={FooterLinks.Nikanau} className={styles.link} target="_blank">
+              <SvgNText text={t('ivan_name') as string} src={ghLogo} />
+            </Link>
+            <Link to={FooterLinks.Luferov} className={styles.link} target="_blank">
+              <SvgNText text={t('dzmitry_name') as string} src={ghLogo} />
+            </Link>
+          </div>
           <span className={styles.year}>2023</span>
         </div>
       </div>

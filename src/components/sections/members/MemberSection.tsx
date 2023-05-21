@@ -11,21 +11,21 @@ import Vyacheslav from '../../../assets/img/vyacheslav.jpg';
 const members = [
   {
     id: 1,
-    name: 'vyacheslav_name',
+    name: 'vyacheslav_full',
     role: 'vyacheslav_role',
     description: 'vyacheslav_description',
     photo_src: Vyacheslav,
   },
   {
     id: 2,
-    name: 'ivan_name',
+    name: 'ivan_full',
     role: 'ivan_role',
     description: 'ivan_description',
     photo_src: Ivan,
   },
   {
     id: 3,
-    name: 'dzmitry_name',
+    name: 'dzmitry_full',
     role: 'dzmitry_role',
     description: 'dzmitry_description',
     photo_src: Dzmitry,
