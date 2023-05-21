@@ -20,3 +20,12 @@
   }
 
 }
+
+
+@media (max-width: 576px) {
+  .localization {
+    width: unset;
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+}

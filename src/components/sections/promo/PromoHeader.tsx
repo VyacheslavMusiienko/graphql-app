@@ -11,15 +11,14 @@ const PromoHeader = () => {
 
   return (
     <div className={styles.promo__btns}>
+      <LocationSwitcher isSticky={false} />
       {user !== null ? (
         <>
-          <LocationSwitcher isSticky={false} />
           <AuthStatus />
           <GoToButton />
         </>
       ) : (
         <>
-          <LocationSwitcher isSticky={false} />
           <LoginButton />
           <SignUpButton />
         </>
