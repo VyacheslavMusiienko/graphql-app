@@ -9,6 +9,7 @@ import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { useAppSelector } from '../../store';
 
 import styles from './CodeEditor.module.scss';
+import Loader from '../loader';
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -75,14 +76,14 @@ const CodeEditor = () => {
   };
 
   if (!schema) {
-    return <h1>Loading...</h1>;
+    return <Loader active />;
   }
 
   return (
     <main>
       <div className={styles.main}>
         <div>
-          <h1 className={styles.section}>{t('var_section')}</h1>
+          <div className={styles.section}>{t('var_section')}</div>
           <CodeMirror
             value={operations}
             height="70vh"
@@ -101,7 +102,7 @@ const CodeEditor = () => {
         </div>
 
         <div>
-          <h1 className={styles.section}>{t('res_section')}</h1>
+          <div className={styles.section}>{t('res_section')}</div>
           <CodeMirror
             value={JSON.stringify(codeRequest, null, '\t')}
             height="70vh"

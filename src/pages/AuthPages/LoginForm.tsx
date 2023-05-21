@@ -63,11 +63,11 @@ const LoginForm = () => {
         />
         {errorMessage && <span className={styles.error}>{errorMessage}</span>}
         <button type="submit" className={styles.wrapper__btn}>
-          {t('login')}
+          {t('signin')}
         </button>
         <div>
-          {t('login', { context: 'account' })}
-          <Link to={Paths.SignUp}>{t('register')}</Link>
+          {t('login_account')}
+          <Link to={Paths.SignUp}>{t('to_signup')}</Link>
           {t('now')}.
         </div>
       </div>

@@ -16,3 +16,11 @@
     color: $colorFont;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    .text {
+      font-size: 16px;
+    }
+  }
+}

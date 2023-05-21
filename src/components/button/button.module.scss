@@ -1,14 +1,14 @@
 @import "src/assets/style";
 
 .button {
-  width: 100px;
-  height: 20px;
+  width: 130px;
+  height: 30px;
   border: none;
   transition: 1s;
-  background-color: $thirdColor;
   border-radius: 10px;
   font-weight: bold;
-
+  background: $buttonBackground;
+  box-shadow: 0 4px 4px rgba(0,0,0,.15);
   &:hover {
     transform: scale(1.05);
   }

@@ -1,0 +1,15 @@
+@import "src/assets/style";
+
+.status {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #FFF8E1;
+}
+
+@media (max-width: 576px) {
+  .status {
+    text-align: unset;
+  }
+}

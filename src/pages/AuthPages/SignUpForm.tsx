@@ -96,11 +96,11 @@ const SignUpForm = () => {
         )}
         {errors && errors.common && <span className={styles.error}>{errors.common}</span>}
         <button type="submit" className={styles.wrapper__btn}>
-          {t('register')}
+          {t('signup')}
         </button>
         <div>
           {t('signup', { context: 'account' })}
-          <Link to={Paths.Login}> {t('login')}</Link>
+          <Link to={Paths.SignIn}> {t('to_signin')}</Link>
           {t('now')}.
         </div>
       </div>
