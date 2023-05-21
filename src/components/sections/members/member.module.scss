@@ -20,37 +20,57 @@
 	.member {
 		text-align: center;
 		margin: 20px;
-	}
 
-	.member_photo {
-		width: 200px;
-		height: 200px;
-		object-fit: cover;
-		border-radius: 50%;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-		transition: transform 0.3s ease-in-out;
-		&:hover {
-			transform: translateY(-5px);
+		&_photo {
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+			border-radius: 50%;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			transition: transform 0.3s ease-in-out;
+			&:hover {
+				transform: translateY(-5px);
+			}
+		}
+
+		&_info {
+			margin-top: 10px;
+		}
+
+		&_name {
+			font-size: 20px;
+			color: #333;
+		}
+
+		&_description {
+			margin-top: 8px;
+			color: #666;
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		&_role {
+			margin-top: 8px;
 		}
 	}
+}
 
-	.member_info {
-		margin-top: 10px;
+@media (max-width: 768px) {
+	.team {
+		grid-template-columns: unset;
 	}
+}
 
-	.member_name {
-		font-size: 20px;
-		color: #333;
-	}
+@media (max-width: 576px) {
+	.team {
+		&_title {
+			font-size: 38px;
+		}
 
-	.member_description {
-		margin-top: 8px;
-		color: #666;
-		font-size: 18px;
-		line-height: 22px;
-	}
-
-	.member_role {
-		margin-top: 8px;
+		.member {
+		&_description {
+			font-size: 17px;
+		}
+		}
 	}
 }
