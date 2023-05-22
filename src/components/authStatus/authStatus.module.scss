@@ -5,11 +5,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 16px;
-  color: #FFF8E1;
+  color: $authStatusColor;
+}
+
+@media (max-width: 992px) {
+  .status {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .status {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 576px) {
   .status {
-    text-align: unset;
+    display: none;
   }
 }

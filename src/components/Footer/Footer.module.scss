@@ -1,7 +1,7 @@
 @import"../../assets/style/index.scss";
 
 .footer {
-  border-top: 2px solid $thirdColor;
+  border-top: 2px solid $firstColor;
   margin-top: auto;
 
   &_wrapper {
@@ -25,7 +25,7 @@
     .year {
       text-align: end;
       font-size: 20px;
-      color: $colorFont;
+      color: $fontColor;
     }
   }
 }
@@ -36,7 +36,7 @@
       gap: 1em;
 
       .github_links {
-        gap: 1em;
+        gap: 0.4em;
 
         .link {
           width: 100%;

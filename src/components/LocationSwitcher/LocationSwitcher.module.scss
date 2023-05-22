@@ -7,7 +7,7 @@
   .switcher {
     width: 35px;
     height: 35px;
-    background-color: $thirdColor;
+    background-color: $firstColor;
 
     &_sticky {
       background-color: $secondColor;
@@ -15,17 +15,27 @@
 
     &_active {
       pointer-events: none;
-      border: 1px solid $colorFont;
+      border: 1px solid $fontColor;
     }
   }
 
 }
 
+@media (max-width: 992px) {
+  .localization {
+    width: unset;
+  }
+}
 
 @media (max-width: 576px) {
   .localization {
     width: unset;
     grid-row: 1 / 3;
     align-self: center;
+
+    .switcher {
+      width: 30px;
+      height: 30px;
+    }
   }
 }

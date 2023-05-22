@@ -28,14 +28,10 @@
 		font-weight: 700;
 		font-size: 27px;
 		line-height: 36px;
-		color: rgb(253, 255, 182);
+		color: $buttonBackground;
 		width: 662px;
 		margin-top: 10px;
 	}
-}
-
-@media (max-width: 1200px) {
-
 }
 
 @media (max-width: 992px) {
@@ -52,6 +48,11 @@
 	.promo {
 		padding-top: 80px;
 
+		&__btns {
+			width: 300px;
+			grid-template-columns: repeat(3, auto);
+		}
+
 		&__subheader {
 			font-size: 20px;
 			width: 500px;
@@ -64,17 +65,11 @@
 		padding: 30px 0;
 
 		&__btns {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(2, 1fr);
 			margin-bottom: 1.5em;
 			position: unset;
-			top: unset;
-			right: unset;
-			width: unset;
-			width: 90vw;
-			align-items: center;
-			justify-items: center;
+			display: flex;
+			justify-content: space-evenly;
+			width: 100vw;
 		}
 
 		&__header {

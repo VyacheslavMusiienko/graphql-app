@@ -17,3 +17,17 @@
 .sticky {
   background-color: $secondColor;
  }
+
+@media (max-width: 992px) {
+  .button {
+    width: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: auto;
+    padding: 0 5px;
+    font-size: 12px;
+  }
+}
