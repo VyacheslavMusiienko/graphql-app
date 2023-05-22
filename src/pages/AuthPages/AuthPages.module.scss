@@ -6,6 +6,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 2em;
+
+  .no_decoration {
+    text-decoration: none;
+  }
+
+  .logo_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    .logo {
+      width: 40px;
+    }
+  }
+
   &__container {
     width: 26em;
     display: flex;
@@ -13,12 +30,18 @@
     text-align: center;
     background-color: #dcdcdc;
     padding: 30px;
+
+    .goRegister, .goLogin {
+      margin-top: 7px;
+    }
   }
+
   &__textBox {
     padding: 10px;
     font-size: 18px;
     margin-bottom: 10px;
   }
+
   &__btn {
     padding: 10px;
     font-size: 18px;
@@ -27,34 +50,38 @@
     color: white;
     background-color: black;
     transition-duration: .2s;
+
     &:active {
       transform: scale(0.95);
     }
   }
+
   .error {
     margin: 5px 0 10px 0;
     color: $errorColor;
+
     &_list {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
       & span {
         margin: 0 auto;
       }
+
       & li {
         list-style-position: inside;
         list-style-type: disc;
+  
         &:last-child {
           text-align: start;
         }
       }
     }
   }
+
   a {
     cursor: pointer;
     text-decoration: underline;
-  }
-  div {
-    margin-top: 7px;
   }
 }

@@ -65,7 +65,7 @@ const LoginForm = () => {
         <button type="submit" className={styles.wrapper__btn}>
           {t('signin')}
         </button>
-        <div>
+        <div className={styles.goRegister}>
           {t('login_account')}
           <Link to={Paths.SignUp}>{t('to_signup')}</Link>
           {t('now')}.
