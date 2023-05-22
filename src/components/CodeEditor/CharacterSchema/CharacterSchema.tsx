@@ -123,6 +123,41 @@ const CharacterSchema = () => {
     return null;
   }
 
+  function ofType11Func(fieldName4: string, fieldName5: string, ofType11: GraphQLOutputType) {
+    if (ofType11 instanceof GraphQLObjectType) {
+      const getFields11 = ofType11.getFields();
+      return (
+        <li key={`${fieldName4}1-${fieldName5}-${ofType11.name}`}>
+          <strong>{ofType11.name}:</strong>
+          {ofType11.name}
+          <ul className={styles.arg_content}>
+            {Object.entries(getFields11).map(([fieldName11, field11]) => {
+              const keyVal = `${fieldName4}1-${fieldName11}`;
+              const type12 = field11.type;
+              if (type12 instanceof GraphQLNonNull) {
+                if (type12.ofType instanceof GraphQLList) {
+                  const ofType13 = type12.ofType.ofType;
+                  if (ofType13 instanceof GraphQLObjectType) {
+                    console.log(ofType13);
+                  }
+                }
+                return null;
+              }
+
+              return (
+                <li key={keyVal}>
+                  <strong>{fieldName11}:</strong>
+                  {field11.type.toString()}
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      );
+    }
+    return null;
+  }
+
   function type4Function(fieldName4: string, type4: GraphQLOutputType) {
     if (type4 instanceof GraphQLObjectType) {
       const getFields = type4.getFields();
@@ -145,10 +180,21 @@ const CharacterSchema = () => {
                         {ofType8.toString()}
                         <ul className={styles.arg_content}>
                           {Object.entries(getOfType8Fields).map(([fieldName9, field9]) => {
-                            console.log(field9);
+                            if (field9.type instanceof GraphQLNonNull) {
+                              const { ofType: ofType10 } = field9.type;
+                              if (ofType10 instanceof GraphQLList) {
+                                const ofType11 = ofType10.ofType;
+                                return ofType11Func(fieldName4, fieldName5, ofType11);
+                              }
+                            }
+
+                            if (field9.type instanceof GraphQLObjectType) {
+                              return 'GraphQLObjectType9';
+                            }
+
                             return (
                               <li key={`${fieldName4}1-${fieldName5}-${fieldName9}`}>
-                                <strong>{fieldName9}:23</strong>
+                                <strong>{fieldName9}:</strong>
                                 {field9.type.toString()}
                               </li>
                             );
