@@ -2,99 +2,141 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Loader from '../../components/loader';
-// import ErrorMessage from './ErrorMessage';
 
 import { useAppDispatch, authSlice } from '../../store';
 import { createUserWithEmailAndPasswordWithErrorHandling } from '../../firebase';
 
-import Paths from '../../utils/enums';
-import { validate, IErrors } from './utils/validate';
+import Paths, { ErrorTypes, SignUpInputNames } from '../../utils/enums';
 
 import styles from './authPages.module.scss';
+import { SignUpInputs } from '../../utils/interfaces';
+import Input from '../../components/Input/Input';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { IErrors } from './utils/validate';
+import { giveSignUpInputOptions } from '../../utils/functions';
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [errors, setErrors] = useState<null | IErrors>(null);
+  const { t } = useTranslation();
   const [isLoaderActive, setIsLoaderActive] = useState(false);
+  const [serverError, setServerError] = useState<null | IErrors>(null);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<SignUpInputs>();
+  const inputOptions = giveSignUpInputOptions(t);
+  const nameInput = register(SignUpInputNames.Name, {
+    ...inputOptions.name,
+    validate: (value) => {
+      return value.trim().length > 2 || value.length === 0
+        ? true
+        : t('signUpError', { context: 'name_length' });
+    },
+  });
+  const emailInput = register(SignUpInputNames.Email, inputOptions.email);
+  const passwordInput = register(SignUpInputNames.Password, inputOptions.password);
+  const repeatPasswordInput = register(SignUpInputNames.RepeatPassword, {
+    ...inputOptions.repeatPassword,
+    validate: (value) => {
+      return watch(SignUpInputNames.Password) === value && value.length > 0
+        ? true
+        : t('signUpError', { context: 'repeatPassword' });
+    },
+  });
 
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || Paths.Main;
 
-  const signUp = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const signUp: SubmitHandler<SignUpInputs> = async (data) => {
     setIsLoaderActive(true);
+    const { name, password, email } = data;
+    const { user, error } = await createUserWithEmailAndPasswordWithErrorHandling(
+      email,
+      password,
+      name
+    );
 
-    const validated = validate(email, password, displayName);
-
-    if (validated === true) {
-      setErrors(null);
-
-      const { user, error } = await createUserWithEmailAndPasswordWithErrorHandling(
-        email,
-        password,
-        displayName
-      );
-
-      if (user !== null) {
-        setErrors(null);
-        dispatch(setUser(user));
-        navigate(from, { replace: true });
-      } else {
-        setErrors(error);
-      }
+    if (user !== null) {
+      dispatch(setUser(user));
+      navigate(from, { replace: true });
+      reset();
+      setServerError(null);
     } else {
-      setErrors(validated);
+      setServerError(error);
     }
-
     setIsLoaderActive(false);
   };
 
   return (
-    <form onSubmit={signUp}>
+    <form onSubmit={handleSubmit(signUp)}>
       <div className={styles.wrapper__container}>
         <Loader active={isLoaderActive} />
-        <input
+        <Input
           type="text"
           className={styles.wrapper__textBox}
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
           placeholder={t('placeholder', { context: 'fullName' }) as string | undefined}
+          props={nameInput}
+          ref={nameInput.ref}
         />
-        {errors && errors.name && <span className={styles.error}>{t('name_signup_error')}</span>}
-        <input
+        {errors.name && errors.name.type === ErrorTypes.Required && (
+          <ErrorMessage>{errors.name.message}</ErrorMessage>
+        )}
+        {errors.name && errors.name.type === ErrorTypes.Pattern && (
+          <ErrorMessage>{errors.name.message}</ErrorMessage>
+        )}
+        {errors.name && errors.name.type === ErrorTypes.MinLength && (
+          <ErrorMessage>{errors.name.message}</ErrorMessage>
+        )}
+        {errors.name && errors.name.type === ErrorTypes.Validate && (
+          <ErrorMessage>{errors.name.message}</ErrorMessage>
+        )}
+        <Input
           type="text"
           className={styles.wrapper__textBox}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
           placeholder={t('placeholder', { context: 'email' }) as string | undefined}
+          props={emailInput}
+          ref={emailInput.ref}
         />
-        {errors && errors.email && <span className={styles.error}>{t('email_signup_error')}</span>}
-        <input
+        {errors.email && errors.email.type === ErrorTypes.Required && (
+          <ErrorMessage>{errors.email.message}</ErrorMessage>
+        )}
+        {errors.email && errors.email.type === ErrorTypes.Pattern && (
+          <ErrorMessage>{errors.email.message}</ErrorMessage>
+        )}
+        <Input
           type="password"
           className={styles.wrapper__textBox}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           placeholder={t('placeholder', { context: 'password' }) as string | undefined}
+          props={passwordInput}
+          ref={passwordInput.ref}
         />
-        {errors && errors.password && errors.password.length > 0 && (
-          <ul className={[styles.error, styles.error_list].join(' ')}>
-            <span>{`${t('placeholder_password')}:`}</span>
-            {errors.password.map(({ message, id }) => {
-              return <li key={id}>{message}</li>;
-            })}
-          </ul>
+        {errors.password && errors.password.type === ErrorTypes.Required && (
+          <ErrorMessage>{errors.password.message}</ErrorMessage>
         )}
-        {errors && errors.common && <span className={styles.error}>{errors.common}</span>}
+        {errors.password && errors.password.type === ErrorTypes.MinLength && (
+          <ErrorMessage>{errors.password.message}</ErrorMessage>
+        )}
+        {errors.password && errors.password.type === ErrorTypes.Pattern && (
+          <ErrorMessage>{errors.password.message}</ErrorMessage>
+        )}
+        <Input
+          type="password"
+          className={styles.wrapper__textBox}
+          placeholder={t('placeholder', { context: 'repeatPassword' }) as string | undefined}
+          props={repeatPasswordInput}
+          ref={repeatPasswordInput.ref}
+        />
+        {errors.repeatPassword && <ErrorMessage>{errors.repeatPassword.message}</ErrorMessage>}
+        {serverError && serverError.common && <ErrorMessage>{serverError.common}</ErrorMessage>}
         <button type="submit" className={styles.wrapper__btn}>
           {t('signup')}
         </button>

@@ -1,33 +1,48 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Loader from '../../components/loader';
 
-import Paths from '../../utils/enums';
+import Paths, { ErrorTypes, SignInInputNames } from '../../utils/enums';
 import { useAppDispatch, authSlice } from '../../store';
 import { signInWithEmailAndPasswordWithErrorHandling } from '../../firebase';
 
 import styles from './authPages.module.scss';
+import { SignInInputs } from '../../utils/interfaces';
+import Input from '../../components/Input/Input';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { giveSignInInputOptions } from '../../utils/functions';
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const [isLoaderActive, setIsLoaderActive] = useState(false);
+  const [serverError, setServerError] = useState<null | string>(null);
+
+  const { t } = useTranslation();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SignInInputs>();
+
+  const inputOptions = giveSignInInputOptions(t);
+
+  const emailInput = register(SignInInputNames.Email, inputOptions.email);
+  const passwordInput = register(SignInInputNames.Password, inputOptions.password);
 
   const { setUser } = authSlice.actions;
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || Paths.Main;
 
-  const signIn = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const signIn: SubmitHandler<SignInInputs> = async (data) => {
+    const { email, password } = data;
     setIsLoaderActive(true);
 
     const { user, error } = await signInWithEmailAndPasswordWithErrorHandling(email, password);
@@ -35,33 +50,40 @@ const LoginForm = () => {
     if (user !== null) {
       dispatch(setUser(user));
       navigate(from, { replace: true });
-      setErrorMessage(null);
+      reset();
+      setServerError(null);
     } else {
-      setErrorMessage(error);
+      setServerError(error);
     }
-
     setIsLoaderActive(false);
   };
 
   return (
-    <form onSubmit={signIn}>
+    <form onSubmit={handleSubmit(signIn)}>
       <div className={styles.wrapper__container}>
         <Loader active={isLoaderActive} />
-        <input
+        <Input
           type="text"
           className={styles.wrapper__textBox}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
           placeholder={t('placeholder', { context: 'email' }) as string | undefined}
+          props={emailInput}
+          ref={emailInput.ref}
         />
-        <input
+        {errors.email && errors.email.type === ErrorTypes.Required && (
+          <ErrorMessage>{errors.email.message}</ErrorMessage>
+        )}
+        {errors.email && errors.email.type === ErrorTypes.Pattern && (
+          <ErrorMessage>{errors.email.message}</ErrorMessage>
+        )}
+        <Input
           type="password"
           className={styles.wrapper__textBox}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           placeholder={t('placeholder', { context: 'password' }) as string | undefined}
+          props={passwordInput}
+          ref={passwordInput.ref}
         />
-        {errorMessage && <span className={styles.error}>{errorMessage}</span>}
+        {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
         <button type="submit" className={styles.wrapper__btn}>
           {t('signin')}
         </button>
