@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -13,13 +12,11 @@ import styles from './authPages.module.scss';
 import { SignInInputs } from '../../utils/interfaces';
 import Input from '../../components/Input/Input';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { giveSignInInputOptions } from '../../utils/functions';
+import { giveSignInInputOptions, translate } from '../../utils/functions';
 
 const LoginForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const [serverError, setServerError] = useState<null | string>(null);
-
-  const { t } = useTranslation();
 
   const {
     register,
@@ -28,7 +25,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<SignInInputs>();
 
-  const inputOptions = giveSignInInputOptions(t);
+  const inputOptions = giveSignInInputOptions();
 
   const emailInput = register(SignInInputNames.Email, inputOptions.email);
   const passwordInput = register(SignInInputNames.Password, inputOptions.password);
@@ -65,7 +62,7 @@ const LoginForm = () => {
         <Input
           type="text"
           className={styles.wrapper__textBox}
-          placeholder={t('placeholder', { context: 'email' }) as string | undefined}
+          placeholder={translate('placeholder', 'email')}
           props={emailInput}
           ref={emailInput.ref}
         />
@@ -78,19 +75,19 @@ const LoginForm = () => {
         <Input
           type="password"
           className={styles.wrapper__textBox}
-          placeholder={t('placeholder', { context: 'password' }) as string | undefined}
+          placeholder={translate('placeholder', 'password')}
           props={passwordInput}
           ref={passwordInput.ref}
         />
         {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
-        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
+        {serverError && <ErrorMessage>{translate('serverError', serverError)}</ErrorMessage>}
         <button type="submit" className={styles.wrapper__btn}>
-          {t('signin')}
+          {translate('signin')}
         </button>
         <div className={styles.goRegister}>
-          {t('login_account')}
-          <Link to={Paths.SignUp}>{t('to_signup')}</Link>
-          {t('now')}.
+          {translate('login_account')}
+          <Link to={Paths.SignUp}>{translate('to_signup')}</Link>
+          {translate('now')}.
         </div>
       </div>
     </form>

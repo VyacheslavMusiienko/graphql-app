@@ -55,5 +55,12 @@
   "signUpError_password": "Пароль обязателен",
   "signUpError_password_length": "Пароль должен содержать минимум 8 символов",
   "signUpError_password_pattern": "Должен содержать как минимум 1 прописной символ, 1 строчный символ, 1 цифру и 1 специальный символ - @$!%*#?&",
-  "signUpError_repeatPassword": "Пароли не совпадают или поле пустое"
+  "signUpError_repeatPassword": "Пароли не совпадают или поле пустое",
+  "serverError_inUse": "Эта почта уже существует",
+  "serverError_invalidEmail": "Адрес почты невалидный",
+  "serverError_manyRequests": "Слишком много запросов. Попробуйте позже",
+  "serverError_notFound": "Пользователя с такой почтой не существует",
+  "serverError_wrongPassword": "Пароль неверный для этой почты",
+  "serverError_missingPassword": "Отсутствует пароль",
+  "serverError_userDisabled": "Пользователь, соответствующий данному адресу электронной почты, отключен"
 }

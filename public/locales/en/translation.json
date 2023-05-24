@@ -55,5 +55,12 @@
   "signUpError_password": "Password is required",
   "signUpError_password_length": "Password length must be at least 8 symbols",
   "signUpError_password_pattern": "Should have at least 1 uppercase symbol, 1 lowercase symbol, 1 number and 1 special character - @$!%*#?&",
-  "signUpError_repeatPassword": "Passwords doesn't match or filed is empty"
+  "signUpError_repeatPassword": "Passwords doesn't match or filed is empty",
+  "serverError_inUse": "This email already exists",
+  "serverError_invalidEmail": "The email address is not valid",
+  "serverError_manyRequests": "Too many requests. Try again later",
+  "serverError_notFound": "There is no user with such email",
+  "serverError_wrongPassword": "The password is invalid for the given email",
+  "serverError_missingPassword": "Missing the password",
+  "serverError_userDisabled": "The user corresponding to the given email has been disabled"
 }

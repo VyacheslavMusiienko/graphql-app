@@ -1,57 +1,57 @@
-import { TFunction } from 'i18next';
+import i18n from 'i18next';
 
-export function giveSignInInputOptions(t: TFunction) {
+export function translate(key: string, context?: string | undefined) {
+  return i18n.t(key, context ? { context } : undefined);
+}
+
+export function giveSignInInputOptions() {
   return {
     email: {
-      required: t('signUpError', { context: 'email' }),
+      required: translate('signUpError', 'email'),
       pattern: {
         value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_-]+)(\.[a-zA-Z]{2,5}){1,2}$/,
-        message: t('signUpError', { context: 'email_pattern' }),
+        message: translate('signUpError', 'email_pattern'),
       },
     },
     password: {
-      required: t('signUpError', { context: 'password' }),
+      required: translate('signUpError', 'password'),
     },
   };
 }
 
-export function giveSignUpInputOptions(t: TFunction) {
+export function giveSignUpInputOptions() {
   return {
     name: {
-      required: t('signUpError', { context: 'name' }),
+      required: translate('signUpError', 'name'),
       minLength: {
         value: 3,
-        message: t('signUpError', { context: 'name_length' }),
+        message: translate('signUpError', 'name_length'),
       },
       pattern: {
         value: /^[A-Za-z ]*$/,
-        message: t('signUpError', { context: 'name_pattern' }),
+        message: translate('signUpError', 'name_pattern'),
       },
     },
     email: {
-      required: t('signUpError', { context: 'email' }),
+      required: translate('signUpError', 'email'),
       pattern: {
         value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_-]+)(\.[a-zA-Z]{2,5}){1,2}$/,
-        message: t('signUpError', { context: 'email_pattern' }),
+        message: translate('signUpError', 'email_pattern'),
       },
     },
     password: {
-      required: t('signUpError', { context: 'password' }),
+      required: translate('signUpError', 'password'),
       minLength: {
         value: 8,
-        message: t('signUpError', { context: 'password_length' }),
+        message: translate('signUpError', 'password_length'),
       },
       pattern: {
         value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-        message: t('signUpError', { context: 'password_pattern' }),
+        message: translate('signUpError', 'password_pattern'),
       },
     },
     repeatPassword: {
-      required: t('signUpError', { context: 'repeatPassword' }),
+      required: translate('signUpError', 'repeatPassword'),
     },
   };
-}
-
-export function translate(t: TFunction, key: string, context: string | undefined) {
-  return t(key, context ? { context } : undefined);
 }

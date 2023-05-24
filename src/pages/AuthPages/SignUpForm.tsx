@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -15,10 +14,9 @@ import { SignUpInputs } from '../../utils/interfaces';
 import Input from '../../components/Input/Input';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { IErrors } from './utils/validate';
-import { giveSignUpInputOptions } from '../../utils/functions';
+import { giveSignUpInputOptions, translate } from '../../utils/functions';
 
 const SignUpForm = () => {
-  const { t } = useTranslation();
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const [serverError, setServerError] = useState<null | IErrors>(null);
   const {
@@ -28,13 +26,13 @@ const SignUpForm = () => {
     watch,
     formState: { errors },
   } = useForm<SignUpInputs>();
-  const inputOptions = giveSignUpInputOptions(t);
+  const inputOptions = giveSignUpInputOptions();
   const nameInput = register(SignUpInputNames.Name, {
     ...inputOptions.name,
     validate: (value) => {
       return value.trim().length > 2 || value.length === 0
         ? true
-        : t('signUpError', { context: 'name_length' });
+        : translate('signUpError', 'name_length');
     },
   });
   const emailInput = register(SignUpInputNames.Email, inputOptions.email);
@@ -44,7 +42,7 @@ const SignUpForm = () => {
     validate: (value) => {
       return watch(SignUpInputNames.Password) === value && value.length > 0
         ? true
-        : t('signUpError', { context: 'repeatPassword' });
+        : translate('signUpError', 'repeatPassword');
     },
   });
 
@@ -83,7 +81,7 @@ const SignUpForm = () => {
         <Input
           type="text"
           className={styles.wrapper__textBox}
-          placeholder={t('placeholder', { context: 'fullName' }) as string | undefined}
+          placeholder={translate('placeholder', 'fullName')}
           props={nameInput}
           ref={nameInput.ref}
         />
@@ -102,7 +100,7 @@ const SignUpForm = () => {
         <Input
           type="text"
           className={styles.wrapper__textBox}
-          placeholder={t('placeholder', { context: 'email' }) as string | undefined}
+          placeholder={translate('placeholder', 'email')}
           props={emailInput}
           ref={emailInput.ref}
         />
@@ -115,7 +113,7 @@ const SignUpForm = () => {
         <Input
           type="password"
           className={styles.wrapper__textBox}
-          placeholder={t('placeholder', { context: 'password' }) as string | undefined}
+          placeholder={translate('placeholder', 'password')}
           props={passwordInput}
           ref={passwordInput.ref}
         />
@@ -131,19 +129,21 @@ const SignUpForm = () => {
         <Input
           type="password"
           className={styles.wrapper__textBox}
-          placeholder={t('placeholder', { context: 'repeatPassword' }) as string | undefined}
+          placeholder={translate('placeholder', 'repeatPassword')}
           props={repeatPasswordInput}
           ref={repeatPasswordInput.ref}
         />
         {errors.repeatPassword && <ErrorMessage>{errors.repeatPassword.message}</ErrorMessage>}
-        {serverError && serverError.common && <ErrorMessage>{serverError.common}</ErrorMessage>}
+        {serverError && serverError.common && (
+          <ErrorMessage>{translate('serverError', serverError.common)}</ErrorMessage>
+        )}
         <button type="submit" className={styles.wrapper__btn}>
-          {t('signup')}
+          {translate('signup')}
         </button>
         <div className={styles.goLogin}>
-          {t('signup', { context: 'account' })}
-          <Link to={Paths.SignIn}> {t('to_signin')}</Link>
-          {t('now')}.
+          {translate('signup', 'account')}
+          <Link to={Paths.SignIn}> {translate('to_signin')}</Link>
+          {translate('now')}.
         </div>
       </div>
     </form>

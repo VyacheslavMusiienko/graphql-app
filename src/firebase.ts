@@ -19,13 +19,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const errorCodes: Record<string, string> = {
-  'auth/invalid-email': 'The email address is not valid',
-  'auth/user-not-found': 'There is no user with such email',
-  'auth/wrong-password': 'The password is invalid for the given email',
-  'auth/missing-password': 'Missing the password',
-  'auth/user-disabled': 'The user corresponding to the given email has been disabled',
-  'auth/too-many-requests': 'Too many requests. Try again later',
-  'auth/email-already-in-use': 'This email already exists',
+  'auth/invalid-email': 'invalidEmail',
+  'auth/user-not-found': 'notFound',
+  'auth/wrong-password': 'wrongPassword',
+  'auth/missing-password': 'missingPassword',
+  'auth/user-disabled': 'userDisabled',
+  'auth/too-many-requests': 'manyRequests',
+  'auth/email-already-in-use': 'inUse',
 };
 
 const signInWithEmailAndPasswordWithErrorHandling = async (email: string, password: string) => {
