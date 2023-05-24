@@ -51,3 +51,7 @@ export function giveSignUpInputOptions(t: TFunction) {
     },
   };
 }
+
+export function translate(t: TFunction, key: string, context: string | undefined) {
+  return t(key, context ? { context } : undefined);
+}
