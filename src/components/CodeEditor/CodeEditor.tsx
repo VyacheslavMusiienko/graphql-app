@@ -9,9 +9,8 @@ import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../store';
 
 import Loader from '../loader';
-import CharacterSchema from './CharacterSchema/CharacterSchema';
 import styles from './CodeEditor.module.scss';
-import CharacterSchema from './CharacterSchema/CharacterSchema';
+import Test2 from './test2/CharacterSchema';
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -83,7 +82,7 @@ const CodeEditor = () => {
 
   return (
     <main>
-      <CharacterSchema />
+      <Test2 />
       <div className={styles.main}>
         <div>
           <div className={styles.section}>{t('var_section')}</div>
