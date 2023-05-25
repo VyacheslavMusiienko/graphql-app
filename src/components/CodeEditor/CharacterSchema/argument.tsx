@@ -1,23 +1,12 @@
 import { GraphQLArgument } from 'graphql';
 import DefaultValue from './default-value';
-import MarkdownContent from './markdown';
-// eslint-disable-next-line import/no-cycle
+import MarkdownContent from './utils/markdown';
 import TypeLink from './type-link';
 
 type ArgumentProps = {
   arg: GraphQLArgument;
-  /**
-   * Toggle if the default value for the argument is shown (if there is one)
-   * @default false
-   */
   // eslint-disable-next-line react/require-default-props
   showDefaultValue?: boolean;
-  /**
-   * Toggle whether to render the whole argument including description and
-   * deprecation reason (`false`) or to just render the argument name, type,
-   * and default value in a single line (`true`).
-   * @default false
-   */
   // eslint-disable-next-line react/require-default-props
   inline?: boolean;
 };
