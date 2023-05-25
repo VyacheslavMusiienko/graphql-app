@@ -1,18 +1,19 @@
 /* eslint-disable import/no-duplicates */
-import { useCallback, useEffect, useState } from 'react';
+import { buildHTTPExecutor } from '@graphql-tools/executor-http';
+import { schemaFromExecutor } from '@graphql-tools/wrap';
+import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
-import CodeMirror from '@uiw/react-codemirror';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { schemaFromExecutor } from '@graphql-tools/wrap';
-import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 
 import Loader from '../loader';
 
 import { useAppSelector } from '../../store';
 
-import styles from './CodeEditor.module.scss';
 import './CodeEditor.module.scss';
+import styles from './CodeEditor.module.scss';
+import CharacterSchema from './test2/CharacterSchema';
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -83,7 +84,8 @@ const CodeEditor = () => {
   }
 
   return (
-    <>
+    <main>
+      <CharacterSchema />
       <div className={styles.main}>
         <div>
           <div className={styles.section}>{t('var_section')}</div>
@@ -124,7 +126,7 @@ const CodeEditor = () => {
           <div className={styles.error}>{errorVal}</div>
         </div>
       )}
-    </>
+    </main>
   );
 };
 export default CodeEditor;
