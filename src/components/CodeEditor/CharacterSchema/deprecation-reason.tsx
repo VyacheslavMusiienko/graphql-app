@@ -1,4 +1,5 @@
 import MarkdownContent from './utils/markdown';
+import styles from './deprecation-reason.module.scss';
 
 type DeprecationReasonProps = {
   children?: string | null;
@@ -6,8 +7,8 @@ type DeprecationReasonProps = {
 
 const DeprecationReason = ({ children }: DeprecationReasonProps) => {
   return children ? (
-    <div className="graphiql-doc-explorer-deprecation">
-      <div className="graphiql-doc-explorer-deprecation-label">Deprecated</div>
+    <div className={styles.deprecation}>
+      <div className={styles.deprecation_label}>Deprecated</div>
       <MarkdownContent type="deprecation" onlyShowFirstChild>
         {children}
       </MarkdownContent>

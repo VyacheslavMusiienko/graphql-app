@@ -1,11 +1,12 @@
 import { isType } from 'graphql';
 import { ReactNode } from 'react';
 import Loader from '../../loader';
+import styles from './doc-explorer.module.scss';
 import FieldDocumentation from './field-documentation';
 import SchemaDocumentation from './schema-documentation';
 import TypeDocumentation from './type-documentation';
-import { useSchemaContext } from './utils/schema';
 import { useExplorerContext } from './utils/context-explorer';
+import { useSchemaContext } from './utils/schema';
 
 const DocExplorer = () => {
   const { fetchError, isFetching, schema, validationErrors } = useSchemaContext({
@@ -21,17 +22,13 @@ const DocExplorer = () => {
 
   let content: ReactNode = null;
   if (fetchError) {
-    content = <div className="graphiql-doc-explorer-error">Error fetching schema</div>;
+    content = <div className={styles.error}>Error fetching schema</div>;
   } else if (validationErrors.length > 0) {
-    content = (
-      <div className="graphiql-doc-explorer-error">
-        Schema is invalid: {validationErrors[0].message}
-      </div>
-    );
+    content = <div className={styles.error}>Schema is invalid: {validationErrors[0].message}</div>;
   } else if (isFetching) {
     content = <Loader active />;
   } else if (!schema) {
-    content = <div className="graphiql-doc-explorer-error">No GraphQL schema available</div>;
+    content = <div className={styles.error}>No GraphQL schema available</div>;
   } else if (explorerNavStack.length === 1) {
     content = <SchemaDocumentation schema={schema} />;
   } else if (isType(navItem.def)) {
@@ -47,12 +44,12 @@ const DocExplorer = () => {
 
   return (
     <section className="graphiql-doc-explorer" aria-label="Documentation Explorer">
-      <div className="graphiql-doc-explorer-header">
-        <div className="graphiql-doc-explorer-header-content">
+      <div className={styles.header}>
+        <div className={styles.header_content}>
           {prevName && (
             <button
               type="button"
-              className="graphiql-doc-explorer-back"
+              className={styles.back}
               onClick={(event) => {
                 event.preventDefault();
                 pop();
@@ -62,10 +59,10 @@ const DocExplorer = () => {
               {prevName}
             </button>
           )}
-          <div className="graphiql-doc-explorer-title">{navItem.name}</div>
+          <div className={styles.title}>{navItem.name}</div>
         </div>
       </div>
-      <div className="graphiql-doc-explorer-content">{content}</div>
+      <div className={styles.content}>{content}</div>
     </section>
   );
 };
