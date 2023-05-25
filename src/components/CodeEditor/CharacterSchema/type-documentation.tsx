@@ -87,7 +87,6 @@ const Fields = ({ type }: { type: GraphQLNamedType }) => {
   const fields: ExplorerFieldDef[] = [];
   const deprecatedFields: ExplorerFieldDef[] = [];
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const field of Object.keys(fieldMap).map((name) => fieldMap[name])) {
     if (field.deprecationReason) {
       deprecatedFields.push(field);
@@ -97,7 +96,6 @@ const Fields = ({ type }: { type: GraphQLNamedType }) => {
   }
 
   const ternaryOperator =
-    // eslint-disable-next-line no-nested-ternary
     deprecatedFields.length > 0 ? (
       showDeprecated || fields.length === 0 ? (
         <ExplorerSection title="Deprecated Fields">
@@ -154,7 +152,6 @@ const EnumValues = ({ type }: { type: GraphQLNamedType }) => {
 
   const values: GraphQLEnumValue[] = [];
   const deprecatedValues: GraphQLEnumValue[] = [];
-  // eslint-disable-next-line no-restricted-syntax
   for (const value of type.getValues()) {
     if (value.deprecationReason) {
       deprecatedValues.push(value);
@@ -164,7 +161,6 @@ const EnumValues = ({ type }: { type: GraphQLNamedType }) => {
   }
 
   const ternaryOperator =
-    // eslint-disable-next-line no-nested-ternary
     deprecatedValues.length > 0 ? (
       showDeprecated || values.length === 0 ? (
         <ExplorerSection title="Deprecated Enum Values">
