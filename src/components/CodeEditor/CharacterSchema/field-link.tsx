@@ -1,24 +1,23 @@
-import { ExplorerFieldDef } from './context';
+import { ExplorerFieldDef, useExplorerContext } from './utils/context-explorer';
 
 type FieldLinkProps = {
-  /**
-   * The field or argument that should be linked to.
-   */
   field: ExplorerFieldDef;
 };
 
-const FieldLink = ({ field }: FieldLinkProps) => {
+const FieldLink = (props: FieldLinkProps) => {
+  const { push } = useExplorerContext({ nonNull: true });
+
   return (
     <button
       type="button"
       className="graphiql-doc-explorer-field-name"
       onClick={(event) => {
         event.preventDefault();
+        push({ name: props.field.name, def: props.field });
       }}
     >
-      {field.name}
+      {props.field.name}
     </button>
   );
 };
-
 export default FieldLink;
