@@ -17,4 +17,23 @@ export enum Languages {
   EN = 'en',
 }
 
+export enum SignInInputNames {
+  Email = 'email',
+  Password = 'password',
+}
+
+export enum SignUpInputNames {
+  Name = 'name',
+  Email = 'email',
+  Password = 'password',
+  RepeatPassword = 'repeatPassword',
+}
+
+export enum ErrorTypes {
+  Required = 'required',
+  MinLength = 'minLength',
+  Pattern = 'pattern',
+  Validate = 'validate',
+}
+
 export default Paths;
