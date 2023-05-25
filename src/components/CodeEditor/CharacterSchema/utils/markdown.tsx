@@ -2,7 +2,6 @@ import { forwardRef } from 'react';
 
 type MarkdownContentProps = {
   children: string;
-  // eslint-disable-next-line react/require-default-props
   onlyShowFirstChild?: boolean;
   type: 'description' | 'deprecation';
 };
@@ -16,10 +15,12 @@ const MarkdownContent = forwardRef<
     classNames.push(props.className);
   }
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return <div {...props} ref={ref} className={classNames.join(' ')} />;
 });
 
 MarkdownContent.displayName = 'MarkdownContent';
+MarkdownContent.defaultProps = {
+  onlyShowFirstChild: false,
+};
 
 export default MarkdownContent;

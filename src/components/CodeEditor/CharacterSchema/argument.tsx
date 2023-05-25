@@ -5,9 +5,7 @@ import TypeLink from './type-link';
 
 type ArgumentProps = {
   arg: GraphQLArgument;
-  // eslint-disable-next-line react/require-default-props
   showDefaultValue?: boolean;
-  // eslint-disable-next-line react/require-default-props
   inline?: boolean;
 };
 

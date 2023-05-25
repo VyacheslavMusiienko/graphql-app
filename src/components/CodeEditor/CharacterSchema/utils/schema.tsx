@@ -22,11 +22,28 @@ export type SchemaContextType = {
 
 export const SchemaContext = createNullableContext<SchemaContextType>('SchemaContext');
 
+type IntrospectionArgs = {
+  inputValueDeprecation?: boolean;
+};
+
+const useIntrospectionQuery = ({ inputValueDeprecation }: IntrospectionArgs) => {
+  return useMemo(() => {
+    const query = getIntrospectionQuery({
+      inputValueDeprecation,
+    });
+
+    const querySansSubscriptions = query.replace('subscriptionType { name }', '');
+
+    return {
+      introspectionQuery: query,
+      introspectionQuerySansSubscriptions: querySansSubscriptions,
+    };
+  }, [inputValueDeprecation]);
+};
+
 export type SchemaContextProviderProps = {
   children: ReactNode;
-  // eslint-disable-next-line react/require-default-props
   dangerouslyAssumeSchemaIsValid?: boolean;
-  // eslint-disable-next-line react/require-default-props
   schema?: GraphQLSchema | IntrospectionQuery | null;
 } & IntrospectionArgs;
 
@@ -44,15 +61,12 @@ export const SchemaContextProvider = (props: SchemaContextProviderProps) => {
         : undefined
     );
 
-    // eslint-disable-next-line no-plusplus
-    counterRef.current++;
+    counterRef.current += 1;
   }, [props.schema]);
 
-  const { introspectionQuery, introspectionQuerySansSubscriptions } =
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    useIntrospectionQuery({
-      inputValueDeprecation: props.inputValueDeprecation,
-    });
+  const { introspectionQuery, introspectionQuerySansSubscriptions } = useIntrospectionQuery({
+    inputValueDeprecation: props.inputValueDeprecation,
+  });
 
   const { dangerouslyAssumeSchemaIsValid, children } = props;
   const introspect = useCallback(() => {
@@ -60,12 +74,10 @@ export const SchemaContextProvider = (props: SchemaContextProviderProps) => {
       return;
     }
 
-    // eslint-disable-next-line no-plusplus
-    const counter = ++counterRef.current;
+    const counter = counterRef.current + 1;
 
     const maybeIntrospectionData = props.schema;
 
-    // eslint-disable-next-line consistent-return
     async function fetchIntrospectionData() {
       if (maybeIntrospectionData) {
         return maybeIntrospectionData;
@@ -75,6 +87,7 @@ export const SchemaContextProvider = (props: SchemaContextProviderProps) => {
       setFetchError(null);
 
       setIsFetching(false);
+      return null;
     }
 
     fetchIntrospectionData()
@@ -137,24 +150,9 @@ export const SchemaContextProvider = (props: SchemaContextProviderProps) => {
   return <SchemaContext.Provider value={value}>{children}</SchemaContext.Provider>;
 };
 
-export const useSchemaContext = createContextHook(SchemaContext);
-
-type IntrospectionArgs = {
-  // eslint-disable-next-line react/require-default-props
-  inputValueDeprecation?: boolean;
+SchemaContextProvider.defaultProps = {
+  dangerouslyAssumeSchemaIsValid: false,
+  schema: null,
 };
 
-function useIntrospectionQuery({ inputValueDeprecation }: IntrospectionArgs) {
-  return useMemo(() => {
-    const query = getIntrospectionQuery({
-      inputValueDeprecation,
-    });
-
-    const querySansSubscriptions = query.replace('subscriptionType { name }', '');
-
-    return {
-      introspectionQuery: query,
-      introspectionQuerySansSubscriptions: querySansSubscriptions,
-    };
-  }, [inputValueDeprecation]);
-}
+export const useSchemaContext = createContextHook(SchemaContext);

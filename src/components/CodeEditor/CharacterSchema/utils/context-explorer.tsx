@@ -76,10 +76,8 @@ export const ExplorerContextProvider = (props: ExplorerContextProviderProps) => 
         }
         const newNavStack: ExplorerNavStack = [initialNavStackItem];
         let lastEntity: GraphQLNamedType | GraphQLField<unknown, unknown, unknown> | null = null;
-        // eslint-disable-next-line no-restricted-syntax
         for (const item of oldNavStack) {
           if (item === initialNavStackItem) {
-            // eslint-disable-next-line no-continue
             continue;
           }
           if (item.def) {

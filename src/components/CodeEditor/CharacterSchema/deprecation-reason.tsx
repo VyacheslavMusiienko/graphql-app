@@ -1,7 +1,6 @@
 import MarkdownContent from './utils/markdown';
 
 type DeprecationReasonProps = {
-  // eslint-disable-next-line react/require-default-props
   children?: string | null;
 };
 
