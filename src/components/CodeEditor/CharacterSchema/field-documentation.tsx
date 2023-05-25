@@ -21,7 +21,6 @@ const Arguments = ({ field }: { field: ExplorerFieldDef }) => {
 
   const args: GraphQLArgument[] = [];
   const deprecatedArgs: GraphQLArgument[] = [];
-  // eslint-disable-next-line no-restricted-syntax
   for (const argument of field.args) {
     if (argument.deprecationReason) {
       deprecatedArgs.push(argument);
@@ -31,7 +30,6 @@ const Arguments = ({ field }: { field: ExplorerFieldDef }) => {
   }
 
   const tarnalOperation =
-    // eslint-disable-next-line no-nested-ternary
     deprecatedArgs.length > 0 ? (
       showDeprecated || args.length === 0 ? (
         <ExplorerSection title="Deprecated Arguments">
