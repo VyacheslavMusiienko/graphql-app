@@ -1,0 +1,76 @@
+@import'../../../assets/style/index.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &:focus-within {
+    & .title {
+      visibility: hidden;
+    }
+
+    & .back:not(:focus) {
+      color: transparent;
+    }
+  }
+}
+.header_content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+a.back {
+  align-items: center;
+  color: $colorFont;
+  display: flex;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: $colorFont auto 1px;
+
+    & + .title {
+      visibility: unset;
+    }
+  }
+
+  & > svg {
+    height: 8px;
+    margin-right: 8px;
+    width: 8px;
+  }
+}
+
+
+.title {
+  font-weight: 500;
+  font-size: 15px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  &:not(:first-child) {
+    font-size: 17px;
+    margin-top: 8px;
+  }
+}
+
+.content > * {
+  color: $colorFont;
+  margin-top: 20px;
+}
+
+.error {
+  border: 1px solid $welcomeTextColor;
+  border-radius: 8px;
+  color: $welcomeTextColor;
+  padding: 8px 12px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
