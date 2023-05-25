@@ -2,16 +2,15 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import Input from '../../components/Input';
 import Loader from '../../components/loader';
-import Input from '../../components/Input/Input';
 import ErrorMessage from '../../components/ErrorMessage';
 
 import { useAppDispatch, authSlice } from '../../store';
 import { giveSignUpInputOptions, translate } from '../../utils/functions';
 import { createUserWithEmailAndPasswordWithErrorHandling } from '../../firebase';
 
-import { IErrors } from './utils/validate';
-import { SignUpInputs } from '../../utils/interfaces';
+import { IErrors, SignUpInputs } from '../../utils/interfaces';
 import Paths, { ErrorTypes, SignUpInputNames } from '../../utils/enums';
 
 import styles from './authPages.module.scss';
@@ -19,6 +18,15 @@ import styles from './authPages.module.scss';
 const SignUpForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);
   const [serverError, setServerError] = useState<null | IErrors>(null);
+
+  const { setUser } = authSlice.actions;
+  const dispatch = useAppDispatch();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || Paths.Main;
+
   const {
     register,
     handleSubmit,
@@ -26,13 +34,13 @@ const SignUpForm = () => {
     watch,
     formState: { errors },
   } = useForm<SignUpInputs>();
+
   const inputOptions = giveSignUpInputOptions();
+
   const nameInput = register(SignUpInputNames.Name, {
     ...inputOptions.name,
     validate: (value) => {
-      return value.trim().length > 2 || value.length === 0
-        ? true
-        : translate('signUpError', 'name_length');
+      return value.trim().length < 2 ? translate('signUpError', 'name_length') : true;
     },
   });
   const emailInput = register(SignUpInputNames.Email, inputOptions.email);
@@ -45,14 +53,6 @@ const SignUpForm = () => {
         : translate('signUpError', 'repeatPassword');
     },
   });
-
-  const { setUser } = authSlice.actions;
-  const dispatch = useAppDispatch();
-
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const from = location.state?.from?.pathname || Paths.Main;
 
   const signUp: SubmitHandler<SignUpInputs> = async (data) => {
     setIsLoaderActive(true);

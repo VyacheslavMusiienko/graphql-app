@@ -4,6 +4,7 @@ import { SignInInputNames, SignUpInputNames } from '../../utils/enums';
 
 interface Props extends HTMLAttributes<HTMLInputElement> {
   props: UseFormRegisterReturn<SignInInputNames | SignUpInputNames>;
+  type: string;
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(

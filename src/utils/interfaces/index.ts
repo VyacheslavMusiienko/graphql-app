@@ -1,11 +1,23 @@
-export interface SignInInputs {
+interface SignInInputs {
   email: string;
   password: string;
 }
 
-export interface SignUpInputs {
+interface SignUpInputs extends SignInInputs {
   name: string;
-  email: string;
-  password: string;
   repeatPassword: string;
 }
+
+interface ErrorObject {
+  message: string;
+  id: number;
+}
+
+interface IErrors {
+  name: boolean;
+  email: boolean;
+  password: ErrorObject[] | [];
+  common: string | null;
+}
+
+export { type SignInInputs, type SignUpInputs, type IErrors };
