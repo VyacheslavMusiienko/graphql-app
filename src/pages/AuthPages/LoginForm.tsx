@@ -1,18 +1,19 @@
 import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
 import Loader from '../../components/loader';
+import Input from '../../components/Input/Input';
+import ErrorMessage from '../../components/ErrorMessage';
 
-import Paths, { ErrorTypes, SignInInputNames } from '../../utils/enums';
 import { useAppDispatch, authSlice } from '../../store';
+import { giveSignInInputOptions, translate } from '../../utils/functions';
 import { signInWithEmailAndPasswordWithErrorHandling } from '../../firebase';
 
-import styles from './authPages.module.scss';
 import { SignInInputs } from '../../utils/interfaces';
-import Input from '../../components/Input/Input';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { giveSignInInputOptions, translate } from '../../utils/functions';
+import Paths, { ErrorTypes, SignInInputNames } from '../../utils/enums';
+
+import styles from './authPages.module.scss';
 
 const LoginForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);

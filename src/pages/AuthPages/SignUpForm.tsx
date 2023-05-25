@@ -1,20 +1,20 @@
 import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
 import Loader from '../../components/loader';
+import Input from '../../components/Input/Input';
+import ErrorMessage from '../../components/ErrorMessage';
 
 import { useAppDispatch, authSlice } from '../../store';
+import { giveSignUpInputOptions, translate } from '../../utils/functions';
 import { createUserWithEmailAndPasswordWithErrorHandling } from '../../firebase';
 
+import { IErrors } from './utils/validate';
+import { SignUpInputs } from '../../utils/interfaces';
 import Paths, { ErrorTypes, SignUpInputNames } from '../../utils/enums';
 
 import styles from './authPages.module.scss';
-import { SignUpInputs } from '../../utils/interfaces';
-import Input from '../../components/Input/Input';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { IErrors } from './utils/validate';
-import { giveSignUpInputOptions, translate } from '../../utils/functions';
 
 const SignUpForm = () => {
   const [isLoaderActive, setIsLoaderActive] = useState(false);

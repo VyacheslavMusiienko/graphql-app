@@ -51,7 +51,7 @@
   "signUpError_name_length": "Имя должно содержать минимум 3 символа",
   "signUpError_name_pattern": "Имя должно состоять только из букв",
   "signUpError_email": "Почта обязательна",
-  "signUpError_email_pattern": "Не соответствует шаблону почты",
+  "signUpError_email_pattern": "Введенная вами почта недействительна. Пожалуйста, проверьте правильность ввода",
   "signUpError_password": "Пароль обязателен",
   "signUpError_password_length": "Пароль должен содержать минимум 8 символов",
   "signUpError_password_pattern": "Должен содержать как минимум 1 прописной символ, 1 строчный символ, 1 цифру и 1 специальный символ - @$!%*#?&",
@@ -59,7 +59,7 @@
   "serverError_inUse": "Эта почта уже существует",
   "serverError_invalidEmail": "Адрес почты невалидный",
   "serverError_manyRequests": "Слишком много запросов. Попробуйте позже",
-  "serverError_notFound": "Пользователя с такой почтой не существует",
+  "serverError_notFound": "Введенный вами электронный адрес не связан ни с одним аккаунтом",
   "serverError_wrongPassword": "Пароль неверный для этой почты",
   "serverError_missingPassword": "Отсутствует пароль",
   "serverError_userDisabled": "Пользователь, соответствующий данному адресу электронной почты, отключен"
