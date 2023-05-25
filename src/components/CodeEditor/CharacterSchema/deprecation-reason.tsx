@@ -1,9 +1,6 @@
-import MarkdownContent from './markdown';
+import MarkdownContent from './utils/markdown';
 
 type DeprecationReasonProps = {
-  /**
-   * The deprecation reason as markdown string.
-   */
   // eslint-disable-next-line react/require-default-props
   children?: string | null;
 };

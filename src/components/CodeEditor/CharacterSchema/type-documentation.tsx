@@ -1,6 +1,7 @@
 import {
   GraphQLEnumValue,
   GraphQLNamedType,
+  isAbstractType,
   isEnumType,
   isInputObjectType,
   isInterfaceType,
@@ -8,15 +9,15 @@ import {
   isObjectType,
 } from 'graphql';
 import { useState } from 'react';
-import { ExplorerFieldDef } from './context';
-import MarkdownContent from './markdown';
-import ExplorerSection from './section';
-// eslint-disable-next-line import/no-cycle
 import Argument from './argument';
 import DefaultValue from './default-value';
 import DeprecationReason from './deprecation-reason';
 import FieldLink from './field-link';
+import ExplorerSection from './section';
 import TypeLink from './type-link';
+import { ExplorerFieldDef } from './utils/context-explorer';
+import MarkdownContent from './utils/markdown';
+import { useSchemaContext } from './utils/schema';
 
 type TypeDocumentationProps = {
   type: GraphQLNamedType;
@@ -94,7 +95,8 @@ const Fields = ({ type }: { type: GraphQLNamedType }) => {
       fields.push(field);
     }
   }
-  const ternalOperation =
+
+  const ternaryOperator =
     // eslint-disable-next-line no-nested-ternary
     deprecatedFields.length > 0 ? (
       showDeprecated || fields.length === 0 ? (
@@ -124,7 +126,7 @@ const Fields = ({ type }: { type: GraphQLNamedType }) => {
           ))}
         </ExplorerSection>
       ) : null}
-      {ternalOperation}
+      {ternaryOperator}
     </>
   );
 };
@@ -161,7 +163,7 @@ const EnumValues = ({ type }: { type: GraphQLNamedType }) => {
     }
   }
 
-  const ternalOperation =
+  const ternaryOperator =
     // eslint-disable-next-line no-nested-ternary
     deprecatedValues.length > 0 ? (
       showDeprecated || values.length === 0 ? (
@@ -191,37 +193,37 @@ const EnumValues = ({ type }: { type: GraphQLNamedType }) => {
           ))}
         </ExplorerSection>
       ) : null}
-      {ternalOperation}
+      {ternaryOperator}
     </>
   );
 };
 
-// const PossibleTypes = ({ type }: { type: GraphQLNamedType }) => {
-//   if (!schema || !isAbstractType(type)) {
-//     return null;
-//   }
-//   return (
-//     <ExplorerSection title={isInterfaceType(type) ? 'Implementations' : 'Possible Types'}>
-//       {schema.getPossibleTypes(type).map((possibleType) => (
-//         <div key={possibleType.name}>
-//           <TypeLink type={possibleType} />
-//         </div>
-//       ))}
-//     </ExplorerSection>
-//   );
-// };
+const PossibleTypes = ({ type }: { type: GraphQLNamedType }) => {
+  const { schema } = useSchemaContext({ nonNull: true });
+  if (!schema || !isAbstractType(type)) {
+    return null;
+  }
+  return (
+    <ExplorerSection title={isInterfaceType(type) ? 'Implementations' : 'Possible Types'}>
+      {schema.getPossibleTypes(type).map((possibleType) => (
+        <div key={possibleType.name}>
+          <TypeLink type={possibleType} />
+        </div>
+      ))}
+    </ExplorerSection>
+  );
+};
 
-const TypeDocumentation = ({ type }: TypeDocumentationProps) => {
-  // console.log(type);
-  return isNamedType(type) ? (
+const TypeDocumentation = (props: TypeDocumentationProps) => {
+  return isNamedType(props.type) ? (
     <>
-      {type.description ? (
-        <MarkdownContent type="description">{type.description}</MarkdownContent>
+      {props.type.description ? (
+        <MarkdownContent type="description">{props.type.description}</MarkdownContent>
       ) : null}
-      <ImplementsInterfaces type={type} />
-      <Fields type={type} />
-      <EnumValues type={type} />
-      {/* <PossibleTypes type={type} /> */}
+      <ImplementsInterfaces type={props.type} />
+      <Fields type={props.type} />
+      <EnumValues type={props.type} />
+      <PossibleTypes type={props.type} />
     </>
   ) : null;
 };

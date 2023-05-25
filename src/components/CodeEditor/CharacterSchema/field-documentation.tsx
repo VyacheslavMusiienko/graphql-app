@@ -1,17 +1,14 @@
 import { GraphQLArgument } from 'graphql';
 import { useState } from 'react';
 import Argument from './argument';
-import { ExplorerFieldDef } from './context';
 import DeprecationReason from './deprecation-reason';
-import MarkdownContent from './markdown';
+import Directive from './directive';
 import ExplorerSection from './section';
 import TypeLink from './type-link';
-import Directive from './directive';
+import { ExplorerFieldDef } from './utils/context-explorer';
+import MarkdownContent from './utils/markdown';
 
 type FieldDocumentationProps = {
-  /**
-   * The field or argument that should be rendered.
-   */
   field: ExplorerFieldDef;
 };
 

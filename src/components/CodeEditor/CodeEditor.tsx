@@ -3,15 +3,16 @@ import { schemaFromExecutor } from '@graphql-tools/wrap';
 import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
-import { useCallback, useEffect, useState } from 'react';
+import { lazy, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Loader from '../loader';
 
 import { useAppSelector } from '../../store';
 
-import CharacterSchema from './CharacterSchema/CharacterSchema';
 import styles from './CodeEditor.module.scss';
+
+const CharacterSchema = lazy(() => import('./CharacterSchema/CharacterSchema'));
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -83,7 +84,7 @@ const CodeEditor = () => {
 
   return (
     <main>
-      <CharacterSchema />
+      <CharacterSchema schema={schema} />
       <div className={styles.main}>
         <div>
           <div className={styles.section}>{t('var_section')}</div>

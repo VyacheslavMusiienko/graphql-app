@@ -1,5 +1,5 @@
 import { astFromValue, print, ValueNode } from 'graphql';
-import { ExplorerFieldDef } from './context';
+import { ExplorerFieldDef } from './utils/context-explorer';
 
 const printDefault = (ast?: ValueNode | null): string => {
   if (!ast) {
