@@ -5,7 +5,7 @@
   "signup": "Регистрация",
   "to_signin": "Войдите",
   "to_signup": "Зарегистрируйтесь",
-  "placeholder_fullName": "Полное имя",
+  "placeholder_fullName": "Отображаемое имя",
   "placeholder_email": "Почта",
   "placeholder_password": "Пароль",
   "placeholder_repeatPassword": "Повторите пароль",

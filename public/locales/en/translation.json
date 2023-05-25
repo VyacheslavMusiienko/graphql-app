@@ -5,7 +5,7 @@
   "signup": "Sign Up",
   "to_signin": "Login",
   "to_signup": "Register",
-  "placeholder_fullName": "Full Name",
+  "placeholder_fullName": "Display name",
   "placeholder_email": "E-mail",
   "placeholder_password": "Password",
   "placeholder_repeatPassword": "Repeat password",
