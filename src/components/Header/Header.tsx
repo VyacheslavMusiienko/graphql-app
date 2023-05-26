@@ -25,8 +25,8 @@ const Header = forwardRef<HTMLElement, { isSticky: boolean }>(({ isSticky }, ref
       </Link>
       <Navigation isSticky={isSticky} />
       <div className={styles.corner}>
-        <LocationSwitcher isSticky={isSticky} />
         <AuthStatus />
+        <LocationSwitcher isSticky={isSticky} />
         <LogoutButton isSticky={isSticky} />
       </div>
     </header>
