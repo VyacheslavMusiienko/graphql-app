@@ -60,5 +60,6 @@
   "serverError_notFound": "The email address you entered is not associated with any account",
   "serverError_wrongPassword": "The password is invalid for the given email",
   "serverError_missingPassword": "Missing the password",
-  "serverError_userDisabled": "The user corresponding to the given email has been disabled"
+  "serverError_userDisabled": "The user corresponding to the given email has been disabled",
+  "selectSchema": "Select schema"
 }

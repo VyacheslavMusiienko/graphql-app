@@ -43,7 +43,7 @@ const DocExplorer = () => {
   }
 
   return (
-    <section className="graphiql-doc-explorer" aria-label="Documentation Explorer">
+    <section className={styles.explorer} aria-label="Documentation Explorer">
       <div className={styles.header}>
         <div className={styles.header_content}>
           {prevName && (
