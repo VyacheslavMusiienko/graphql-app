@@ -1,8 +1,7 @@
 #root {
-	//max-width: 1280px;
 	margin: 0 auto;
 	font-size: $fontSize;
-	color: $colorFont;
+	color: $fontColor;
 }
 
 .container {
@@ -24,6 +23,10 @@
 	&-L {
 		margin-left: $defaultMargin;
 	}
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 @media (max-width: 1200px) {

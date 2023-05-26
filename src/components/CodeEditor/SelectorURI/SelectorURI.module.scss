@@ -1,18 +1,40 @@
 @import"../../../assets/style/index.scss";
 
-.main{
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 25px;
 
-   .select{
-        margin-left: 10px;
-        font-size: 18px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        -ms-border-radius: 8px;
-        -o-border-radius: 8px;
-    }
+	.select {
+		margin-left: 10px;
+		padding: 5px;
+		font-size: 18px;
+		border: 1px solid $grey;
+		border-radius: 8px;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		-ms-border-radius: 8px;
+		-o-border-radius: 8px;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.main {
+		.select {
+			font-size: 16px;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.main {
+		flex-direction: column;
+		.select {
+			margin-left: 0;
+			margin-top: 10px;
+			font-size: 11px;
+		}
+	}
 }

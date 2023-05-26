@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 import { useCallback, useEffect, useState } from 'react';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
@@ -6,10 +7,12 @@ import { useTranslation } from 'react-i18next';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 
+import Loader from '../loader';
+
 import { useAppSelector } from '../../store';
 
 import styles from './CodeEditor.module.scss';
-import Loader from '../loader';
+import './CodeEditor.module.scss';
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -80,18 +83,19 @@ const CodeEditor = () => {
   }
 
   return (
-    <main>
+    <>
       <div className={styles.main}>
         <div>
           <div className={styles.section}>{t('var_section')}</div>
           <CodeMirror
-            value={operations}
-            height="70vh"
-            width="40vw"
-            theme="dark"
-            extensions={[graphql(schema)]}
-            onChange={onChange}
             basicSetup
+            theme="dark"
+            width="40vw"
+            height="70vh"
+            value={operations}
+            onChange={onChange}
+            className={styles.editor}
+            extensions={[graphql(schema)]}
           />
         </div>
 
@@ -104,13 +108,14 @@ const CodeEditor = () => {
         <div>
           <div className={styles.section}>{t('res_section')}</div>
           <CodeMirror
-            value={JSON.stringify(codeRequest, null, '\t')}
-            height="70vh"
-            width="40vw"
-            theme="dark"
             editable
             readOnly
             basicSetup
+            theme="dark"
+            width="40vw"
+            height="70vh"
+            className={styles.editor}
+            value={JSON.stringify(codeRequest, null, '\t')}
           />
         </div>
       </div>
@@ -119,7 +124,7 @@ const CodeEditor = () => {
           <div className={styles.error}>{errorVal}</div>
         </div>
       )}
-    </main>
+    </>
   );
 };
 export default CodeEditor;

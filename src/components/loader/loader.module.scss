@@ -24,8 +24,8 @@
 		margin-top: -10px;
 		margin-left: -10px;
 		border-radius: 50%;
-		border: 2px solid #ccc;
-		border-top-color: #333;
+		border: 2px solid $grey;
+		border-top-color: $darkGrey;
 		will-change: transform;
 		animation: o .6s linear infinite;
 	}

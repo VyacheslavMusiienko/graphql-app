@@ -11,22 +11,12 @@ const Navigation = ({ isSticky }: { isSticky: boolean }) => {
     <nav className={styles.navigation}>
       <ul className={isSticky ? styles.navigation__list_sticky : styles.navigation__list}>
         <li className={styles.navigation__item}>
-          <NavLink
-            to={Paths.Main}
-            className={({ isActive }) =>
-              isActive ? styles.navigation__link_active : styles.navigation__link
-            }
-          >
+          <NavLink to={Paths.Main} className={[styles.navigation__link, styles.active].join(' ')}>
             {t('navigation', { context: 'home' })}
           </NavLink>
         </li>
         <li className={styles.navigation__item}>
-          <NavLink
-            to={Paths.Welcome}
-            className={({ isActive }) =>
-              isActive ? styles.navigation__link_active : styles.navigation__link
-            }
-          >
+          <NavLink to={Paths.Welcome} className={styles.navigation__link}>
             {t('navigation', { context: 'welcome' })}
           </NavLink>
         </li>

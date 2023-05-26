@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: #dcdcdc;
+    background-color: $authBackground;
     padding: 30px;
 
     .goRegister, .goLogin {
@@ -47,8 +47,8 @@
     font-size: 18px;
     margin-bottom: 10px;
     border: none;
-    color: white;
-    background-color: black;
+    color: $white;
+    background-color: $black;
     transition-duration: .2s;
 
     &:active {
@@ -83,5 +83,17 @@
   a {
     cursor: pointer;
     text-decoration: underline;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth_form {
+    width: 95%;
+
+    .wrapper {
+      &__container {
+        width: unset;
+      }
+    }
   }
 }
