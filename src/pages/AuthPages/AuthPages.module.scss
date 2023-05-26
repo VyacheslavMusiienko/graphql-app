@@ -85,3 +85,15 @@
     text-decoration: underline;
   }
 }
+
+@media (max-width: 576px) {
+  .auth_form {
+    width: 95%;
+
+    .wrapper {
+      &__container {
+        width: unset;
+      }
+    }
+  }
+}

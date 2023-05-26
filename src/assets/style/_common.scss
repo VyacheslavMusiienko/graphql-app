@@ -25,6 +25,10 @@
 	}
 }
 
+.nowrap {
+	white-space: nowrap;
+}
+
 @media (max-width: 1200px) {
 	.container {
 		max-width: 960px;

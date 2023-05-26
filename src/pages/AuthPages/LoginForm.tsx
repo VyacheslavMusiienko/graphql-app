@@ -57,7 +57,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(signIn)}>
+    <form onSubmit={handleSubmit(signIn)} className={styles.auth_form}>
       <div className={styles.wrapper__container}>
         <Loader active={isLoaderActive} />
         <Input
@@ -87,8 +87,10 @@ const LoginForm = () => {
         </button>
         <div className={styles.goRegister}>
           {translate('login_account')}
-          <Link to={Paths.SignUp}>{translate('to_signup')}</Link>
-          {translate('now')}.
+          <span className={styles.nowrap}>
+            <Link to={Paths.SignUp}>{translate('to_signup')}</Link>
+            {translate('now')}.
+          </span>
         </div>
       </div>
     </form>
