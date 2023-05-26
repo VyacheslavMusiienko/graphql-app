@@ -5,11 +5,12 @@ import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
 import { lazy, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import Loader from '../loader';
+import { schemaFromExecutor } from '@graphql-tools/wrap';
+import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 
 import { useAppSelector } from '../../store';
 
+import Loader from '../loader';
 import styles from './CodeEditor.module.scss';
 
 const CharacterSchema = lazy(() => import('./CharacterSchema/CharacterSchema'));
@@ -84,6 +85,7 @@ const CodeEditor = () => {
 
   return (
     <main>
+      <CharacterSchema schema={schema} />
       <CharacterSchema schema={schema} />
       <div className={styles.main}>
         <div>
