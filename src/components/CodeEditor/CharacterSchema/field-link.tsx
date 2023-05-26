@@ -1,4 +1,5 @@
 import { ExplorerFieldDef, useExplorerContext } from './utils/context-explorer';
+import styles from './field-link.module.scss';
 
 type FieldLinkProps = {
   field: ExplorerFieldDef;
@@ -10,7 +11,7 @@ const FieldLink = (props: FieldLinkProps) => {
   return (
     <button
       type="button"
-      className="graphiql-doc-explorer-field-name"
+      className={styles.name}
       onClick={(event) => {
         event.preventDefault();
         push({ name: props.field.name, def: props.field });

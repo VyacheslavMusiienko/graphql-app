@@ -1,4 +1,5 @@
 import { GraphQLType } from 'graphql';
+import styles from './type-link.module.scss';
 import { useExplorerContext } from './utils/context-explorer';
 import renderType from './utils/util';
 
@@ -16,7 +17,7 @@ const TypeLink = (props: TypeLinkProps) => {
   return renderType(props.type, (namedType) => (
     <button
       type="button"
-      className="graphiql-doc-explorer-type-name"
+      className={styles.type_name}
       onClick={(event) => {
         event.preventDefault();
         push({ name: namedType.name, def: namedType });

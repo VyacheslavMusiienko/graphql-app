@@ -10,7 +10,7 @@ const MarkdownContent = forwardRef<
   HTMLDivElement,
   MarkdownContentProps & Omit<JSX.IntrinsicElements['div'], 'children'>
 >(({ children, onlyShowFirstChild, type, ...props }, ref) => {
-  const classNames = [`graphiql-markdown-${type}`];
+  const classNames = [`${type}`];
   if (props.className) {
     classNames.push(props.className);
   }
