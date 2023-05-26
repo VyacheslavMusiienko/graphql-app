@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import styles from './section.module.scss';
 
 type ExplorerSectionProps = {
   children: ReactNode;
@@ -21,8 +22,8 @@ type ExplorerSectionProps = {
 const ExplorerSection = ({ title, children }: ExplorerSectionProps) => {
   return (
     <div>
-      <div className="graphiql-doc-explorer-section-title">{title}</div>
-      <div className="graphiql-doc-explorer-section-content">{children}</div>
+      <div className={styles.section_title}>{title}</div>
+      <div className={styles.section_content}>{children}</div>
     </div>
   );
 };

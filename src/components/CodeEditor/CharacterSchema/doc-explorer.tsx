@@ -56,7 +56,7 @@ const DocExplorer = () => {
               }}
               aria-label={`Go back to ${prevName}`}
             >
-              {prevName}
+              &#129044; {prevName}
             </button>
           )}
           <div className={styles.title}>{navItem.name}</div>
