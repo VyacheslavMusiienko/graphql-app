@@ -35,11 +35,13 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
-      <Header ref={headerRef} isSticky={sticky.isSticky} />
-      <Outlet />
-      <Footer />
-    </div>
+    <main>
+      <div className={styles.wrapper}>
+        <Header ref={headerRef} isSticky={sticky.isSticky} />
+        <Outlet />
+        <Footer />
+      </div>
+    </main>
   );
 };
 

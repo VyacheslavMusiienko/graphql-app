@@ -3,12 +3,12 @@ import Footer from '../../components/Footer';
 
 const WelcomePage = () => {
   return (
-    <>
+    <main>
       <PromoSection />
       <CourseInfoSection />
       <MemberSection />
       <Footer />
-    </>
+    </main>
   );
 };
 
