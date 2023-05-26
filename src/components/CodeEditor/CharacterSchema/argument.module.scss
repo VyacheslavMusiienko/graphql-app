@@ -1,7 +1,7 @@
 @import'../../../assets/style/index.scss';
 
 .name{
-  color: $thirdColor;
+  color: $fifthColor;
 }
 
 .argument{
@@ -9,10 +9,10 @@
     margin-top: 30px;
   }
   &_deprecation{
-  background-color: $waringColor;
-  border: 1px solid $waringColor;
+  background-color: $fifthColor;
+  border: 1px solid $fifthColor;
   border-radius: 4px;
-  color: $waringColor;
+  color: $fifthColor;
   padding: 8px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

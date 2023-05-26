@@ -21,28 +21,25 @@
   min-width: 0;
 }
 
-a.back {
+.back {
+  background: transparent;
   align-items: center;
-  color: $colorFont;
+  color: $fifthColor;
   display: flex;
   text-decoration: none;
+  font-size: 17px;
+  margin-bottom: 10px;
 
   &:hover {
     text-decoration: underline;
   }
 
   &:focus {
-    outline: $colorFont auto 1px;
+    outline: $thirdColor auto 1px;
 
     & + .title {
       visibility: unset;
     }
-  }
-
-  & > svg {
-    height: 8px;
-    margin-right: 8px;
-    width: 8px;
   }
 }
 
@@ -53,10 +50,10 @@ a.back {
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  &:not(:first-child) {
-    font-size: 17px;
-    margin-top: 8px;
-  }
+  // &:not(:first-child) {
+  //   font-size: 17px;
+  //   margin-top: 8px;
+  // }
 }
 
 .content > * {

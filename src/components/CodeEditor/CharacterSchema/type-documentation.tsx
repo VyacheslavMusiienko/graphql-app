@@ -18,6 +18,7 @@ import TypeLink from './type-link';
 import { ExplorerFieldDef } from './utils/context-explorer';
 import MarkdownContent from './utils/markdown';
 import { useSchemaContext } from './utils/schema';
+import styles from './type-documentation.module.scss';
 
 type TypeDocumentationProps = {
   type: GraphQLNamedType;
@@ -42,7 +43,7 @@ const ImplementsInterfaces = ({ type }: { type: GraphQLNamedType }) => {
 const Field = ({ field }: { field: ExplorerFieldDef }) => {
   const args = 'args' in field ? field.args.filter((arg) => !arg.deprecationReason) : [];
   return (
-    <div className="graphiql-doc-explorer-item">
+    <div className={styles.item}>
       <div>
         <FieldLink field={field} />
         {args.length > 0 ? (
@@ -53,7 +54,7 @@ const Field = ({ field }: { field: ExplorerFieldDef }) => {
                 args.length === 1 ? (
                   <Argument key={arg.name} arg={arg} inline />
                 ) : (
-                  <div key={arg.name} className="graphiql-doc-explorer-argument-multiple">
+                  <div key={arg.name} className={styles.argument_multiple}>
                     <Argument arg={arg} inline />
                   </div>
                 )
@@ -131,8 +132,8 @@ const Fields = ({ type }: { type: GraphQLNamedType }) => {
 
 const EnumValue = ({ value }: { value: GraphQLEnumValue }) => {
   return (
-    <div className="graphiql-doc-explorer-item">
-      <div className="graphiql-doc-explorer-enum-value">{value.name}</div>
+    <div className={styles.item}>
+      <div className={styles.enum_value}>{value.name}</div>
       {value.description ? (
         <MarkdownContent type="description">{value.description}</MarkdownContent>
       ) : null}

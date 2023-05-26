@@ -2,6 +2,7 @@ import type { GraphQLSchema } from 'graphql';
 import ExplorerSection from './section';
 import TypeLink from './type-link';
 import MarkdownContent from './utils/markdown';
+import styles from './schema-documentation.module.scss';
 
 type SchemaDocumentationProps = {
   schema: GraphQLSchema;
@@ -23,21 +24,21 @@ const SchemaDocumentation = (props: SchemaDocumentationProps) => {
       <ExplorerSection title="Root Types">
         {queryType ? (
           <div>
-            <span className="graphiql-doc-explorer-root-type">query</span>
+            <span className={styles.root_type}>query</span>
             {': '}
             <TypeLink type={queryType} />
           </div>
         ) : null}
         {mutationType && (
           <div>
-            <span className="graphiql-doc-explorer-root-type">mutation</span>
+            <span className={styles.root_type}>mutation</span>
             {': '}
             <TypeLink type={mutationType} />
           </div>
         )}
         {subscriptionType && (
           <div>
-            <span className="graphiql-doc-explorer-root-type">subscription</span>
+            <span className={styles.root_type}>subscription</span>
             {': '}
             <TypeLink type={subscriptionType} />
           </div>

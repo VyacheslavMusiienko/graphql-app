@@ -40,6 +40,7 @@ const Arguments = ({ field }: { field: ExplorerFieldDef }) => {
       ) : (
         <button
           type="button"
+          style={{ background: 'transparent' }}
           onClick={() => {
             setShowDeprecated(true);
           }}
