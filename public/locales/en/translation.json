@@ -31,6 +31,7 @@
   "vyacheslav_description": "Slava focused on developing the GraphQL page, applying his deep knowledge and experience. He created a functional interface for working with queries and ensured efficient GraphQL interaction for our users.",
   "errorPage_title": "Sorry, this page is not available. You may have used an invalid link or the page has been removed.",
   "errorPage_button": "Back to welcome page",
+  "selectSchema": "Select schema",
   "query": "Query",
   "res_section": "Response section",
   "var_section": "Variables section",
