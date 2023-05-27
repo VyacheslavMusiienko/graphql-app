@@ -32,9 +32,10 @@ const CodeEditor = () => {
       setSchema(postsSchema);
       setOperation(`query {}`);
       setCodeRequest(undefined);
+      setVisible(false);
     }
     fetchSchema();
-  }, [urI]);
+  }, [urI, setSchema]);
 
   const onChange = useCallback((valueEditor: string) => {
     setOperation(valueEditor);
