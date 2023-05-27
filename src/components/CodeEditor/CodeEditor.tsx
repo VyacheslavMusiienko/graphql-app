@@ -3,7 +3,7 @@ import { schemaFromExecutor } from '@graphql-tools/wrap';
 import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react';
+import { MouseEventHandler, Suspense, lazy, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Loader from '../loader';
@@ -11,7 +11,8 @@ import Loader from '../loader';
 import { useAppSelector } from '../../store';
 
 import styles from './CodeEditor.module.scss';
-import CharacterSchema from './CharacterSchema/CharacterSchema';
+// import CharacterSchema from './CharacterSchema/CharacterSchema';
+const CharacterSchema = lazy(() => import('./CharacterSchema/CharacterSchema'));
 
 const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
@@ -99,7 +100,11 @@ const CodeEditor = () => {
           Documentation
         </button>
       </div>
-      {isVisible && <CharacterSchema schema={schema} />}
+      {isVisible && (
+        <Suspense fallback={<Loader active />}>
+          <CharacterSchema schema={schema} />
+        </Suspense>
+      )}
       {!isVisible && (
         <div className={styles.main}>
           <div>
