@@ -33,6 +33,7 @@
   "errorPage_button": "Назад на главную",
   "selectSchema": "Выберите схему",
   "query": "Запрос",
+  "documentation": "Документация",
   "res_section": "Секция ответов",
   "var_section": "Секция переменных",
   "errorBoundary_title": "Что-то пошло не так...",
@@ -61,6 +62,5 @@
   "serverError_notFound": "Введенный вами электронный адрес не связан ни с одним аккаунтом",
   "serverError_wrongPassword": "Пароль неверный для этой почты",
   "serverError_missingPassword": "Отсутствует пароль",
-  "serverError_userDisabled": "Пользователь, соответствующий данному адресу электронной почты, отключен",
-  "selectSchema": "Выбор схемы"
+  "serverError_userDisabled": "Пользователь, соответствующий данному адресу электронной почты, отключен"
 }
