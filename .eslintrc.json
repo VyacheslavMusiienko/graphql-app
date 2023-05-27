@@ -42,6 +42,13 @@
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "eslint-disable-next-line prettier/prettier": "off",
+    "react/destructuring-assignment": "off",
+    "no-restricted-syntax": "off",
+    "no-continue": "off",
+    "@typescript-eslint/ban-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "no-nested-ternary": "off",
     "react/function-component-definition": [
       2,
       {

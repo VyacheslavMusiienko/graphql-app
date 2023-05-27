@@ -1,0 +1,16 @@
+@import'../../../assets/style/index.scss';
+
+.name {
+  background: transparent;
+  color: $sixthColor;
+  text-decoration: none;
+  font-size: 17px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: $sixthColor auto 1px;
+  }
+}
