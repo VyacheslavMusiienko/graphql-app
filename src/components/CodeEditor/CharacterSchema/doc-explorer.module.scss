@@ -1,5 +1,9 @@
 @import'../../../assets/style/index.scss';
 
+.explorer{
+  padding: 10px 15px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -50,14 +54,10 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  // &:not(:first-child) {
-  //   font-size: 17px;
-  //   margin-top: 8px;
-  // }
 }
 
 .content > * {
-  color: $colorFont;
+  color: $fontColor;
   margin-top: 20px;
 }
 

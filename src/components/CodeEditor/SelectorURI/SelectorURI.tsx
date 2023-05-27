@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { EditorSlice } from '../../../store/reducers/EditorSlice';
 
@@ -20,6 +19,8 @@ const SelectorURI = () => {
       <div>{t('selectSchema')}</div>
       <select className={styles.select} value={schemaURI} onChange={handleChange}>
         <option>https://rickandmortyapi.com/graphql</option>
+        <option>https://spacex-production.up.railway.app/</option>
+        <option>https://swapi-graphql.netlify.app/.netlify/functions/index</option>
         <option>https://countries.trevorblades.com/graphql</option>
       </select>
     </div>
