@@ -35,7 +35,7 @@
   "query": "Запрос",
   "documentation": "Документация",
   "res_section": "Секция ответов",
-  "var_section": "Секция переменных",
+  "editor_section": "Секция редктора",
   "errorBoundary_title": "Что-то пошло не так...",
   "errorBoundary_text": "Пожалуйста, попробуйте позже",
   "not_logged_in": "Вы не авторизованы",

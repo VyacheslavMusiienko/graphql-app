@@ -10,6 +10,7 @@ import Loader from '../loader';
 
 import { useAppSelector } from '../../store';
 
+import ErrorMessage from '../ErrorMessage';
 import styles from './CodeEditor.module.scss';
 
 const CharacterSchema = lazy(() => import('./CharacterSchema/CharacterSchema'));
@@ -18,6 +19,7 @@ const CodeEditor = () => {
   const [operations, setOperation] = useState<string>(`query {}`);
   const [codeRequest, setCodeRequest] = useState();
   const [errorVal, setError] = useState<string | undefined>(undefined);
+  const [errorValPage, setErrorPage] = useState<string | undefined>(undefined);
   const [isVisible, setVisible] = useState<boolean>(false);
   const { t } = useTranslation();
 
@@ -28,12 +30,19 @@ const CodeEditor = () => {
   useEffect(() => {
     async function fetchSchema() {
       setSchema(undefined);
-      const remoteExecutor = buildHTTPExecutor({ endpoint: urI });
-      const postsSchema = await schemaFromExecutor(remoteExecutor);
-      setSchema(postsSchema);
-      setOperation(`query {}`);
-      setCodeRequest(undefined);
-      setVisible(false);
+      setErrorPage(undefined);
+      try {
+        const remoteExecutor = buildHTTPExecutor({ endpoint: urI });
+        const postsSchema = await schemaFromExecutor(remoteExecutor);
+        setSchema(postsSchema);
+        setOperation(`query {}`);
+        setCodeRequest(undefined);
+        setVisible(false);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setErrorPage(error.message);
+        }
+      }
     }
     fetchSchema();
   }, [urI, setSchema]);
@@ -89,6 +98,9 @@ const CodeEditor = () => {
     }
   };
 
+  if (errorValPage) {
+    return <ErrorMessage>{errorValPage}</ErrorMessage>;
+  }
   if (!schema) {
     return <Loader active />;
   }
@@ -97,7 +109,7 @@ const CodeEditor = () => {
     <main>
       <div className={styles.wrapper_button}>
         <button type="button" className={styles.doc} onClick={renderDocumentation}>
-          {t('documentation')}
+          {!isVisible ? t('documentation') : t('query')}
         </button>
       </div>
       {isVisible && (
@@ -108,12 +120,12 @@ const CodeEditor = () => {
       {!isVisible && (
         <div className={styles.main}>
           <div>
-            <div className={styles.section}>{t('var_section')}</div>
+            <div className={styles.section}>{t('editor_section')}</div>
             <CodeMirror
               basicSetup
               theme="dark"
               width="40vw"
-              height="35vh"
+              height="70vh"
               value={operations}
               onChange={onChange}
               className={styles.editor}

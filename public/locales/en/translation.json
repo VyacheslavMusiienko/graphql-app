@@ -35,7 +35,7 @@
   "query": "Query",
   "documentation": "Documentation",
   "res_section": "Response section",
-  "var_section": "Variables section",
+  "editor_section": "Editor section",
   "errorBoundary_title": "Something went wrong...",
   "errorBoundary_text": "Please try again later",
   "not_logged_in": "You are not logged in.",
