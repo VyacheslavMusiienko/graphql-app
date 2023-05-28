@@ -34,7 +34,7 @@
   "selectSchema": "Select schema",
   "query": "Query",
   "res_section": "Response section",
-  "var_section": "Variables section",
+  "var_section": "Editor section",
   "errorBoundary_title": "Something went wrong...",
   "errorBoundary_text": "Please try again later",
   "not_logged_in": "You are not logged in.",
@@ -62,5 +62,5 @@
   "serverError_wrongPassword": "The password is invalid for the given email",
   "serverError_missingPassword": "Missing the password",
   "serverError_userDisabled": "The user corresponding to the given email has been disabled",
-  "selectSchema": "Select schema"
+  "nameDoc": "Documentation"
 }

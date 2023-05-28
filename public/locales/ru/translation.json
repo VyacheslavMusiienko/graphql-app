@@ -34,7 +34,7 @@
   "selectSchema": "Выберите схему",
   "query": "Запрос",
   "res_section": "Секция ответов",
-  "var_section": "Секция переменных",
+  "var_section": "Секция редктора",
   "errorBoundary_title": "Что-то пошло не так...",
   "errorBoundary_text": "Пожалуйста, попробуйте позже",
   "not_logged_in": "Вы не авторизованы",
@@ -62,5 +62,5 @@
   "serverError_wrongPassword": "Пароль неверный для этой почты",
   "serverError_missingPassword": "Отсутствует пароль",
   "serverError_userDisabled": "Пользователь, соответствующий данному адресу электронной почты, отключен",
-  "selectSchema": "Выбор схемы"
+  "nameDoc": "Документация"
 }
