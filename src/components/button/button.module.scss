@@ -1,0 +1,33 @@
+@import "src/assets/style";
+
+.button {
+  width: 130px;
+  height: 30px;
+  border: none;
+  transition: 1s;
+  border-radius: 10px;
+  font-weight: bold;
+  background: $buttonBackground;
+  box-shadow: 0 4px 4px rgba(0,0,0,.15);
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.sticky {
+  background-color: $secondColor;
+ }
+
+@media (max-width: 992px) {
+  .button {
+    width: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: auto;
+    padding: 0 5px;
+    font-size: 12px;
+  }
+}

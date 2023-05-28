@@ -1,0 +1,99 @@
+@import"../../assets/style/index.scss";
+
+.header {
+  min-height: $headerHeight;
+  background-color: $secondColor;
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 1800px;
+  transition: 1s;
+  z-index: 9999;
+
+  &_sticky {
+    background-color: $firstColor;
+  }
+
+  .link {
+    height: 100%;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .2em;
+    font-size: $titleFontSize;
+    max-width: 170px;
+    height: 100%;
+    background-color: $buttonBackground;
+  
+    .logo {
+      width: 40px;
+    }
+  }
+
+  .corner {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    justify-self: end;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    grid-template-columns: 1fr 300px 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .header {
+    .title {
+      .logo {
+        width: 30px;
+      }
+
+      .text {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 110px auto 190px;
+    gap: 1em;
+
+    .title {
+      .logo {
+        width: 26px;
+      }
+
+      .text {
+        font-size: 16px;
+      }
+    }
+
+    .corner {
+      gap: 5px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    grid-template-columns: 50px 2fr 1fr;
+
+    .title {
+      .text {
+        display: none;
+      }
+    }
+  }
+}

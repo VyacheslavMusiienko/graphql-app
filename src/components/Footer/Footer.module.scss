@@ -1,0 +1,61 @@
+@import"../../assets/style/index.scss";
+
+.footer {
+  border-top: 2px solid $firstColor;
+  margin-top: auto;
+
+  &_wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 20px 0;
+
+    .github_links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .link {
+        text-decoration: none;
+        height: 40px;
+        width: 22%;
+      }
+    }
+
+    .year {
+      text-align: end;
+      font-size: 20px;
+      color: $fontColor;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &_wrapper {
+      gap: 1em;
+
+      .github_links {
+        gap: 0.4em;
+
+        .link {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    &_wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .github_links {
+        flex-direction: column;
+        gap: 2em;
+      }
+    }
+  }
+}

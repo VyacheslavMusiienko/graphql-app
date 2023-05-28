@@ -1,0 +1,55 @@
+#root {
+	margin: 0 auto;
+	font-size: $fontSize;
+	color: $fontColor;
+}
+
+.container {
+	width: 1140px;
+	margin: 0 auto;
+}
+
+.MG {
+	margin: $defaultMargin;
+	&-T {
+		margin-top: $defaultMargin;
+	}
+	&-B {
+		margin-bottom: $defaultMargin;
+	}
+	&-R {
+		margin-right: $defaultMargin;
+	}
+	&-L {
+		margin-left: $defaultMargin;
+	}
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+	.container {
+		max-width: 960px;
+	}
+}
+
+@media (max-width: 992px) {
+	.container {
+		max-width: 720px;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		max-width: 540px;
+	}
+}
+
+@media (max-width: 576px) {
+	.container {
+		width: 100%;
+		padding: 0 10px;
+	}
+}

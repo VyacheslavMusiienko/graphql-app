@@ -1,0 +1,38 @@
+@import"../../assets/style/index.scss";
+
+.loader {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba($white, 0.6);
+	display: none;
+  	z-index: 9999;
+
+	&.active {
+		display: block;
+	}
+	
+	.loader__o {
+		box-sizing: border-box;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 20px;
+		height: 20px;
+		margin-top: -10px;
+		margin-left: -10px;
+		border-radius: 50%;
+		border: 2px solid $grey;
+		border-top-color: $darkGrey;
+		will-change: transform;
+		animation: o .6s linear infinite;
+	}
+
+	@keyframes o {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

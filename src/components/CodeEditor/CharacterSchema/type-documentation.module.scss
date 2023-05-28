@@ -1,0 +1,13 @@
+@import'../../../assets/style/index.scss';
+
+.item > :not(:first-child) {
+  margin-top: 12px;
+}
+
+.argument_multiple {
+  margin-left: 8px;
+}
+
+.enum_value {
+  color: $thirdColor;
+}

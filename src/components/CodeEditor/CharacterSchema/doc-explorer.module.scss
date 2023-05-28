@@ -1,0 +1,73 @@
+@import'../../../assets/style/index.scss';
+
+.explorer{
+  padding: 10px 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &:focus-within {
+    & .title {
+      visibility: hidden;
+    }
+
+    & .back:not(:focus) {
+      color: transparent;
+    }
+  }
+}
+.header_content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.back {
+  background: transparent;
+  align-items: center;
+  color: $fifthColor;
+  display: flex;
+  text-decoration: none;
+  font-size: 17px;
+  margin-bottom: 10px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: $thirdColor auto 1px;
+
+    & + .title {
+      visibility: unset;
+    }
+  }
+}
+
+
+.title {
+  font-weight: 500;
+  font-size: 15px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content > * {
+  color: $fontColor;
+  margin-top: 20px;
+}
+
+.error {
+  border: 1px solid $welcomeTextColor;
+  border-radius: 8px;
+  color: $welcomeTextColor;
+  padding: 8px 12px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
