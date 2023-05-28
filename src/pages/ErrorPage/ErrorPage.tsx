@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import Paths from '../../utils/enums';
 import { Button } from '../../components/button';

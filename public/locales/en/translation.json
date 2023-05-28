@@ -33,8 +33,9 @@
   "errorPage_button": "Back to welcome page",
   "selectSchema": "Select schema",
   "query": "Query",
+  "documentation": "Documentation",
   "res_section": "Response section",
-  "var_section": "Editor section",
+  "editor_section": "Editor section",
   "errorBoundary_title": "Something went wrong...",
   "errorBoundary_text": "Please try again later",
   "not_logged_in": "You are not logged in.",
@@ -61,6 +62,5 @@
   "serverError_notFound": "The email address you entered is not associated with any account",
   "serverError_wrongPassword": "The password is invalid for the given email",
   "serverError_missingPassword": "Missing the password",
-  "serverError_userDisabled": "The user corresponding to the given email has been disabled",
-  "nameDoc": "Documentation"
+  "serverError_userDisabled": "The user corresponding to the given email has been disabled"
 }
